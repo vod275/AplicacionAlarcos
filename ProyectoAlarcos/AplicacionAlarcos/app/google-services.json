@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "607025074040",
+    "project_id": "aplicacionalarcos",
+    "storage_bucket": "aplicacionalarcos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607025074040:android:8e8d42e17fc99a3bbac28d",
+        "android_client_info": {
+          "package_name": "com.example.aplicacionalarcos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607025074040-3o1javvs8n8np4cqo5pbv4kvgacr2pf1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplicacionalarcos",
+            "certificate_hash": "ff475de054d0daa0ec3225d5ea236b2bc23020c0"
+          }
+        },
+        {
+          "client_id": "607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuCkHb8IaCHAJO-6ZXo4S0TB-7tNscRH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
