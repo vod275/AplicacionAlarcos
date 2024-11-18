@@ -52,6 +52,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(kotlin("script-runtime"))
+    implementation ("com.google.android.material:material:1.9.0")
 
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
 
