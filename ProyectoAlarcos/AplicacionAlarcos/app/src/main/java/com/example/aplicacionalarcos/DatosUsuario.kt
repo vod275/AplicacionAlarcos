@@ -20,6 +20,16 @@ class DatosUsuario : AppCompatActivity() {
         binding.etFechaNacimiento.setStartIconOnClickListener {
             showDatePickerDialog()
         }
+
+        //boton de aceptar, ya crearemos un metodo mas adelante
+        binding.obAceptar.setOnClickListener {
+
+        }
+
+        //boton atras(sera generico asi no hacemos 500)
+        binding.obAtras.setOnClickListener {
+
+        }
     }
 
     // Mostrar el selector de fechas
@@ -32,7 +42,7 @@ class DatosUsuario : AppCompatActivity() {
         // Mostrar el selector de fecha
         datePicker.show(supportFragmentManager, "datePicker")
 
-        // Obtener la selección de la fecha y ponerla en el EditText
+        // Obtener la fecha y ponerla en el EditText
         datePicker.addOnPositiveButtonClickListener {
             val selectedDate = it?.let { date ->
                 val calendar = Calendar.getInstance()
