@@ -10,9 +10,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvNombre"
-        android:layout_width="239dp"
-        android:layout_height="61dp"
+        android:layout_width="245dp"
+        android:layout_height="91dp"
         android:hint="Nombre"
+        app:counterEnabled="true"
+        app:counterMaxLength="45"
+        app:endIconMode="clear_text"
+        app:helperText="Introduce el nombre"
+        app:helperTextEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
@@ -22,21 +27,26 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="61dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvApellidos"
-        android:layout_width="239dp"
-        android:layout_height="61dp"
+        android:layout_width="240dp"
+        android:layout_height="93dp"
         android:hint="Apellidos"
+        app:counterEnabled="true"
+        app:counterMaxLength="45"
+        app:endIconMode="clear_text"
+        app:helperText="Introduce los apellidos"
+        app:helperTextEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264">
+        app:layout_constraintVertical_bias="0.322">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -54,8 +64,9 @@
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385"
-        app:startIconDrawable="@drawable/baseline_calendar_month_24">
+        app:layout_constraintVertical_bias="0.468"
+        app:startIconDrawable="@drawable/baseline_calendar_month_24"
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etFechaNacimientoEditText"
@@ -63,19 +74,6 @@
             android:layout_height="wrap_content"
             android:inputType="datetime" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/obAceptar"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aceptar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/obAtras"
@@ -88,7 +86,20 @@
         app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.605" />
+
+    <Button
+        android:id="@+id/obAceptar"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.605" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
