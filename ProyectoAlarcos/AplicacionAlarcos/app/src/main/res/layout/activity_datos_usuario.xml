@@ -10,9 +10,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvNombre"
-        android:layout_width="245dp"
-        android:layout_height="91dp"
-        android:hint="Nombre"
+        android:layout_width="240dp"
+        android:layout_height="93dp"
+        android:hint="@string/nombre"
         app:counterEnabled="true"
         app:counterMaxLength="45"
         app:endIconMode="clear_text"
@@ -35,7 +35,7 @@
         android:id="@+id/tvApellidos"
         android:layout_width="240dp"
         android:layout_height="93dp"
-        android:hint="Apellidos"
+        android:hint="@string/apellidos"
         app:counterEnabled="true"
         app:counterMaxLength="45"
         app:endIconMode="clear_text"
@@ -56,17 +56,18 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etFechaNacimiento"
-        android:layout_width="239dp"
-        android:layout_height="61dp"
-        android:hint="@string/fecha_de_nacimiento"
+        android:layout_width="240dp"
+        android:layout_height="93dp"
+        app:endIconMode="clear_text"
+        app:helperText="Introduce tu fecha de nacimiento"
+        app:helperTextEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.468"
-        app:startIconDrawable="@drawable/baseline_calendar_month_24"
-        app:endIconMode="clear_text">
+        app:startIconDrawable="@drawable/baseline_calendar_month_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etFechaNacimientoEditText"
@@ -80,7 +81,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Atras"
+        android:text="@string/atras"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.738"
@@ -93,7 +94,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aceptar"
+        android:text="@string/aceptar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.227"

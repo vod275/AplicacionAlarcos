@@ -30,7 +30,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvPeso"
-        android:layout_width="237dp"
+        android:layout_width="243dp"
         android:layout_height="93dp"
         android:hint="Peso"
         app:endIconMode="clear_text"

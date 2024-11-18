@@ -2,4 +2,8 @@
     <string name="app_name">AplicacionAlarcos</string>
     <string name="your_web_client_id">607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com</string>
     <string name="fecha_de_nacimiento" />
+    <string name="apellidos">Apellidos</string>
+    <string name="nombre">Nombre</string>
+    <string name="atras">Atras</string>
+    <string name="aceptar">Aceptar</string>
 </resources>
