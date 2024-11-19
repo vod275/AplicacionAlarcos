@@ -51,7 +51,11 @@ class DatosUsuario : AppCompatActivity() {
                 val month = calendar.get(Calendar.MONTH) + 1
                 val year = calendar.get(Calendar.YEAR)
                 // Formatear la fecha y ponerla en el TextInputEditText
-                "$day / $month / $year"
+                if (month<10){
+                    "$day / 0$month / $year"
+                }else{
+                    "$day / $month / $year"
+                }
             }
 
             // Actualizar el TextInputEditText con la fecha seleccionada
