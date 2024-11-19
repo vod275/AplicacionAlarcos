@@ -30,9 +30,9 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
         }
 
-        //boton atras(sera generico asi no hacemos 500)
+        //boton atras(no sera generico, por que si vamos para atras tiene que ser al activity anterior)
         binding.obAtras.setOnClickListener {
-
+            onBackPressed()
         }
     }
 
@@ -73,7 +73,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
         val dialogBuilder = AlertDialog.Builder(this)
             .setView(dialogBinding.root)
 
-        // Configuramos la acción del botón "Aceptar"
+        // boton Aceptar
         val dialog = dialogBuilder.create()
         dialogBinding.btnAcceptDialog.setOnClickListener {
             dialog.dismiss()
@@ -83,9 +83,16 @@ class DatosUsuarioActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    // navegamos a la pantalla de imc
     private fun navigateToImcActivity() {
         val intent = Intent(this, ImcActivity::class.java)
         startActivity(intent)
         Toast.makeText(this, "¡A calcular el IMC!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToLoginActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
     }
 }
