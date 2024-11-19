@@ -54,11 +54,11 @@ dependencies {
     implementation(kotlin("script-runtime"))
     implementation ("com.google.android.material:material:1.9.0")
 
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation(platform(libs.firebase.bom))
 
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation(libs.google.firebase.analytics)
+    implementation(libs.play.services.auth)
 
 }

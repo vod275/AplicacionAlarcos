@@ -22,6 +22,30 @@
           }
         },
         {
+          "client_id": "607025074040-bd367h6mjm8fivps3r4urtkiold53j7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplicacionalarcos",
+            "certificate_hash": "6b2d39948309e8b90da5e0d953afd6968926af06"
+          }
+        },
+        {
+          "client_id": "607025074040-c7v6eqeh74ferflph765ve38oil33r7i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplicacionalarcos",
+            "certificate_hash": "7aad9e4123d30cb9f74c79756c77db44dced12c2"
+          }
+        },
+        {
+          "client_id": "607025074040-lruqd0auf2e3v3sa6fdfmibmhuvsf9jt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplicacionalarcos",
+            "certificate_hash": "694618b65ff69cf468dfc2199b0e05bb242bb43b"
+          }
+        },
+        {
           "client_id": "607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com",
           "client_type": 3
         }
