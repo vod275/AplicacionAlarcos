@@ -2,11 +2,14 @@ package com.example.aplicacionalarcos
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.aplicacionalarcos.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
@@ -16,7 +19,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var oneTapClient: SignInClient
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        //auth.signOut() // Cierra sesión al inicia (para boton de cerrar sesion)
 
         // Configura One Tap para Google Sign-In
         oneTapClient = Identity.getSignInClient(this)
@@ -144,18 +147,33 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            Toast.makeText(this, "Bienvenido: ${user.email}", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DatosUsuarioActivity::class.java)
-            startActivity(intent)
-            finish()
+            user.reload().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val refreshedUser = auth.currentUser
+                    if (refreshedUser != null) {
+                        Toast.makeText(this, "Bienvenido: ${refreshedUser.email}", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, DatosUsuarioActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Usuario no encontrado, inicia sesión nuevamente.", Toast.LENGTH_SHORT).show()
+                        auth.signOut()
+                    }
+                } else {
+                    Toast.makeText(this, "Error al verificar usuario: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    auth.signOut()
+                }
+            }
         } else {
             Toast.makeText(this, "Por favor, inicia sesión o regístrate", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
+
 }
