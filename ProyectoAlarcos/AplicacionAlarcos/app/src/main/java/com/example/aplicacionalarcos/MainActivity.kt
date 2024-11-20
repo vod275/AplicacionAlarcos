@@ -2,9 +2,9 @@ package com.example.aplicacionalarcos
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +14,10 @@ import com.example.aplicacionalarcos.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -23,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private val RC_SIGN_IN = 9001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +37,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        //auth.signOut() // Cierra sesión al inicia (para boton de cerrar sesion)
 
-        // Configura One Tap para Google Sign-In
+        // Configure One Tap for Google Sign-In
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder()
             .setGoogleIdTokenRequestOptions(
@@ -45,6 +50,18 @@ class MainActivity : AppCompatActivity() {
             )
             .build()
 
+        // Configure standard Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        // ... (your existing click listeners for email/password login and registration)
+
+        binding.googleSignInButton.setOnClickListener {
+            signInWithGoogle()
+        }
         binding.loginButton.setOnClickListener {
             val email = binding.emailInput.text.toString().trim()
             val password = binding.passwordInput.text.toString().trim()
@@ -59,16 +76,18 @@ class MainActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
             val email = binding.emailInput.text.toString().trim()
             val password = binding.passwordInput.text.toString().trim()
+            // Configure standard Google Sign-In
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            googleSignInClient = GoogleSignIn.getClient(this, gso)
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 register(email, password)
             } else {
                 Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        binding.googleSignInButton.setOnClickListener {
-            signInWithGoogle()
         }
     }
 
@@ -111,36 +130,56 @@ class MainActivity : AppCompatActivity() {
 
     private fun signInWithGoogle() {
         oneTapClient.beginSignIn(signInRequest)
-            .addOnSuccessListener { result ->
-                signInLauncher.launch(IntentSenderRequest.Builder(result.pendingIntent).build())
+            .addOnSuccessListener(this) { result ->
+                try {
+                    signInLauncher.launch(IntentSenderRequest.Builder(result.pendingIntent).build())
+                } catch (e: android.content.IntentSender.SendIntentException) {
+                    Log.e("GoogleSignIn", "Couldn't start One Tap UI: ${e.localizedMessage}")
+                    // Fallback to standard Google Sign-In if One Tap UI fails to start
+                    val signInIntent = googleSignInClient.signInIntent
+                    startActivityForResult(signInIntent, RC_SIGN_IN)
+                }
             }
             .addOnFailureListener { e ->
                 Log.w("GoogleSignIn", "One Tap Sign-In failed", e)
-                Toast.makeText(this, "Error al iniciar sesión con Google", Toast.LENGTH_SHORT).show()
+                // Fallback to standard Google Sign-In
+                val signInIntent = googleSignInClient.signInIntent
+                startActivityForResult(signInIntent, RC_SIGN_IN)
             }
     }
 
     private val signInLauncher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
-                val credential = oneTapClient.getSignInCredentialFromIntent(result.data)
-                val idToken = credential.googleIdToken
-                if (idToken != null) {
-                    val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
-                    auth.signInWithCredential(firebaseCredential)
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                val user = auth.currentUser
-                                updateUI(user)
-                            } else {
-                                Log.w("GoogleSignIn", "signInWithCredential:failure", task.exception)
-                                Toast.makeText(
-                                    this,
-                                    "Error al autenticar con Google",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                try {
+                    val credential = oneTapClient.getSignInCredentialFromIntent(result.data)
+                    val idToken = credential.googleIdToken
+                    if (idToken != null) {
+                        val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
+                        auth.signInWithCredential(firebaseCredential)
+                            .addOnCompleteListener(this) { task ->
+                                if (task.isSuccessful) {
+                                    val user = auth.currentUser
+                                    updateUI(user)
+                                } else {
+                                    Log.w(
+                                        "GoogleSignIn",
+                                        "signInWithCredential:failure",
+                                        task.exception
+                                    )
+                                    Toast.makeText(
+                                        this,
+                                        "Error al autenticar con Google",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
-                        }
+                    }
+                } catch (e: ApiException) {
+                    // Google Sign In failed, update UI appropriately
+                    Log.w("GoogleSignIn", "Google sign in failed", e)
+                    Toast.makeText(this, "Error al iniciar sesión con Google", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
@@ -151,16 +190,28 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val refreshedUser = auth.currentUser
                     if (refreshedUser != null) {
-                        Toast.makeText(this, "Bienvenido: ${refreshedUser.email}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Bienvenido: ${refreshedUser.email}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         val intent = Intent(this, DatosUsuarioActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, "Usuario no encontrado, inicia sesión nuevamente.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Usuario no encontrado, inicia sesión nuevamente.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         auth.signOut()
                     }
                 } else {
-                    Toast.makeText(this, "Error al verificar usuario: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Error al verificar usuario: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     auth.signOut()
                 }
             }
@@ -175,5 +226,4 @@ class MainActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
-
 }
