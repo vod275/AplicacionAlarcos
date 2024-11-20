@@ -37,9 +37,9 @@ class DatosUsuarioActivity : AppCompatActivity() {
         // Botón atrás: cerrar sesión y volver al inicio
         binding.obAtras.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            auth.signOut() // Cerrar sesión
-            startActivity(intent) // Regresar a MainActivity
-            finish() // Finalizar la actividad actual
+            auth.signOut()
+            startActivity(intent)
+            finish()
         }
     }
 
