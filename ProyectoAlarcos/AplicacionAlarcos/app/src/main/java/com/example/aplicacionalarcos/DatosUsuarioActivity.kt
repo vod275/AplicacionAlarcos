@@ -9,30 +9,37 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionalarcos.databinding.ActivityDatosUsuarioBinding
 import com.example.aplicacionalarcos.databinding.ActivityMensajeMotivacionalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.firebase.auth.FirebaseAuth
 
 class DatosUsuarioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDatosUsuarioBinding
+    private lateinit var auth: FirebaseAuth // Declarar FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // El icono del calendario es un boton para mostrar la fecha
+        // Inicializar FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+
+        // El icono del calendario es un botón para mostrar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
             showDatePickerDialog()
         }
 
-        //boton de aceptar, ya crearemos un metodo mas adelante
+        // Botón de aceptar
         binding.btnAcceptDialog.setOnClickListener {
-
             showMotivationalDialog()
-
         }
 
-        //boton atras(no sera generico, por que si vamos para atras tiene que ser al activity anterior)
+        // Botón atrás: cerrar sesión y volver al inicio
         binding.obAtras.setOnClickListener {
-            onBackPressed()
+            val intent = Intent(this, MainActivity::class.java)
+            auth.signOut() // Cerrar sesión
+            startActivity(intent) // Regresar a MainActivity
+            finish() // Finalizar la actividad actual
         }
     }
 
