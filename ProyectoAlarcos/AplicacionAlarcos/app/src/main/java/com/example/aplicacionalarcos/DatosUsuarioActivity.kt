@@ -1,14 +1,16 @@
 package com.example.aplicacionalarcos
 
-import android.app.DatePickerDialog
+import android.app.AlertDialog
+import android.content.Intent
 import java.util.Calendar
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionalarcos.databinding.ActivityDatosUsuarioBinding
-import com.example.aplicacionalarcos.databinding.ActivityMainBinding
+import com.example.aplicacionalarcos.databinding.ActivityMensajeMotivacionalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 
-class DatosUsuario : AppCompatActivity() {
+class DatosUsuarioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDatosUsuarioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +24,15 @@ class DatosUsuario : AppCompatActivity() {
         }
 
         //boton de aceptar, ya crearemos un metodo mas adelante
-        binding.obAceptar.setOnClickListener {
+        binding.btnAcceptDialog.setOnClickListener {
+
+            showMotivationalDialog()
 
         }
 
-        //boton atras(sera generico asi no hacemos 500)
+        //boton atras(no sera generico, por que si vamos para atras tiene que ser al activity anterior)
         binding.obAtras.setOnClickListener {
-
+            onBackPressed()
         }
     }
 
@@ -61,5 +65,34 @@ class DatosUsuario : AppCompatActivity() {
             // Actualizar el TextInputEditText con la fecha seleccionada
             binding.etFechaNacimiento.editText?.setText(selectedDate)
         }
+    }
+
+    private fun showMotivationalDialog() {
+        // Vinculamos el diseño del cuadro de diálogo
+        val dialogBinding = ActivityMensajeMotivacionalBinding.inflate(layoutInflater)
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(dialogBinding.root)
+
+        // boton Aceptar
+        val dialog = dialogBuilder.create()
+        dialogBinding.btnAcceptDialog.setOnClickListener {
+            dialog.dismiss()
+            navigateToImcActivity()
+        }
+
+        dialog.show()
+    }
+
+    // navegamos a la pantalla de imc
+    private fun navigateToImcActivity() {
+        val intent = Intent(this, ImcActivity::class.java)
+        startActivity(intent)
+        Toast.makeText(this, "¡A calcular el IMC!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToLoginActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
     }
 }
