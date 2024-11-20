@@ -16,7 +16,7 @@
         app:counterEnabled="true"
         app:counterMaxLength="45"
         app:endIconMode="clear_text"
-        app:helperText="Introduce el nombre"
+        app:helperText="@string/introduce_el_nombre"
         app:helperTextEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="61dp" />
+            android:layout_height="61dp"
+            android:hint="@string/nombre" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,7 +40,7 @@
         app:counterEnabled="true"
         app:counterMaxLength="45"
         app:endIconMode="clear_text"
-        app:helperText="Introduce los apellidos"
+        app:helperText="@string/introduce_los_apellidos"
         app:helperTextEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/apellidos" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +61,7 @@
         android:layout_width="240dp"
         android:layout_height="93dp"
         app:endIconMode="clear_text"
-        app:helperText="Introduce tu fecha de nacimiento"
+        app:helperText="@string/introduce_tu_fecha_de_nacimiento"
         app:helperTextEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

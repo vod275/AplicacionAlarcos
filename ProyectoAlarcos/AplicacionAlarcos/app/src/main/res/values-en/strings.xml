@@ -12,4 +12,12 @@
     <string name="correo">Email</string>
     <string name="email">Email</string>
     <string name="logo_de_la_app">App Logo</string>
+    <string name="introduce_el_nombre">Enter your name</string>
+    <string name="introduce_los_apellidos">Enter your surname</string>
+    <string name="introduce_tu_fecha_de_nacimiento">Enter your birthdate</string>
+    <string name="altura">Heigth</string>
+    <string name="en_centimetros">In centimeters</string>
+    <string name="peso">Weight</string>
+    <string name="en_kilogramos">In kilograms</string>
+    <string name="vamos">Let\'s go!</string>
 </resources>
