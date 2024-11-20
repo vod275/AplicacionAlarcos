@@ -7,4 +7,11 @@
     <string name="atras">Atras</string>
     <string name="aceptar">Aceptar</string>
     <string name="recuerda_que_la_felicidad_est_en_ti">Recuerda que la felicidad está en ti.</string>
+    <string name="iniciar_con_google">Iniciar con Google</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="mantente_saludable_inicia_sesi_n_ahora">Mantente saludable, inicia sesión ahora</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="correo">Correo</string>
+    <string name="email">Email</string>
+    <string name="logo_de_la_app">Logo de la app</string>
 </resources>

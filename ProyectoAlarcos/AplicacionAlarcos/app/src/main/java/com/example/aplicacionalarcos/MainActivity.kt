@@ -3,6 +3,7 @@ package com.example.aplicacionalarcos
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.IntentSenderRequest
@@ -63,19 +64,28 @@ class MainActivity : AppCompatActivity() {
             signInWithGoogle()
         }
         binding.loginButton.setOnClickListener {
-            val email = binding.emailInput.text.toString().trim()
-            val password = binding.passwordInput.text.toString().trim()
+            val email = binding.emailInput.editText?.text.toString().trim()
+            val password = binding.passwordInput.editText?.text.toString().trim()
+
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                signIn(email, password)
+                if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    // Si el correo es válido, proceder con el inicio de sesión
+                    signIn(email, password)
+                } else {
+                    // Mostrar un mensaje si el correo no tiene el formato correcto
+                    Toast.makeText(this, "Por favor, ingresa un correo válido", Toast.LENGTH_SHORT).show()
+                }
             } else {
+                // Si algún campo está vacío
                 Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
 
+
         binding.registerButton.setOnClickListener {
-            val email = binding.emailInput.text.toString().trim()
-            val password = binding.passwordInput.text.toString().trim()
+            val email = binding.emailInput.editText?.text.toString().trim()
+            val password = binding.passwordInput.editText?.text.toString().trim()
             // Configure standard Google Sign-In
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -117,16 +127,30 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
                     updateUI(user)
                 } else {
+                    // Aquí obtenemos el mensaje completo del error
+                    val errorMessage = task.exception?.message ?: "Error desconocido. Intenta nuevamente."
+
                     Log.w("Register", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        this,
-                        "Error al registrar: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
+                    // Mostrar un mensaje dependiendo del error
+                    when {
+                        errorMessage.contains("email address is already in use") -> {
+                            Toast.makeText(this, "El correo ya está registrado", Toast.LENGTH_SHORT).show()
+                        }
+                        errorMessage.contains("The given password is invalid") -> {
+                            Toast.makeText(this, "La contraseña es demasiado débil", Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {
+                            // Mostrar el error, si no se puede identificar el tipo específico
+                            Toast.makeText(this, "Error al registrar: $errorMessage", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                     updateUI(null)
                 }
             }
     }
+
+
 
     private fun signInWithGoogle() {
         oneTapClient.beginSignIn(signInRequest)
