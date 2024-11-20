@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             Toast.makeText(this, "Bienvenido: ${user.email}", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DatosUsuario::class.java)
+            val intent = Intent(this, DatosUsuarioActivity::class.java)
             startActivity(intent)
             finish()
         } else {
