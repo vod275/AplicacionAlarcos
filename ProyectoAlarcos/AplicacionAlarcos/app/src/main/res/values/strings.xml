@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">AplicacionAlarcos</string>
-    <string name="your_web_client_id">607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com</string>
-    <string name="fecha_de_nacimiento" />
+    <string name="app_name" translatable="false">AplicacionAlarcos</string>
+    <string name="your_web_client_id" translatable="false">607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="apellidos">Apellidos</string>
     <string name="nombre">Nombre</string>
     <string name="atras">Atras</string>
     <string name="aceptar">Aceptar</string>
-    <string name="recuerda_que_la_felicidad_est_en_ti">Recuerda que la felicidad está en ti.</string>
+    <string name="recuerda_que_la_felicidad_est_en_ti" translatable="false">Recuerda que la felicidad está en ti.</string>
     <string name="iniciar_con_google">Iniciar con Google</string>
     <string name="registrarse">Registrarse</string>
     <string name="mantente_saludable_inicia_sesi_n_ahora">Mantente saludable, inicia sesión ahora</string>

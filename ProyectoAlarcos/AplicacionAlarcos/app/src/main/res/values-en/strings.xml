@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fecha_de_nacimiento">Birthdate</string>
+    <string name="apellidos">Surname</string>
+    <string name="nombre">Name</string>
+    <string name="atras">Return</string>
+    <string name="aceptar">Accept</string>
+    <string name="iniciar_con_google">Log in with Google</string>
+    <string name="registrarse">Sign in</string>
+    <string name="mantente_saludable_inicia_sesi_n_ahora">Keep yourself healthy, log in now</string>
+    <string name="contrase_a">Password</string>
+    <string name="correo">Email</string>
+    <string name="email">Email</string>
+    <string name="logo_de_la_app">App Logo</string>
+</resources>
