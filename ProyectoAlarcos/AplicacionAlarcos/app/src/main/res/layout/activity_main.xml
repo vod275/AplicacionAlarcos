@@ -26,7 +26,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="163dp"
         android:layout_height="60dp"
-        android:text="¡Vamos!"
+        android:text="@string/vamos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
