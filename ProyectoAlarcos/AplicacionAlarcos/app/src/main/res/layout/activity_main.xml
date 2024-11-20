@@ -5,21 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/log"
+    android:scaleType="centerCrop"
     tools:context=".MainActivity">
 
     <!-- Placeholder para el logo -->
+
+
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/logoapp"
         android:contentDescription="@string/logo_de_la_app"
-        android:src="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
         android:id="@+id/loginButton"
@@ -31,21 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
-
-    <Button
-        android:id="@+id/googleSignInButton"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="163dp"
-        android:layout_height="60dp"
-        android:text="@string/iniciar_con_google"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76"
-        app:icon="@drawable/google"
-        app:iconTint="@null"/>
+        app:layout_constraintVertical_bias="0.53" />
 
     <Button
         android:id="@+id/registerButton"
@@ -57,7 +46,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
+        app:layout_constraintVertical_bias="0.64" />
+
+    <Button
+        android:id="@+id/googleSignInButton"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="163dp"
+        android:layout_height="60dp"
+        android:text="@string/iniciar_con_google"
+        app:icon="@drawable/google"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733" />
 
     <TextView
         android:id="@+id/motivationalText"
@@ -72,6 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/googleSignInButton" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInput"
         android:layout_width="285dp"
@@ -82,17 +86,15 @@
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434">
+        app:layout_constraintVertical_bias="0.367">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailInput"
@@ -104,10 +106,9 @@
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271">
+        app:layout_constraintVertical_bias="0.217">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
