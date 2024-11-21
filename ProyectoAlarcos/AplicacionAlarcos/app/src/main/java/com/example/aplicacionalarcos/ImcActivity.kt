@@ -35,17 +35,18 @@ class ImcActivity : AppCompatActivity() {
                     val altura = alturaText.toDouble() / 100 // Convertir centímetros a metros
 
                     if (peso > 0 && altura > 0) {
-                        val imc = peso / (altura * altura) // Fórmula del IMC
+                        val imc = peso / (altura * altura)
+                        val imcFormateado = String.format("%.2f", imc)// Fórmula del IMC
                         if (imc < 18.5) {
                             binding.IVMediorIMC.setImageResource(R.drawable.minuspesocir) // Peso insuficiente
-                            binding.TVIMCRes.text = "PESO POR DEBAJO DEL RECOMENDADO"
+                            binding.TVIMCRes.text = "PESO POR DEBAJO DEL RECOMENDADO TU IMC ES: $imcFormateado"
                         } else if (imc in 18.5..24.9) {
                             binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
-                            binding.TVIMCRes.text = "PESO EN EL RANGO RECOMENDADO"
+                            binding.TVIMCRes.text = "PESO EN EL RANGO RECOMENDADO TU IMC ES: $imcFormateado"
 
                         } else {
                             binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
-                            binding.TVIMCRes.text = "PESO POR ENCIMA DEL RECOMENDADO"
+                            binding.TVIMCRes.text = "PESO POR ENCIMA DEL RECOMENDADO TU IMC ES: $imcFormateado"
                         }
                     } else {
                         Toast.makeText(this, "El peso y la altura deben ser mayores a cero.", Toast.LENGTH_SHORT).show()
