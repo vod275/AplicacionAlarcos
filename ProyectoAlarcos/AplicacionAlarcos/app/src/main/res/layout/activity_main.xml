@@ -74,8 +74,8 @@
     <Button
         android:id="@+id/googleSignInButton"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="61dp"
-        android:layout_height="61dp"
+        android:layout_width="108dp"
+        android:layout_height="57dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/google"
         app:icon="@drawable/google"
@@ -83,10 +83,28 @@
         app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
+        app:layout_constraintVertical_bias="0.677" />
+
+
+    <Button
+        android:id="@+id/faceBookSignInButton"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="90dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/face"
+        app:icon="@drawable/face"
+        app:iconSize="32dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.679" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInput"
