@@ -14,15 +14,14 @@ import com.google.firebase.auth.FirebaseAuth
 class DatosUsuarioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDatosUsuarioBinding
-    private lateinit var auth: FirebaseAuth // Declarar FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializar FirebaseAuth
-        auth = FirebaseAuth.getInstance()
+
 
         // El icono del calendario es un botón para mostrar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
@@ -36,8 +35,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
         // Botón atrás: cerrar sesión y volver al inicio
         binding.obAtras.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            auth.signOut()
+            val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
             finish()
         }

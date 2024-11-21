@@ -23,4 +23,7 @@
     <string name="en_kilogramos">En Kilogramos</string>
     <string name="vamos">¡Vamos!</string>
     <string name="imagen_fondo_login">Imagen Fondo Login</string>
+    <string name="CalcularImc">Calcular IMC</string>
+    <string name="InfoNutricional">Info Nutricional</string>
+    <string name="UltimasComidas">Ultimas comidas</string>
 </resources>

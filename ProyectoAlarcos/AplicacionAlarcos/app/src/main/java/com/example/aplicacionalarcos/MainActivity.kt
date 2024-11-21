@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
                             "Bienvenido: ${refreshedUser.email}",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val intent = Intent(this, DatosUsuarioActivity::class.java)
+                        val intent = Intent(this, MenuActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
