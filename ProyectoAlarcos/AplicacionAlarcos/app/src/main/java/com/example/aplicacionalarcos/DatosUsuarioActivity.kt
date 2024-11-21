@@ -28,10 +28,6 @@ class DatosUsuarioActivity : AppCompatActivity() {
             showDatePickerDialog()
         }
 
-        // Botón de aceptar
-        binding.btnAcceptDialog.setOnClickListener {
-            showMotivationalDialog()
-        }
 
         // Botón atrás: cerrar sesión y volver al inicio
         binding.obAtras.setOnClickListener {
@@ -72,32 +68,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
         }
     }
 
-    private fun showMotivationalDialog() {
-        // Vinculamos el diseño del cuadro de diálogo
-        val dialogBinding = ActivityMensajeMotivacionalBinding.inflate(layoutInflater)
-        val dialogBuilder = AlertDialog.Builder(this)
-            .setView(dialogBinding.root)
 
-        // boton Aceptar
-        val dialog = dialogBuilder.create()
-        dialogBinding.btnAcceptDialog.setOnClickListener {
-            dialog.dismiss()
-            navigateToImcActivity()
-        }
 
-        dialog.show()
-    }
 
-    // navegamos a la pantalla de imc
-    private fun navigateToImcActivity() {
-        val intent = Intent(this, ImcActivity::class.java)
-        startActivity(intent)
-        Toast.makeText(this, "¡A calcular el IMC!", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun navigateToLoginActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-
-    }
 }

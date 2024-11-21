@@ -1,11 +1,14 @@
 package com.example.aplicacionalarcos
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.aplicacionalarcos.databinding.ActivityMensajeMotivacionalBinding
 import com.example.aplicacionalarcos.databinding.ActivityMenuBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -57,6 +60,9 @@ class MenuActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.IMCButton.setOnClickListener{
+            showMotivationalDialog()
+        }
 
 
     }
@@ -65,5 +71,34 @@ class MenuActivity : AppCompatActivity() {
         super.onBackPressed()
         // Agregar animación de regreso
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
+
+    private fun showMotivationalDialog() {
+        // Vinculamos el diseño del cuadro de diálogo
+        val dialogBinding = ActivityMensajeMotivacionalBinding.inflate(layoutInflater)
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(dialogBinding.root)
+
+        // boton Aceptar
+        val dialog = dialogBuilder.create()
+        dialogBinding.btnAcceptDialog.setOnClickListener {
+            dialog.dismiss()
+            navigateToImcActivity()
+        }
+
+        dialog.show()
+    }
+
+    // navegamos a la pantalla de imc
+    private fun navigateToImcActivity() {
+        val intent = Intent(this, ImcActivity::class.java)
+        startActivity(intent)
+        Toast.makeText(this, "¡A calcular el IMC!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToLoginActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
     }
 }

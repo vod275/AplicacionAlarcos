@@ -13,6 +13,7 @@
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="TODO"
         android:src="@drawable/imagemenu"
         android:scaleType="centerCrop"
         android:layout_marginTop="30dp"
@@ -59,7 +60,8 @@
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.078" />
+            app:layout_constraintVertical_bias="0.078"
+            app:strokeColor="@color/VerdeFont"/>
 
         <Button
             android:id="@+id/InfoNutriButton"
@@ -76,7 +78,8 @@
             app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.248" />
+            app:layout_constraintVertical_bias="0.248"
+            app:strokeColor="@color/VerdeFont"/>
 
         <Button
             android:id="@+id/UltimasComidasButton"
@@ -93,7 +96,8 @@
             app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.44" />
+            app:layout_constraintVertical_bias="0.44"
+            app:strokeColor="@color/VerdeFont"/>
 
         <Button
             android:id="@+id/obAtras"
@@ -107,7 +111,8 @@
             app:layout_constraintHorizontal_bias="0.936"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.957" />
+            app:layout_constraintVertical_bias="0.957"
+            app:strokeColor="@color/VerdeFont"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
