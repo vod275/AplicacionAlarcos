@@ -29,4 +29,5 @@
     <string name="MinusPeso">"PESO POR DEBAJO DEL RECOMENDADO TU IMC ES: "</string>
     <string name="PesoRecomendado">PESO EN EL RANGO RECOMENDADO TU IMC ES:</string>
     <string name="SobrePeso">PESO POR ENCIMA DEL RECOMENDADO TU IMC ES:</string>
+    <string name="bgimage">bgImage</string>
 </resources>

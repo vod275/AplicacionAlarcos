@@ -3,6 +3,7 @@
     <style name="Base.Theme.AplicacionAlarcos" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Puedes personalizar el tema claro aquí si lo deseas -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/VerdeFont</item>
     </style>
 
     <!-- Tema extendido con color del cursor personalizado -->
