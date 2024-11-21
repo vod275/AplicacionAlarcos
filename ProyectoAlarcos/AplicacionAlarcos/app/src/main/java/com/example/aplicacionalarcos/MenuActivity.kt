@@ -40,6 +40,7 @@ class MenuActivity : AppCompatActivity() {
             binding.IMCButton,
             binding.InfoNutriButton,
             binding.UltimasComidasButton,
+            binding.AjustesButton,
             binding.obAtras
             // Añade más botones aquí, como binding.InfoNutriButton o binding.UltimasComidasButton si están en tu layout
         )
@@ -79,6 +80,11 @@ class MenuActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             finish()
         }
+
+        binding.AjustesButton.setOnClickListener {
+           navigateToPrefilActivity()
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     override fun onBackPressed() {
@@ -101,6 +107,12 @@ class MenuActivity : AppCompatActivity() {
         }
 
         dialog.show()
+    }
+    private fun navigateToPrefilActivity() {
+        val intent = Intent(this, AjustesActivity::class.java)
+        startActivity(intent)
+        // Agregar animación
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     // Navegamos a la pantalla de IMC

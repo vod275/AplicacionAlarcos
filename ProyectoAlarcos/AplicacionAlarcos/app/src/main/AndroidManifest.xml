@@ -13,11 +13,14 @@
         android:theme="@style/Theme.AplicacionAlarcos"
         tools:targetApi="31">
         <activity
+            android:name=".AjustesActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false"
-            android:theme="@style/Theme.AplicacionAlarcos"/>
-        <activity android:name=".ImcActivity"/>
-        <activity android:name=".DatosUsuarioActivity"/>
+            android:theme="@style/Theme.AplicacionAlarcos" />
+        <activity android:name=".ImcActivity" />
+        <activity android:name=".DatosUsuarioActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
