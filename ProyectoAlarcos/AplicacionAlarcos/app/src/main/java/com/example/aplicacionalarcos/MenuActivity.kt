@@ -14,6 +14,7 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth // Declarar FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMenuBinding.inflate(layoutInflater)
@@ -31,14 +32,43 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Botón atrás: cerrar sesión y volver al inicio
+        binding.IMCButton.setOnClickListener {
+            val intent = Intent(this, ImcActivity::class.java)
+            startActivity(intent)
+            // Agregar animación
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
+        //binding.InfoNutriButton.setOnClickListener {
+        //  val intent = Intent(this, InfoNutriActivity::class.java)
+        //    startActivity(intent)
+            // Agregar animación
+        //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        //}
+
+        //binding.UltimasComidasButton.setOnClickListener {
+        //    val intent = Intent(this, UltimasComidasActivity::class.java)
+        //    startActivity(intent)
+            // Agregar animación
+        //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        //}
+
         binding.obAtras.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             auth.signOut()
             startActivity(intent)
+            // Agregar animación de regreso
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             finish()
         }
 
 
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        // Agregar animación de regreso
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }
