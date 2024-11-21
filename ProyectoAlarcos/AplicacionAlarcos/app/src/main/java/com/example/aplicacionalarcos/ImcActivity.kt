@@ -30,8 +30,7 @@ class ImcActivity : AppCompatActivity() {
         }
     }
 
-
-    // Método para calcular el IMC
+    //Metodo para calcular IMC
     private fun calcularIMC() {
         val pesoText = binding.EtPeso.text.toString()
         val alturaText = binding.EtAltura.text.toString()
@@ -43,20 +42,18 @@ class ImcActivity : AppCompatActivity() {
 
                 if (peso > 0 && altura > 0) {
                     val imc = peso / (altura * altura) // Fórmula del IMC
-                    when {
-                        imc < 18.5 -> {
-                            binding.IVMediorIMC.setImageResource(R.drawable.minuspesocir) // Peso insuficiente
-                            binding.TVIMCRes.text = R.string.MinusPeso.toString() + String.format("%.2f", imc)
-                        }
-                        imc in 18.5..24.9 -> {
-                            binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
-                            binding.TVIMCRes.text = R.string.PesoRecomendado.toString() + String.format("%.2f", imc)
-                        }
-                        else -> {
-                            binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
-                            binding.TVIMCRes.text = R.string.SobrePeso.toString() + String.format("%.2f", imc)
-                        }
+
+                    if (imc < 18.5) {
+                        binding.IVMediorIMC.setImageResource(R.drawable.minuspesocir) // Peso insuficiente
+                        binding.TVIMCRes.text = getString(R.string.MinusPeso) + " " + String.format("%.2f", imc)
+                    } else if (imc in 18.5..24.9) {
+                        binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
+                        binding.TVIMCRes.text = getString(R.string.PesoRecomendado) + " " + String.format("%.2f", imc)
+                    } else {
+                        binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
+                        binding.TVIMCRes.text = getString(R.string.SobrePeso) + " " + String.format("%.2f", imc)
                     }
+
                 } else {
                     Toast.makeText(this, "El peso y la altura deben ser mayores a cero.", Toast.LENGTH_SHORT).show()
                 }
@@ -67,4 +64,5 @@ class ImcActivity : AppCompatActivity() {
             Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
