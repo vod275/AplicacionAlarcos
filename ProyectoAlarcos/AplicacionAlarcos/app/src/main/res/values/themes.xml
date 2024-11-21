@@ -10,4 +10,12 @@
     <style name="Theme.AplicacionAlarcos" parent="Base.Theme.AplicacionAlarcos">
         <item name="colorControlActivated">@color/VerdeFont</item>
     </style>
+
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="helperTextTextAppearance">@style/HelperTextAppearance</item>
+    </style>
+
+    <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/VerdeFont</item>
+    </style>
 </resources>

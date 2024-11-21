@@ -7,112 +7,155 @@
     android:layout_height="match_parent"
     tools:context=".ImcActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvAltura"
-        android:layout_width="242dp"
-        android:layout_height="93dp"
-        android:hint="@string/altura"
-        app:endIconMode="clear_text"
-        app:helperText="@string/en_centimetros"
-        app:helperTextEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EtAltura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvPeso"
-        android:layout_width="243dp"
-        android:layout_height="93dp"
-        android:hint="@string/peso"
-        app:endIconMode="clear_text"
-        app:helperText="@string/en_kilogramos"
-        app:helperTextEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EtPeso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/obAtras"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/atras"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.721"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
-
-    <Button
-        android:id="@+id/btnAcceptDialog"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/aceptar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
-
     <ImageView
-        android:id="@+id/IVMediorIMC"
-        android:layout_width="271dp"
-        android:layout_height="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767"
-        app:srcCompat="@drawable/recomendado" />
-
-    <TextView
-        android:id="@+id/TVIMCRes"
-        android:layout_width="wrap_content"
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        android:contentDescription="TODO"
+        android:src="@drawable/imc"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/TvIMCRecomendado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="El IMC Recomendado para una persona adulta con ejercicio fisico ligero se encuentra entre 18.5 y 25"
-        android:textAlignment="center"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/transparentContainer"
+        android:layout_width="349dp"
+        android:layout_height="647dp"
+        android:background="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.454">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvAltura"
+            android:layout_width="242dp"
+            android:layout_height="93dp"
+            android:hint="@string/altura"
+            app:endIconMode="clear_text"
+            app:helperText="@string/en_centimetros"
+            app:helperTextEnabled="true"
+            app:endIconTint="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.101">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EtAltura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdeFont"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvPeso"
+            android:layout_width="243dp"
+            android:layout_height="93dp"
+            android:hint="@string/peso"
+            app:endIconMode="clear_text"
+            app:helperText="@string/en_kilogramos"
+            app:helperTextEnabled="true"
+            app:endIconTint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.271">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EtPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdeFont"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/obAtras"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atras"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.743"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.924"
+            app:strokeColor="@color/VerdeFont"/>
+
+        <Button
+            android:id="@+id/btnAcceptDialog"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aceptar"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.247"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.924"
+            app:strokeColor="@color/VerdeFont"/>
+
+        <ImageView
+            android:id="@+id/IVMediorIMC"
+            android:layout_width="271dp"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.767"
+            app:srcCompat="@drawable/recomendado" />
+
+        <TextView
+            android:id="@+id/TVIMCRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.474" />
+
+        <TextView
+            android:id="@+id/TvIMCRecomendado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25"
+            android:textAlignment="center"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.411" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
