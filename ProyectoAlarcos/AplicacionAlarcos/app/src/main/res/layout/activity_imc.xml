@@ -20,29 +20,42 @@
         android:layout_alignParentEnd="true"
         tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="88dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/logoapp"
+        android:contentDescription="@string/logo_de_la_app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transparentContainer"
-        android:layout_width="349dp"
-        android:layout_height="647dp"
+        android:layout_width="343dp"
+        android:layout_height="611dp"
         android:background="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454">
+        app:layout_constraintVertical_bias="0.794">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvAltura"
             android:layout_width="242dp"
             android:layout_height="93dp"
             android:hint="@string/altura"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/VerdeFont"
             app:helperText="@string/en_centimetros"
             app:helperTextEnabled="true"
-            app:endIconTint="@color/VerdeFont"
-            app:cursorColor="@color/VerdeFont"
-            app:boxStrokeColor="@color/VerdeFont"
-            android:textColorHint="@color/VerdeFont"
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +68,7 @@
                 android:id="@+id/EtAltura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/VerdeFont"/>
+                android:textColor="@color/VerdeFont" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,13 +77,14 @@
             android:layout_width="243dp"
             android:layout_height="93dp"
             android:hint="@string/peso"
-            app:endIconMode="clear_text"
-            app:helperText="@string/en_kilogramos"
-            app:helperTextEnabled="true"
-            app:endIconTint="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
             app:cursorColor="@color/VerdeFont"
-            android:textColorHint="@color/VerdeFont"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/VerdeFont"
+            app:helperText="@string/en_kilogramos"
+            app:helperTextEnabled="true"
+            app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -82,7 +96,7 @@
                 android:id="@+id/EtPeso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/VerdeFont"/>
+                android:textColor="@color/VerdeFont" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,11 +109,11 @@
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.743"
+            app:layout_constraintHorizontal_bias="0.79"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.924"
-            app:strokeColor="@color/VerdeFont"/>
+            app:layout_constraintVertical_bias="0.937"
+            app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/btnAcceptDialog"
@@ -110,11 +124,11 @@
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.247"
+            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.924"
-            app:strokeColor="@color/VerdeFont"/>
+            app:layout_constraintVertical_bias="0.937"
+            app:strokeColor="@color/VerdeFont" />
 
         <ImageView
             android:id="@+id/IVMediorIMC"

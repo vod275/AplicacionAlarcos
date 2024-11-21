@@ -3,48 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#49991B"
+    android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/dgMotivacional"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#38D329"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Imagen Motivacional -->
+    <ImageView
+        android:id="@+id/ivMotivationalImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/motivacional"
+        app:layout_constraintDimensionRatio="1.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivMotivationalImage"
-            android:layout_width="match_parent"
-            android:layout_height="255dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/motivacional" />
+    <!-- Mensaje Motivacional -->
+    <TextView
+        android:id="@+id/tvMotivationalMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa"
+        android:textAlignment="center"
+        android:textColor="@color/VerdeFont"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivMotivationalImage" />
 
-        <TextView
-            android:id="@+id/tvMotivationalMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa"
-            android:textAlignment="center"
-            android:textColor="@color/VerdeFont"
-            android:textSize="16sp"
-            android:ellipsize="none"
-            android:scrollHorizontally="false"
-            android:singleLine="false" />
+    <!-- Botón Aceptar -->
+    <Button
+        android:id="@+id/btnAcceptDialog"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:text="@string/aceptar"
+        android:textColor="@color/VerdeFont"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMotivationalMessage"
+        app:strokeColor="@color/VerdeFont"/>
 
-        <Button
-            android:id="@+id/btnAcceptDialog"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="125dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/aceptar"
-            android:textColor="@color/VerdeFont" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
