@@ -46,15 +46,15 @@ class ImcActivity : AppCompatActivity() {
                     when {
                         imc < 18.5 -> {
                             binding.IVMediorIMC.setImageResource(R.drawable.minuspesocir) // Peso insuficiente
-                            binding.TVIMCRes.text = "PESO POR DEBAJO DEL RECOMENDADO"
+                            binding.TVIMCRes.text = R.string.MinusPeso.toString() + String.format("%.2f", imc)
                         }
                         imc in 18.5..24.9 -> {
                             binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
-                            binding.TVIMCRes.text = "PESO EN EL RANGO RECOMENDADO"
+                            binding.TVIMCRes.text = R.string.PesoRecomendado.toString() + String.format("%.2f", imc)
                         }
                         else -> {
                             binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
-                            binding.TVIMCRes.text = "PESO POR ENCIMA DEL RECOMENDADO"
+                            binding.TVIMCRes.text = R.string.SobrePeso.toString() + String.format("%.2f", imc)
                         }
                     }
                 } else {

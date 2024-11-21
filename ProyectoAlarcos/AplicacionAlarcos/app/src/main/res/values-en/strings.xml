@@ -27,4 +27,5 @@
     <string name="MinusPeso">"WEIGHT BELOW RECOMENDED BMI, YOUR BMI IS: "</string>
     <string name="PesoRecomendado">"WEIGHT BETWEEN RECOMENDED BMI RANGE, YOUR BMI IS: "</string>
     <string name="SobrePeso">WEIGHT ABOVE RECOMENDED BMI, YOUR BMI IS:</string>
+    <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">The BMI recomended for a healthy adult who practise light physical exercises is between 18.5 and 25</string>
 </resources>
