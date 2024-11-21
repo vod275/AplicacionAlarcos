@@ -26,37 +26,45 @@ class ImcActivity : AppCompatActivity() {
 
         // Configuración del botón para calcular IMC
         binding.btnAcceptDialog.setOnClickListener {
-            val pesoText = binding.EtPeso.text.toString()
-            val alturaText = binding.EtAltura.text.toString()
+            calcularIMC()
+        }
+    }
 
-            if (pesoText.isNotEmpty() && alturaText.isNotEmpty()) {
-                try {
-                    val peso = pesoText.toDouble()
-                    val altura = alturaText.toDouble() / 100 // Convertir centímetros a metros
 
-                    if (peso > 0 && altura > 0) {
-                        val imc = peso / (altura * altura)
-                        val imcFormateado = String.format("%.2f", imc)// Fórmula del IMC
-                        if (imc < 18.5) {
+    // Método para calcular el IMC
+    private fun calcularIMC() {
+        val pesoText = binding.EtPeso.text.toString()
+        val alturaText = binding.EtAltura.text.toString()
+
+        if (pesoText.isNotEmpty() && alturaText.isNotEmpty()) {
+            try {
+                val peso = pesoText.toDouble()
+                val altura = alturaText.toDouble() / 100 // Convertir centímetros a metros
+
+                if (peso > 0 && altura > 0) {
+                    val imc = peso / (altura * altura) // Fórmula del IMC
+                    when {
+                        imc < 18.5 -> {
                             binding.IVMediorIMC.setImageResource(R.drawable.minuspesocir) // Peso insuficiente
-                            binding.TVIMCRes.text = getString(R.string.MinusPeso)+imcFormateado
-                        } else if (imc in 18.5..24.9) {
-                            binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
-                            binding.TVIMCRes.text = getString(R.string.PesoRecomendado)+imcFormateado
-
-                        } else {
-                            binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
-                            binding.TVIMCRes.text = getString(R.string.SobrePeso)+imcFormateado
+                            binding.TVIMCRes.text = "PESO POR DEBAJO DEL RECOMENDADO"
                         }
-                    } else {
-                        Toast.makeText(this, "El peso y la altura deben ser mayores a cero.", Toast.LENGTH_SHORT).show()
+                        imc in 18.5..24.9 -> {
+                            binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
+                            binding.TVIMCRes.text = "PESO EN EL RANGO RECOMENDADO"
+                        }
+                        else -> {
+                            binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
+                            binding.TVIMCRes.text = "PESO POR ENCIMA DEL RECOMENDADO"
+                        }
                     }
-                } catch (e: NumberFormatException) {
-                    Toast.makeText(this, "Introduce valores numéricos válidos.", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "El peso y la altura deben ser mayores a cero.", Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, "Introduce valores numéricos válidos.", Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
         }
     }
 }
