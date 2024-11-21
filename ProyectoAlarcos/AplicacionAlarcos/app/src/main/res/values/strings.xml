@@ -21,9 +21,12 @@
     <string name="peso">Peso</string>
     <string name="en_kilogramos">En Kilogramos</string>
     <string name="vamos">¡Vamos!</string>
-    <string name="imagen_fondo_login">Imagen Fondo Login</string>
+    <string name="imagen_fondo_login" translatable="false">Imagen Fondo Login</string>
     <string name="CalcularImc">Calcular IMC</string>
     <string name="InfoNutricional">Info Nutricional</string>
     <string name="UltimasComidas">Ultimas comidas</string>
     <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">Recuerda que la felicidad esta en ti y que el imc no te define puesto que eres una persona maravillosa</string>
+    <string name="MinusPeso">"PESO POR DEBAJO DEL RECOMENDADO TU IMC ES: "</string>
+    <string name="PesoRecomendado">PESO EN EL RANGO RECOMENDADO TU IMC ES:</string>
+    <string name="SobrePeso">PESO POR ENCIMA DEL RECOMENDADO TU IMC ES:</string>
 </resources>

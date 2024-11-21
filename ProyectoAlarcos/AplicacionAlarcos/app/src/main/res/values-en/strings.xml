@@ -20,4 +20,11 @@
     <string name="peso">Weight</string>
     <string name="en_kilogramos">In kilograms</string>
     <string name="vamos">Let\'s go!</string>
+    <string name="CalcularImc">Calculate BMI</string>
+    <string name="InfoNutricional">Nutritional Info</string>
+    <string name="UltimasComidas">Last meals</string>
+    <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">Remember that happiness is inside of you and BMI doesn\'t define you because you are a marvelous person</string>
+    <string name="MinusPeso">"WEIGHT BELOW RECOMENDED BMI, YOUR BMI IS: "</string>
+    <string name="PesoRecomendado">"WEIGHT BETWEEN RECOMENDED BMI RANGE, YOUR BMI IS: "</string>
+    <string name="SobrePeso">WEIGHT ABOVE RECOMENDED BMI, YOUR BMI IS:</string>
 </resources>
