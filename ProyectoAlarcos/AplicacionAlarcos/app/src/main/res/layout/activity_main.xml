@@ -20,8 +20,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         tools:ignore="MissingConstraints" />
-
-    <!-- Layout con fondo semitransparente -->
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="88dp"
@@ -112,10 +110,14 @@
             android:id="@+id/passwordInput"
             android:layout_width="285dp"
             android:layout_height="86dp"
-            android:textStyle="bold"
             android:hint="@string/contrase_a"
             android:textColorHint="@color/VerdeFont"
-            app:endIconMode="clear_text"
+            android:textStyle="bold"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +126,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -133,7 +137,10 @@
             android:layout_height="86dp"
             android:hint="@string/email"
             android:textColorHint="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
             android:textStyle="bold"
+            app:boxStrokeColor="@color/VerdeFont"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +151,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdeFont"
+                android:textCursorDrawable="@drawable/custom_cursor"/>
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
