@@ -6,7 +6,6 @@
     <string name="nombre">Nombre</string>
     <string name="atras">Atras</string>
     <string name="aceptar">Aceptar</string>
-    <string name="recuerda_que_la_felicidad_est_en_ti" translatable="false">Recuerda que la felicidad está en ti.</string>
     <string name="iniciar_con_google">Iniciar con Google</string>
     <string name="registrarse">Registrarse</string>
     <string name="mantente_saludable_inicia_sesi_n_ahora">Mantente saludable, inicia sesión ahora</string>
@@ -26,4 +25,5 @@
     <string name="CalcularImc">Calcular IMC</string>
     <string name="InfoNutricional">Info Nutricional</string>
     <string name="UltimasComidas">Ultimas comidas</string>
+    <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">Recuerda que la felicidad esta en ti y que el imc no te define puesto que eres una persona maravillosa</string>
 </resources>

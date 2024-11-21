@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.googleSignInButton.setOnClickListener {
             signInWithGoogle()
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
         binding.loginButton.setOnClickListener {
             val email = binding.emailInput.editText?.text.toString().trim()
@@ -80,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                 // Si algún campo está vacío
                 Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show()
             }
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
 
@@ -117,6 +119,7 @@ class MainActivity : AppCompatActivity() {
                     updateUI(null)
                 }
             }
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun register(email: String, password: String) {

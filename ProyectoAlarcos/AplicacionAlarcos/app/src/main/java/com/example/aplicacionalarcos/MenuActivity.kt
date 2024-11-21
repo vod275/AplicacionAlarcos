@@ -30,11 +30,6 @@ class MenuActivity : AppCompatActivity() {
         binding.IMCButton.setOnClickListener {
             val intent = Intent(this, ImcActivity::class.java)
             startActivity(intent)
-        }
-
-        binding.IMCButton.setOnClickListener {
-            val intent = Intent(this, ImcActivity::class.java)
-            startActivity(intent)
             // Agregar animación
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
