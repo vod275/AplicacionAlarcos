@@ -39,14 +39,14 @@ class ImcActivity : AppCompatActivity() {
                         val imcFormateado = String.format("%.2f", imc)// Fórmula del IMC
                         if (imc < 18.5) {
                             binding.IVMediorIMC.setImageResource(R.drawable.minuspesocir) // Peso insuficiente
-                            binding.TVIMCRes.text = getString(R.string.MinusPeso)+imcFormateado
+                            binding.TVIMCRes.text = "PESO POR DEBAJO DEL RECOMENDADO TU IMC ES: $imcFormateado"
                         } else if (imc in 18.5..24.9) {
                             binding.IVMediorIMC.setImageResource(R.drawable.recomendado) // Peso normal
-                            binding.TVIMCRes.text = getString(R.string.PesoRecomendado)+imcFormateado
+                            binding.TVIMCRes.text = "PESO EN EL RANGO RECOMENDADO TU IMC ES: $imcFormateado"
 
                         } else {
                             binding.IVMediorIMC.setImageResource(R.drawable.sobrepesocir) // Sobrepeso
-                            binding.TVIMCRes.text = getString(R.string.SobrePeso)+imcFormateado
+                            binding.TVIMCRes.text = "PESO POR ENCIMA DEL RECOMENDADO TU IMC ES: $imcFormateado"
                         }
                     } else {
                         Toast.makeText(this, "El peso y la altura deben ser mayores a cero.", Toast.LENGTH_SHORT).show()
