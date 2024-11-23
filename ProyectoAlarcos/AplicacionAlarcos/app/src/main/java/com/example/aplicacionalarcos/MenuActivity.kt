@@ -73,7 +73,7 @@ class MenuActivity : AppCompatActivity() {
 
         binding.obAtras.setOnClickListener {
             val email = auth.currentUser?.email // Obtiene el correo del usuario actual
-            
+
             AlertDialog.Builder(this).apply {
                 setTitle("Cerrar sesión")
                 setMessage("Se cerrará la sesión con el correo: $email. ¿Desea continuar?")

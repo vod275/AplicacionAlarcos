@@ -22,6 +22,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import objetos.UserSession
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -217,11 +218,15 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val refreshedUser = auth.currentUser
                     if (refreshedUser != null) {
+                        // Guardar el email en el Singleton
+                        UserSession.email = refreshedUser.email
+
                         Toast.makeText(
                             this,
-                            "Bienvenido: ${refreshedUser.email}",
+                            "Bienvenido: ${UserSession.email}",
                             Toast.LENGTH_SHORT
                         ).show()
+
                         val intent = Intent(this, MenuActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -246,6 +251,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Por favor, inicia sesión o regístrate", Toast.LENGTH_SHORT).show()
         }
     }
+
 
 
     override fun onStart() {

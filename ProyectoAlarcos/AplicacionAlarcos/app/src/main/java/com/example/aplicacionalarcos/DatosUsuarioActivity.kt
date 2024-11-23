@@ -10,6 +10,7 @@ import com.example.aplicacionalarcos.databinding.ActivityDatosUsuarioBinding
 import com.example.aplicacionalarcos.databinding.ActivityMensajeMotivacionalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
+import objetos.UserSession
 
 class DatosUsuarioActivity : AppCompatActivity() {
 
@@ -21,13 +22,13 @@ class DatosUsuarioActivity : AppCompatActivity() {
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        // Mostrar el email del usuario
+        binding.tvCorreo.text = UserSession.email ?: "Correo no disponible"
 
         // El icono del calendario es un botón para mostrar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
             showDatePickerDialog()
         }
-
 
         // Botón atrás: cerrar sesión y volver al inicio
         binding.obAtras.setOnClickListener {
