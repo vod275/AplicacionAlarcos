@@ -70,14 +70,25 @@ class MenuActivity : AppCompatActivity() {
         //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         //}
 
-        // Botón para regresar al login
         binding.obAtras.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            auth.signOut() // Cierra la sesión del usuario
-            startActivity(intent)
-            // Agregar animación de regreso
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-            finish()
+            val email = auth.currentUser?.email // Obtiene el correo del usuario actual
+            
+            AlertDialog.Builder(this).apply {
+                setTitle("Cerrar sesión")
+                setMessage("Se cerrará la sesión con el correo: $email. ¿Desea continuar?")
+                setPositiveButton("Aceptar") { _, _ ->
+                    // Acción para cerrar sesión y volver al login
+                    val intent = Intent(this@MenuActivity, MainActivity::class.java)
+                    auth.signOut() // Cierra la sesión
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                    finish()
+                }
+                setNegativeButton("Cancelar") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                setCancelable(false)
+            }.create().show()
         }
     }
 

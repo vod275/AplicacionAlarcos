@@ -16,9 +16,9 @@
     <string name="introduce_los_apellidos">Enter your surname</string>
     <string name="introduce_tu_fecha_de_nacimiento">Enter your birthdate</string>
     <string name="altura">Heigth</string>
-    <string name="en_centimetros">In centimeters</string>
+    <string name="en_centimetros">In Centimeters</string>
     <string name="peso">Weight</string>
-    <string name="en_kilogramos">In kilograms</string>
+    <string name="en_kilogramos">In Kilograms</string>
     <string name="vamos">Let\'s go!</string>
     <string name="CalcularImc">Calculate BMI</string>
     <string name="InfoNutricional">Nutritional Info</string>
