@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,57 +8,192 @@
     android:layout_height="match_parent"
     tools:context=".AjustesActivity">
 
-
-
-    <Button
-        android:id="@+id/obAtras"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
+    <!-- Imagen de fondo -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/atras"
-        android:textColor="@color/VerdeFont"
+        android:src="@drawable/ajustimage"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="88dp"
+        android:layout_height="92dp"
+        android:background="@drawable/logoapp"
+        android:contentDescription="@string/logo_de_la_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
-        app:strokeColor="@color/VerdeFont"/>
-
-    <RadioButton
-        android:id="@+id/RBIngles"
-        android:layout_width="85dp"
-        android:layout_height="49dp"
-        android:text="@string/English"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RbSpanish"
         app:layout_constraintVertical_bias="0.0" />
 
-    <RadioButton
-        android:id="@+id/RbSpanish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Español"
+    <!-- Contenedor transparente -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/transparentContainer"
+        android:layout_width="349dp"
+        android:layout_height="489dp"
+        android:background="#C4FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.458">
 
-    <Switch
-        android:id="@+id/SWTheme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Claro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369" />
+        <!-- Botón "Atrás" -->
 
+        <TextView
+            android:id="@+id/tvEdad"
+            android:layout_width="103dp"
+            android:layout_height="20dp"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.321"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.501" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edad"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvApellidosAjustes"
+            android:layout_width="269dp"
+            android:layout_height="20dp"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.393" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apellidos"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.391" />
+
+        <TextView
+            android:id="@+id/tvNombreAjustes"
+            android:layout_width="269dp"
+            android:layout_height="25dp"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.29" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.287" />
+
+        <Button
+            android:id="@+id/obAtras"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atras"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.936"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.957"
+            app:strokeColor="@color/VerdeFont" />
+
+        <!-- Switch para cambiar el tema -->
+        <Button
+            android:id="@+id/obCambiarDatosDelPerfil"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cambiar_datosdel_perfil"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6"
+            app:strokeColor="@color/VerdeFont" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/SWTheme"
+            android:layout_width="113dp"
+            android:layout_height="47dp"
+            android:checked="true"
+            android:text="@string/Claro"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.703"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:thumbTint="@color/VerdeFont"
+            app:trackTint="@color/swicth" />
+
+        <!-- RadioGroup para seleccionar el idioma -->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/RbSpanish"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/RbSpanish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Español"
+                android:textColor="@color/VerdeFont"
+                app:buttonTint="@color/VerdeFont" />
+
+            <RadioButton
+                android:id="@+id/RBIngles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/English"
+                android:textColor="@color/VerdeFont"
+                app:buttonTint="@color/VerdeFont" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,5 +51,7 @@
     <string name="cancelar">Cancelar</string>
     <string name="a_calcular_el_imc">¡A calcular el IMC!</string>
     <string name="Implementando">Implementando</string>
+    <string name="cambiar_datosdel_perfil">Cambiar Datos Del Perfil</string>
+    <string name="edad">Edad</string>
 
 </resources>
