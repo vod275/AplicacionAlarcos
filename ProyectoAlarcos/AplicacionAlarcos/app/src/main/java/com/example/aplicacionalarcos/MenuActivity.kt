@@ -57,19 +57,21 @@ class MenuActivity : AppCompatActivity() {
             showMotivationalDialog()
         }
 
-        //binding.InfoNutriButton.setOnClickListener {
+        binding.InfoNutriButton.setOnClickListener {
+            Toast.makeText(this, getString(R.string.Implementando), Toast.LENGTH_SHORT).show()
             //  val intent = Intent(this, InfoNutriActivity::class.java)
             //    startActivity(intent)
             //    // Agregar animación
             //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        //}
+        }
 
-        //binding.UltimasComidasButton.setOnClickListener {
+        binding.UltimasComidasButton.setOnClickListener {
+            Toast.makeText(this, getString(R.string.Implementando), Toast.LENGTH_SHORT).show()
         //    val intent = Intent(this, UltimasComidasActivity::class.java)
         //    startActivity(intent)
         //    // Agregar animación
         //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        //}
+        }
 
         binding.obAtras.setOnClickListener {
             val email = auth.currentUser?.email // Obtiene el correo del usuario actual

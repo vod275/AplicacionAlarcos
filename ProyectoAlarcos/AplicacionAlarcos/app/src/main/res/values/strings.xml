@@ -50,5 +50,6 @@
     <string name="se_cerrar_la_sesi_n_con_el_correo">Se cerrará la sesión con el correo:</string>
     <string name="cancelar">Cancelar</string>
     <string name="a_calcular_el_imc">¡A calcular el IMC!</string>
+    <string name="Implementando">Implementando</string>
 
 </resources>
