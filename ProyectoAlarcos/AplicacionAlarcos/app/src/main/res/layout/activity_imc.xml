@@ -36,7 +36,7 @@
         android:id="@+id/transparentContainer"
         android:layout_width="343dp"
         android:layout_height="611dp"
-        android:background="#80FFFFFF"
+        android:background="#C4FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
