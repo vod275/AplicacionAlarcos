@@ -66,17 +66,17 @@
             android:layout_width="211dp"
             android:layout_height="53dp"
             android:text="@string/CalcularImc"
-            android:textColorHint="@color/VerdeFont"
-            app:hintTextColor="@color/VerdeFont"
-            app:boxStrokeColor="@color/VerdeFont"
             android:textColor="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.078"
-            app:strokeColor="@color/VerdeFont"/>
+            app:layout_constraintVertical_bias="0.124"
+            app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/InfoNutriButton"
@@ -84,17 +84,17 @@
             android:layout_width="208dp"
             android:layout_height="53dp"
             android:text="@string/InfoNutricional"
-            android:textColorHint="@color/VerdeFont"
-            app:hintTextColor="@color/VerdeFont"
-            app:boxStrokeColor="@color/VerdeFont"
             android:textColor="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.248"
-            app:strokeColor="@color/VerdeFont"/>
+            app:layout_constraintVertical_bias="0.308"
+            app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/UltimasComidasButton"
@@ -102,17 +102,16 @@
             android:layout_width="208dp"
             android:layout_height="53dp"
             android:text="@string/UltimasComidas"
-            android:textColorHint="@color/VerdeFont"
-            app:hintTextColor="@color/VerdeFont"
-            app:boxStrokeColor="@color/VerdeFont"
             android:textColor="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.44"
-            app:strokeColor="@color/VerdeFont"/>
+            app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/obAtras"
