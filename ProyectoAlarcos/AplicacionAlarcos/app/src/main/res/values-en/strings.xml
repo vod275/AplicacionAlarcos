@@ -32,4 +32,19 @@
     <string name="English">English</string>
     <string name="Claro">Bright</string>
     <string name="Oscuro">Dark</string>
+    <string name="usuario_registrado_exitosamente">User registered succesfully</string>
+    <string name="error_desconocido_intenta_nuevamente">Unkown error. Please try again</string>
+    <string name="el_correo_ya_est_registrado">The email is alreay registere</string>
+    <string name="la_contrase_a_es_demasiado_d_bil">The password is too weak</string>
+    <string name="error_al_registrar">Error while signing in:</string>
+    <string name="error_al_autenticar_con_google">Error while authenticating with Google</string>
+    <string name="error_al_iniciar_sesi_n_con_google">Error while loggin in with Google</string>
+    <string name="usuario_no_encontrado_inicia_sesi_n_nuevamente">User not found, please sign in or try again</string>
+    <string name="error_al_verificar_usuario">Error while verifying</string>
+    <string name="por_favor_inicia_sesi_n_o_reg_strate">Please, log in or sign in</string>
+    <string name="cerrar_sesi_n">Close session</string>
+    <string name="desea_continuar">Do you want to proceed?</string>
+    <string name="se_cerrar_la_sesi_n_con_el_correo">The session will be closed with the email:</string>
+    <string name="cancelar">Cancel</string>
+    <string name="a_calcular_el_imc">Let\'s calculate BMI!</string>
 </resources>

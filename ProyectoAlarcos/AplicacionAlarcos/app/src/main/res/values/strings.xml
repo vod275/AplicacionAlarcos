@@ -35,5 +35,20 @@
     <string name="English">Inglés</string>
     <string name="Claro">Claro</string>
     <string name="Oscuro">Oscuro</string>
+    <string name="usuario_registrado_exitosamente">Usuario registrado exitosamente</string>
+    <string name="error_desconocido_intenta_nuevamente">Error desconocido. Intenta nuevamente.</string>
+    <string name="el_correo_ya_est_registrado">El correo ya está registrado</string>
+    <string name="la_contrase_a_es_demasiado_d_bil">La contraseña es demasiado débil</string>
+    <string name="error_al_registrar">Error al registrar:</string>
+    <string name="error_al_autenticar_con_google">Error al autenticar con Google</string>
+    <string name="error_al_iniciar_sesi_n_con_google">Error al iniciar sesión con Google</string>
+    <string name="usuario_no_encontrado_inicia_sesi_n_nuevamente">Usuario no encontrado, inicia sesión nuevamente.</string>
+    <string name="error_al_verificar_usuario">Error al verificar usuario:</string>
+    <string name="por_favor_inicia_sesi_n_o_reg_strate">Por favor, inicia sesión o regístrate</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="desea_continuar">" ¿Desea continuar?"</string>
+    <string name="se_cerrar_la_sesi_n_con_el_correo">Se cerrará la sesión con el correo:</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="a_calcular_el_imc">¡A calcular el IMC!</string>
 
 </resources>

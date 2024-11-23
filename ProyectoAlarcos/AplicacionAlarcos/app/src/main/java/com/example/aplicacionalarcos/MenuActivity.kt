@@ -75,9 +75,9 @@ class MenuActivity : AppCompatActivity() {
             val email = auth.currentUser?.email // Obtiene el correo del usuario actual
 
             AlertDialog.Builder(this).apply {
-                setTitle("Cerrar sesión")
-                setMessage("Se cerrará la sesión con el correo: $email. ¿Desea continuar?")
-                setPositiveButton("Aceptar") { _, _ ->
+                setTitle(getString(R.string.cerrar_sesi_n))
+                setMessage(getString(R.string.se_cerrar_la_sesi_n_con_el_correo) +email+ getString(R.string.desea_continuar))
+                setPositiveButton(R.string.aceptar) { _, _ ->
                     // Acción para cerrar sesión y volver al login
                     val intent = Intent(this@MenuActivity, MainActivity::class.java)
                     auth.signOut() // Cierra la sesión
@@ -85,7 +85,7 @@ class MenuActivity : AppCompatActivity() {
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                 }
-                setNegativeButton("Cancelar") { dialog, _ ->
+                setNegativeButton(getString(R.string.cancelar)) { dialog, _ ->
                     dialog.dismiss()
                 }
                 setCancelable(false)
@@ -132,7 +132,7 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
         // Agregar animación
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        Toast.makeText(this, "¡A calcular el IMC!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.a_calcular_el_imc), Toast.LENGTH_SHORT).show()
     }
 
     private fun iniciarAnimacion(button: Button) {

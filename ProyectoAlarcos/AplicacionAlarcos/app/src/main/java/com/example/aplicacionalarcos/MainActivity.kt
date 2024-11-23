@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import objetos.UserSession
 
+private const val s = "Error al autenticar con Google"
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
@@ -128,25 +130,29 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.usuario_registrado_exitosamente), Toast.LENGTH_SHORT).show()
                     updateUI(user)
                 } else {
                     // Aquí obtenemos el mensaje completo del error
-                    val errorMessage = task.exception?.message ?: "Error desconocido. Intenta nuevamente."
+                    val errorMessage = task.exception?.message ?: getString(R.string.error_desconocido_intenta_nuevamente)
 
                     Log.w("Register", "createUserWithEmail:failure", task.exception)
 
                     // Mostrar un mensaje dependiendo del error
                     when {
                         errorMessage.contains("email address is already in use") -> {
-                            Toast.makeText(this, "El correo ya está registrado", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,
+                                getString(R.string.el_correo_ya_est_registrado), Toast.LENGTH_SHORT).show()
                         }
                         errorMessage.contains("The given password is invalid") -> {
-                            Toast.makeText(this, "La contraseña es demasiado débil", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,
+                                getString(R.string.la_contrase_a_es_demasiado_d_bil), Toast.LENGTH_SHORT).show()
                         }
                         else -> {
                             // Mostrar el error, si no se puede identificar el tipo específico
-                            Toast.makeText(this, "Error al registrar: $errorMessage", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,
+                                getString(R.string.error_al_registrar) +errorMessage, Toast.LENGTH_SHORT).show()
                         }
                     }
                     updateUI(null)
@@ -162,7 +168,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     signInLauncher.launch(IntentSenderRequest.Builder(result.pendingIntent).build())
                 } catch (e: android.content.IntentSender.SendIntentException) {
-                    Log.e("GoogleSignIn", "Couldn't start One Tap UI: ${e.localizedMessage}")
+                    Log.e("GoogleSignIn", "Couldn't start One Tap UI:" +e.localizedMessage)
                     // Fallback to standard Google Sign-In if One Tap UI fails to start
                     val signInIntent = googleSignInClient.signInIntent
                     startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -197,7 +203,7 @@ class MainActivity : AppCompatActivity() {
                                     )
                                     Toast.makeText(
                                         this,
-                                        "Error al autenticar con Google",
+                                        getString(R.string.error_al_autenticar_con_google),
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -206,7 +212,8 @@ class MainActivity : AppCompatActivity() {
                 } catch (e: ApiException) {
                     // Google Sign In failed, update UI appropriately
                     Log.w("GoogleSignIn", "Google sign in failed", e)
-                    Toast.makeText(this, "Error al iniciar sesión con Google", Toast.LENGTH_SHORT)
+                    Toast.makeText(this,
+                        getString(R.string.error_al_iniciar_sesi_n_con_google), Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -233,7 +240,7 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(
                             this,
-                            "Usuario no encontrado, inicia sesión nuevamente.",
+                            getString(R.string.usuario_no_encontrado_inicia_sesi_n_nuevamente),
                             Toast.LENGTH_SHORT
                         ).show()
                         auth.signOut()
@@ -241,14 +248,15 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this,
-                        "Error al verificar usuario: ${task.exception?.message}",
+                        getString(R.string.error_al_verificar_usuario) +task.exception?.message,
                         Toast.LENGTH_SHORT
                     ).show()
                     auth.signOut()
                 }
             }
         } else {
-            Toast.makeText(this, "Por favor, inicia sesión o regístrate", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.por_favor_inicia_sesi_n_o_reg_strate), Toast.LENGTH_SHORT).show()
         }
     }
 
