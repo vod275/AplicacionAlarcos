@@ -31,5 +31,9 @@
     <string name="SobrePeso">PESO POR ENCIMA DEL RECOMENDADO TU IMC ES:</string>
     <string name="bgimage" translatable="false">bgImage</string>
     <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">El IMC Recomendado para una persona adulta con ejercicio fisico ligero se encuentra entre 18.5 y 25</string>
+    <string name="Español">Español</string>
+    <string name="English">Inglés</string>
+    <string name="Claro">Claro</string>
+    <string name="Oscuro">Oscuro</string>
 
 </resources>
