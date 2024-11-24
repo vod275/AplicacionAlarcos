@@ -47,4 +47,5 @@
     <string name="se_cerrar_la_sesi_n_con_el_correo">The session will be closed with the email:</string>
     <string name="cancelar">Cancel</string>
     <string name="a_calcular_el_imc">Let\'s calculate BMI!</string>
+    <string name="Implementando">Working on it</string>
 </resources>
