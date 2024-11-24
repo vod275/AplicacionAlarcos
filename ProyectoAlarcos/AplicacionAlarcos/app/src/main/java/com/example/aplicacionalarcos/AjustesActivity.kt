@@ -16,11 +16,14 @@ class AjustesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAjustesBinding
     private var currentLanguage: String = "es" // Idioma predeterminado
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Restaurar el idioma del Bundle si existe
         savedInstanceState?.getString("currentLanguage")?.let {
+
             currentLanguage = it
             applyLanguage(currentLanguage)
         }
