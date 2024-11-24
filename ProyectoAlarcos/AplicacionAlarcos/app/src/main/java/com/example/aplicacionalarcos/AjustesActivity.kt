@@ -14,12 +14,22 @@ import java.util.Locale
 class AjustesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAjustesBinding
+    private var currentLanguage: String = "es" // Idioma predeterminado
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Restaurar el idioma del Bundle si existe
+        savedInstanceState?.getString("currentLanguage")?.let {
+            currentLanguage = it
+            applyLanguage(currentLanguage)
+        }
+
         enableEdgeToEdge()
         binding = ActivityAjustesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Configuración de margenes del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -35,21 +45,46 @@ class AjustesActivity : AppCompatActivity() {
         }
 
         // Configuración del idioma
-        binding.RBIngles.setOnClickListener {
-            binding.RbSpanish.isChecked = false
-            changeLanguage("en")
-        }
+        setupLanguageSelection()
 
+        // Configuración del Switch de tema
+        setupThemeSwitch()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // Guardar el idioma actual en el Bundle
+        outState.putString("currentLanguage", currentLanguage)
+    }
+
+    private fun setupLanguageSelection() {
+        // Selección de idioma español
         binding.RbSpanish.setOnClickListener {
             binding.RBIngles.isChecked = false
             changeLanguage("es")
         }
 
-        // Configuración del Switch de tema
-        setupSwitch()
+        // Selección de idioma inglés
+        binding.RBIngles.setOnClickListener {
+            binding.RbSpanish.isChecked = false
+            changeLanguage("en")
+        }
+    }
 
-        binding.SWTheme.setOnClickListener {
-            if (binding.SWTheme.isChecked) {
+    private fun setupThemeSwitch() {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            binding.SWTheme.isChecked = true
+            binding.SWTheme.text = getString(R.string.Oscuro)
+        } else {
+            binding.SWTheme.isChecked = false
+            binding.SWTheme.text = getString(R.string.Claro)
+        }
+
+        // Cambiar el tema al activar el Switch
+        binding.SWTheme.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 setDarkMode()
             } else {
                 setLightMode()
@@ -57,19 +92,13 @@ class AjustesActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupSwitch() {
-        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
-            binding.SWTheme.isChecked = true
-            binding.SWTheme.text = getString(R.string.Oscuro) // Texto dinámico según el idioma
-        } else {
-            binding.SWTheme.isChecked = false
-            binding.SWTheme.text = getString(R.string.Claro) // Texto dinámico según el idioma
-        }
+    private fun changeLanguage(languageCode: String) {
+        currentLanguage = languageCode
+        applyLanguage(languageCode)
+        recreate()
     }
 
-    private fun changeLanguage(languageCode: String) {
+    private fun applyLanguage(languageCode: String) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
 
@@ -77,18 +106,13 @@ class AjustesActivity : AppCompatActivity() {
         val config = Configuration(resources.configuration)
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
-
-        // Recargar la actividad para aplicar el cambio de idioma
-        recreate()
     }
 
     private fun setDarkMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        binding.SWTheme.text = getString(R.string.Oscuro) // Actualizar texto después del cambio
     }
 
     private fun setLightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        binding.SWTheme.text = getString(R.string.Claro) // Actualizar texto después del cambio
     }
 }
