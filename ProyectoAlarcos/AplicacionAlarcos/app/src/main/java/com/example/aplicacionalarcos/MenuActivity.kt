@@ -15,7 +15,9 @@ import com.google.firebase.auth.FirebaseAuth
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.graphics.drawable.ColorDrawable
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.core.content.ContextCompat
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
@@ -73,26 +75,12 @@ class MenuActivity : AppCompatActivity() {
         //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
-        binding.obAtras.setOnClickListener {
-            val email = auth.currentUser?.email // Obtiene el correo del usuario actual
 
-            AlertDialog.Builder(this).apply {
-                setTitle(getString(R.string.cerrar_sesi_n))
-                setMessage(getString(R.string.se_cerrar_la_sesi_n_con_el_correo) +email+ getString(R.string.desea_continuar))
-                setPositiveButton(R.string.aceptar) { _, _ ->
-                    // Acción para cerrar sesión y volver al login
-                    val intent = Intent(this@MenuActivity, MainActivity::class.java)
-                    auth.signOut() // Cierra la sesión
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-                    finish()
-                }
-                setNegativeButton(getString(R.string.cancelar)) { dialog, _ ->
-                    dialog.dismiss()
-                }
-                setCancelable(false)
-            }.create().show()
-        }
+            binding.obAtras.setOnClickListener {
+
+                showDialog()
+            }
+
 
         binding.AjustesButton.setOnClickListener {
            navigateToPrefilActivity()
@@ -121,12 +109,60 @@ class MenuActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
+
+
+    private fun showDialog() {
+        val email = auth.currentUser?.email // Obtiene el correo del usuario actual
+
+        val dialog = AlertDialog.Builder(this).apply {
+            setTitle(getString(R.string.cerrar_sesi_n))
+            setMessage(
+                getString(R.string.se_cerrar_la_sesi_n_con_el_correo) + " $email " + getString(
+                    R.string.desea_continuar
+                )
+            )
+            setPositiveButton(R.string.aceptar) { _, _ ->
+                // Acción para cerrar sesión y volver al login
+                val intent = Intent(this@MenuActivity, MainActivity::class.java)
+                auth.signOut() // Cierra la sesión
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                finish()
+            }
+            setNegativeButton(getString(R.string.cancelar)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            setCancelable(false)
+        }.create()
+
+        dialog.setOnShowListener {
+            val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+            // Cambiar el color de texto de los botones
+            val buttonColor = ContextCompat.getColor(this, R.color.VerdeFont) // Color definido
+            positiveButton.setTextColor(buttonColor)
+            negativeButton.setTextColor(buttonColor)
+
+            // Cambiar el fondo del diálogo
+            val backgroundColor = ContextCompat.getColor(this, R.color.swicth) // Color de fondo
+            dialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
+        }
+
+        dialog.show()
+    }
+
+
+
+
     private fun navigateToPrefilActivity() {
         val intent = Intent(this, AjustesActivity::class.java)
         startActivity(intent)
         // Agregar animación
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
+
 
     // Navegamos a la pantalla de IMC
     private fun navigateToImcActivity() {
