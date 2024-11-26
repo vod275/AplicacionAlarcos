@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema principal de la aplicación -->
+    <style name="Theme.App" parent="Theme.Material3.DayNight">
+        <!-- Colores principales de la app -->
+        <item name="colorPrimary">@color/VerdeFont</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Asocia el tema personalizado para el DatePicker -->
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+    </style>
+
+    <!-- Tema personalizado para el DatePicker -->
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
+        <!-- Personalización de colores -->
+
+        <item name="colorPrimary">@color/swicth</item> <!-- Color principal (encabezado, botones) -->
+        <item name="colorSurface">@color/swicth</item> <!-- Fondo principal del selector -->
+
+
+        <!-- Formas personalizadas -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+
+        <!-- Estilo de los campos de texto dentro del selector -->
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+    </style>
+
+    <!-- Personalización de formas pequeñas -->
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!-- Personalización de formas medianas -->
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Estilo de TextInputLayout (opcional, puedes personalizar más) -->
+    <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/VerdeFont</item>
+        <item name="hintTextColor">@color/VerdeFont</item>
+    </style>
+</resources>

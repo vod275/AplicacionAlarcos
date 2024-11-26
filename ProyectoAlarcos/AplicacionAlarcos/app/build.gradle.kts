@@ -53,6 +53,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(kotlin("script-runtime"))
     implementation ("com.google.android.material:material:1.11.0")
+    implementation("org.twitter4j:twitter4j-core:4.0.7")
 
     implementation(platform(libs.firebase.bom))
 

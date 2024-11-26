@@ -4,131 +4,200 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvNombreAjustes"
-        android:layout_width="240dp"
-        android:layout_height="93dp"
-        android:hint="@string/nombre"
-        app:counterEnabled="true"
-        app:counterMaxLength="45"
-        app:endIconMode="clear_text"
-        app:helperText="@string/introduce_el_nombre"
-        app:helperTextTextColor="@color/VerdeFont"
-        app:helperTextEnabled="true"
+    <!-- Imagen de fondo ajustada -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/datos"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="88dp"
+        android:layout_height="92dp"
+        android:background="@drawable/logoapp"
+        android:contentDescription="@string/logo_de_la_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155">
+        app:layout_constraintVertical_bias="0.0" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:hint="@string/nombre" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvApellidos"
-        android:layout_width="240dp"
-        android:layout_height="93dp"
-        android:hint="@string/apellidos"
-        app:counterEnabled="true"
-        app:counterMaxLength="45"
-        app:endIconMode="clear_text"
-        app:helperText="@string/introduce_los_apellidos"
-        app:helperTextTextColor="@color/VerdeFont"
-        app:helperTextEnabled="true"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/transparentContainer"
+        android:layout_width="371dp"
+        android:layout_height="562dp"
+        android:background="#C4FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322">
+        app:layout_constraintVertical_bias="0.443">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvNombreAjustes"
+            android:layout_width="240dp"
+            android:layout_height="93dp"
+            android:hint="@string/nombre"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.157">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:hint="@string/nombre"
+                android:textColor="@color/VerdeFont" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvApellidos"
+            android:layout_width="240dp"
+            android:layout_height="93dp"
+            android:hint="@string/apellidos"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.379">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/apellidos"
+                android:textColor="@color/VerdeFont" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etFechaNacimiento"
+            android:layout_width="240dp"
+            android:layout_height="93dp"
+            android:hint="@string/fecha_de_nacimiento"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:boxStrokeWidthFocused="2dp"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
+            app:helperText="@string/introduce_tu_fecha_de_nacimiento"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.609"
+            app:startIconDrawable="@drawable/baseline_calendar_month_24"
+            app:startIconTint="@color/VerdeFont">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFechaNacimientoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/VerdeFont"
+                android:inputType="datetime"
+                android:textColor="@color/VerdeFont" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/apellidos" />
+            android:layout_margin="15dp"
+            android:clickable="true"
+            android:src="@drawable/baseline_calendar_month_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.863" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etFechaNacimiento"
-        android:layout_width="240dp"
-        android:layout_height="93dp"
-        app:endIconMode="clear_text"
-        app:helperText="@string/introduce_tu_fecha_de_nacimiento"
-        app:helperTextTextColor="@color/VerdeFont"
-        app:helperTextEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468"
-        app:startIconDrawable="@drawable/baseline_calendar_month_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etFechaNacimientoEditText"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/obAtras"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="datetime" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/atras"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.848"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.834"
+            app:strokeColor="@color/VerdeFont" />
 
-    <Button
-        android:id="@+id/obAtras"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/atras"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.738"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        <Button
+            android:id="@+id/btnAcceptDialog"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aceptar"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.834"
+            app:strokeColor="@color/VerdeFont" />
 
-    <Button
-        android:id="@+id/btnAcceptDialog"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/aceptar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        <TextView
+            android:id="@+id/tvIntendUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/usuario"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.027" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/correo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
+        <TextView
+            android:id="@+id/tvCorreo"
+            android:layout_width="279dp"
+            android:layout_height="24dp"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.026" />
 
-    <TextView
-        android:id="@+id/tvCorreo"
-        android:layout_width="279dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

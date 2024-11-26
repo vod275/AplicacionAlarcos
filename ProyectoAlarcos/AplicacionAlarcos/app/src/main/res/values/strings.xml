@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">AplicacionAlarcos</string>
     <string name="your_web_client_id" translatable="false">607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com</string>
+    <string name="twitter_consumer_key" translatable="false">eCaPTc8qoKV7m8xHphOgkXGRD</string>
+    <string name="twitter_consumer_secret" translatable="false">nc1b4paM2WHKzUVnscZdES93bdFKwGwYk82PfRvpNlYHYnyQfu</string>
     <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="apellidos">Apellidos</string>
     <string name="nombre">Nombre</string>
@@ -53,5 +55,6 @@
     <string name="Implementando">Implementando</string>
     <string name="cambiar_datosdel_perfil">Cambiar Datos Del Perfil</string>
     <string name="edad">Edad</string>
+    <string name="usuario">Usuario</string>
 
 </resources>

@@ -23,7 +23,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Mostrar el email del usuario
-        binding.tvCorreo.text = UserSession.email ?: "Correo no disponible"
+        binding.tvCorreo.text = UserSession.nombre ?: "Usuario no disponible"
 
         // El icono del calendario es un botón para mostrar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
@@ -38,11 +38,11 @@ class DatosUsuarioActivity : AppCompatActivity() {
         }
     }
 
-    // Mostrar el selector de fechas
     private fun showDatePickerDialog() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Selecciona una Fecha")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .setTheme(R.style.ThemeOverlay_App_DatePicker) // Aplica el tema personalizado
             .build()
 
         // Mostrar el selector de fecha
@@ -57,9 +57,9 @@ class DatosUsuarioActivity : AppCompatActivity() {
                 val month = calendar.get(Calendar.MONTH) + 1
                 val year = calendar.get(Calendar.YEAR)
                 // Formatear la fecha y ponerla en el TextInputEditText
-                if (month<10){
+                if (month < 10) {
                     "$day / 0$month / $year"
-                }else{
+                } else {
                     "$day / $month / $year"
                 }
             }
@@ -67,8 +67,8 @@ class DatosUsuarioActivity : AppCompatActivity() {
             // Actualizar el TextInputEditText con la fecha seleccionada
             binding.etFechaNacimiento.editText?.setText(selectedDate)
         }
-    }
 
+    }
 
 
 
