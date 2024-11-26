@@ -68,11 +68,10 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.UltimasComidasButton.setOnClickListener {
-            Toast.makeText(this, getString(R.string.Implementando), Toast.LENGTH_SHORT).show()
-        //    val intent = Intent(this, UltimasComidasActivity::class.java)
-        //    startActivity(intent)
-        //    // Agregar animación
-        //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            val intent = Intent(this, UltimasComidasActivity::class.java)
+            startActivity(intent)
+           // Agregar animación
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
 
