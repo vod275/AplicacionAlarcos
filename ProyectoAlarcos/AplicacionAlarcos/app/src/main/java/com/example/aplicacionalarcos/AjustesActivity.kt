@@ -2,6 +2,8 @@ package com.example.aplicacionalarcos
 
 import android.content.Intent
 import android.content.res.Configuration
+import android.icu.text.SimpleDateFormat
+import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.aplicacionalarcos.databinding.ActivityAjustesBinding
+import java.util.Date
 import java.util.Locale
 
 class AjustesActivity : AppCompatActivity() {
@@ -20,6 +23,9 @@ class AjustesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        binding = ActivityAjustesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Restaurar el idioma del Bundle si existe
         savedInstanceState?.getString("currentLanguage")?.let {
@@ -28,9 +34,25 @@ class AjustesActivity : AppCompatActivity() {
             applyLanguage(currentLanguage)
         }
 
-        enableEdgeToEdge()
-        binding = ActivityAjustesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val nombre = intent.getStringExtra("nombre") ?: "No disponible"
+        val apellidos = intent.getStringExtra("apellidos") ?: "No disponible"
+        val fechaNacimiento = intent.getStringExtra("fechaNacimiento") ?: "No disponible"
+
+
+        // Asignar a los TextViews
+        binding.tvNombreAjustes.text = nombre
+        binding.tvApellidosAjustes.text = apellidos
+
+        // Calcular la edad si la fecha no está vacía
+        if (fechaNacimiento != "No disponible") {
+            val fechaNacimientoDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(fechaNacimiento)
+            val edad = calcularEdad(fechaNacimientoDate)
+            binding.tvEdad.text = "$edad años"
+        } else {
+            binding.tvEdad.text = "Edad no disponible"
+        }
+
+
 
         // Configuración de margenes del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -124,5 +146,22 @@ class AjustesActivity : AppCompatActivity() {
 
     private fun setLightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    // Función para calcular la edad
+    private fun calcularEdad(fechaNacimiento: Date): Int {
+        val today = Calendar.getInstance()
+        val birthDate = Calendar.getInstance()
+        birthDate.time = fechaNacimiento
+
+        var edad = today.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR)
+
+        // Si no ha pasado el cumpleaños de este año, restamos 1
+        if (today.get(Calendar.MONTH) < birthDate.get(Calendar.MONTH) ||
+            (today.get(Calendar.MONTH) == birthDate.get(Calendar.MONTH) && today.get(Calendar.DAY_OF_MONTH) < birthDate.get(Calendar.DAY_OF_MONTH))) {
+            edad--
+        }
+
+        return edad
     }
 }

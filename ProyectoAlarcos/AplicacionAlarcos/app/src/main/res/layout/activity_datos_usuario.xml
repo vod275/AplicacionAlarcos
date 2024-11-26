@@ -130,20 +130,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:clickable="true"
-            android:src="@drawable/baseline_calendar_month_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.863" />
-
         <Button
             android:id="@+id/obAtras"
             style="?attr/materialButtonOutlinedStyle"
@@ -160,7 +146,7 @@
             app:strokeColor="@color/VerdeFont" />
 
         <Button
-            android:id="@+id/btnAcceptDialog"
+            android:id="@+id/btnAceptar"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
