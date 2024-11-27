@@ -50,7 +50,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
             notifyItemChanged(position) // Actualizar visualmente el item
         }
 
-        // Evento de clic largo para mostrar diálogo con dos botones
+        // Evento de clic largo para mostrar diálogo con opciones
         holder.itemView.setOnLongClickListener {
             val context = holder.itemView.context
 
@@ -84,7 +84,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                     // Eliminar elemento
                     comidas.removeAt(position)
 
-                    // Actualizar índices
+                    // Actualizar índices en `selectedItems`
                     val updatedSelectedItems = mutableSetOf<Int>()
                     for (index in selectedItems) {
                         if (index < position) {
@@ -96,7 +96,9 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                     selectedItems.clear()
                     selectedItems.addAll(updatedSelectedItems)
 
+                    // Notificar al RecyclerView del cambio
                     notifyItemRemoved(position)
+                    notifyItemRangeChanged(position, comidas.size)
 
                     Toast.makeText(
                         context,
@@ -104,9 +106,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                .setNeutralButton("Cancelar") { dialog, _ ->
-                    dialog.dismiss()
-                }
+                .setNeutralButton("Cancelar") { dialog, _ -> dialog.dismiss() }
                 .create()
 
             // Personalización al mostrar el diálogo
