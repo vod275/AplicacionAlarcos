@@ -30,21 +30,22 @@ class AjustesActivity : AppCompatActivity() {
         binding = ActivityAjustesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val nombre = intent.getStringExtra("nombre") ?: "No disponible"
-        val apellidos = intent.getStringExtra("apellidos") ?: "No disponible"
-        val fechaNacimiento = intent.getStringExtra("fechaNacimiento") ?: "No disponible"
+        val nombre = intent.getStringExtra("nombre") ?: getString(R.string.nombre_no_disponible)
+        val apellidos = intent.getStringExtra("apellidos") ?: getString(R.string.nombre_no_disponible)
+        val fechaNacimiento = intent.getStringExtra("fechaNacimiento") ?: getString(R.string.nombre_no_disponible)
 
         binding.tvNombreAjustes.text = nombre
         binding.tvApellidosAjustes.text = apellidos
 
-        if (fechaNacimiento != "No disponible") {
+        if (fechaNacimiento != getString(R.string.nombre_no_disponible)) {
             val fechaNacimientoDate =
                 SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(fechaNacimiento)
             val edad = calcularEdad(fechaNacimientoDate)
-            binding.tvEdad.text = "$edad años"
+            binding.tvEdad.text = getString(R.string.edad_con_años, edad)
         } else {
-            binding.tvEdad.text = "Edad no disponible"
+            binding.tvEdad.text = getString(R.string.edad_no_disponible)
         }
+
 
         // Configuración de márgenes del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

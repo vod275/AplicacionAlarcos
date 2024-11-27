@@ -55,4 +55,7 @@
     <string name="boton_de_ajustes">" Settings button"</string>
     <string name="japones">Japanese</string>
     <string name="borrar">Delete</string>
+    <string name="nombre_no_disponible">Not available</string>
+    <string name="edad_no_disponible">Age not available</string>
+    <string name="edad_con_años">%1$d years</string>
 </resources>

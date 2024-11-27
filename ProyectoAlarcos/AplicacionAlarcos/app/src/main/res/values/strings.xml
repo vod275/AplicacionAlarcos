@@ -60,4 +60,7 @@
     <string name="boton_de_ajustes">Botón de ajustes</string>
     <string name="japones">Japonés</string>
     <string name="borrar">Borrar</string>
+    <string name="nombre_no_disponible">No disponible</string>
+    <string name="edad_no_disponible">Edad no disponible</string>
+    <string name="edad_con_años">%1$d años</string>
 </resources>

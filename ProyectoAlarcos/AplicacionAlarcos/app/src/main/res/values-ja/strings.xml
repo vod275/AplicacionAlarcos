@@ -55,4 +55,7 @@
     <string name="boton_de_ajustes">設定ボタン</string>
     <string name="japones">日本語</string>
     <string name="borrar">消去</string>
+    <string name="nombre_no_disponible">利用できません</string>
+    <string name="edad_no_disponible">年齢は利用できません</string>
+    <string name="edad_con_años">%1$d 歳</string>
 </resources>
