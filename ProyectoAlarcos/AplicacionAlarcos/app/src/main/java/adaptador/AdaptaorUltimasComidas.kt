@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
 
-
 class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
 
     private val selectedItems = mutableSetOf<Int>() // Índices de elementos seleccionados
@@ -68,17 +67,13 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                         .setTitle("Detalles de ${comida.Nombre}")
                         .setMessage(detalles)
                         .setPositiveButton("Cerrar") { d, _ -> d.dismiss() }
-                        .create() // Crear el diálogo para personalizar
+                        .create()
 
                     // Personalización del fondo y color del botón
                     detallesDialog.setOnShowListener {
                         val positiveButton = detallesDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-
-                        // Cambiar el color de texto del botón
                         val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont)
                         positiveButton.setTextColor(buttonColor)
-
-                        // Cambiar el fondo del diálogo
                         val backgroundColor = ContextCompat.getColor(context, R.color.swicth)
                         detallesDialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
                     }
@@ -88,7 +83,21 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                 .setNegativeButton("Eliminar elemento") { _, _ ->
                     // Eliminar elemento
                     comidas.removeAt(position)
+
+                    // Actualizar índices
+                    val updatedSelectedItems = mutableSetOf<Int>()
+                    for (index in selectedItems) {
+                        if (index < position) {
+                            updatedSelectedItems.add(index) // Índices antes de la posición eliminada no cambian
+                        } else if (index > position) {
+                            updatedSelectedItems.add(index - 1) // Ajustar índices después de la posición eliminada
+                        }
+                    }
+                    selectedItems.clear()
+                    selectedItems.addAll(updatedSelectedItems)
+
                     notifyItemRemoved(position)
+
                     Toast.makeText(
                         context,
                         "${comida.Nombre} eliminado",
@@ -96,26 +105,20 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                     ).show()
                 }
                 .setNeutralButton("Cancelar") { dialog, _ ->
-                    // Cerrar diálogo sin hacer nada
                     dialog.dismiss()
                 }
-                .create() // Usar create() para personalizar después
+                .create()
 
             // Personalización al mostrar el diálogo
             dialog.setOnShowListener {
-                // Obtener botones del diálogo
                 val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
                 val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
                 val neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
-
-                // Cambiar el color de texto de los botones
-                val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont) // Color definido
+                val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont)
                 positiveButton.setTextColor(buttonColor)
                 negativeButton.setTextColor(buttonColor)
                 neutralButton.setTextColor(buttonColor)
-
-                // Cambiar el fondo del diálogo
-                val backgroundColor = ContextCompat.getColor(context, R.color.swicth) // Color de fondo
+                val backgroundColor = ContextCompat.getColor(context, R.color.swicth)
                 dialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
             }
 
@@ -125,22 +128,17 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
         }
     }
 
-
     override fun getItemCount(): Int {
         return comidas.size
     }
 
     // Método para eliminar los elementos seleccionados
     fun eliminarSeleccionados() {
-        val iterator = comidas.iterator()
-        for (i in comidas.size - 1 downTo 0) {
-            if (selectedItems.contains(i)) {
-                comidas.removeAt(i)
-            }
+        val indicesParaEliminar = selectedItems.sortedDescending() // Ordenar de mayor a menor
+        for (i in indicesParaEliminar) {
+            comidas.removeAt(i)
         }
-        selectedItems.clear() // Limpiar selección
+        selectedItems.clear() // Limpiar selección tras eliminar
         notifyDataSetChanged() // Actualizar la lista
     }
 }
-
-
