@@ -1,10 +1,12 @@
 import adaptador.Comida
 import android.app.AlertDialog
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
 
@@ -34,7 +36,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
         // Cambiar el fondo del item según si está seleccionado
         holder.itemView.setBackgroundColor(
             if (selectedItems.contains(position))
-                holder.itemView.context.getColor(R.color.Naranja) // Color para seleccionado
+                holder.itemView.context.getColor(R.color.swicth) // Color para seleccionado
             else
                 holder.itemView.context.getColor(R.color.VerdeFont) // Color para no seleccionado
         )
@@ -53,21 +55,37 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
         holder.itemView.setOnLongClickListener {
             val context = holder.itemView.context
 
-            AlertDialog.Builder(context)
+            val dialog = AlertDialog.Builder(context)
                 .setTitle("Opciones para ${comida.Nombre}")
                 .setMessage("¿Qué acción quieres realizar con este elemento?")
-                .setPositiveButton("Ver detalles") { dialog, _ ->
+                .setPositiveButton("Ver detalles") { _, _ ->
                     // Mostrar detalles
                     val detalles = comida.ingredientes.joinToString("\n") {
                         "${it.nombre}: ${it.cantidad}"
                     }
-                    AlertDialog.Builder(context)
+
+                    val detallesDialog = AlertDialog.Builder(context)
                         .setTitle("Detalles de ${comida.Nombre}")
                         .setMessage(detalles)
                         .setPositiveButton("Cerrar") { d, _ -> d.dismiss() }
-                        .show()
+                        .create() // Crear el diálogo para personalizar
+
+                    // Personalización del fondo y color del botón
+                    detallesDialog.setOnShowListener {
+                        val positiveButton = detallesDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+
+                        // Cambiar el color de texto del botón
+                        val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont)
+                        positiveButton.setTextColor(buttonColor)
+
+                        // Cambiar el fondo del diálogo
+                        val backgroundColor = ContextCompat.getColor(context, R.color.swicth)
+                        detallesDialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
+                    }
+
+                    detallesDialog.show()
                 }
-                .setNegativeButton("Eliminar elemento") { dialog, _ ->
+                .setNegativeButton("Eliminar elemento") { _, _ ->
                     // Eliminar elemento
                     comidas.removeAt(position)
                     notifyItemRemoved(position)
@@ -81,7 +99,27 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                     // Cerrar diálogo sin hacer nada
                     dialog.dismiss()
                 }
-                .show()
+                .create() // Usar create() para personalizar después
+
+            // Personalización al mostrar el diálogo
+            dialog.setOnShowListener {
+                // Obtener botones del diálogo
+                val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                val neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+
+                // Cambiar el color de texto de los botones
+                val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont) // Color definido
+                positiveButton.setTextColor(buttonColor)
+                negativeButton.setTextColor(buttonColor)
+                neutralButton.setTextColor(buttonColor)
+
+                // Cambiar el fondo del diálogo
+                val backgroundColor = ContextCompat.getColor(context, R.color.swicth) // Color de fondo
+                dialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
+            }
+
+            dialog.show()
 
             true // Indicar que el evento ha sido consumido
         }

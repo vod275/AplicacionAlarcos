@@ -54,4 +54,5 @@
     <string name="todo">全て</string>
     <string name="boton_de_ajustes">設定ボタン</string>
     <string name="japones">日本語</string>
+    <string name="borrar">消去</string>
 </resources>
