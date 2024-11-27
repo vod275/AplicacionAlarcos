@@ -17,6 +17,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
     inner class ComidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombreTextView: TextView = itemView.findViewById(R.id.comidaNombre)
         val ingredientesTextView: TextView = itemView.findViewById(R.id.comidaIngredientes)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidaViewHolder {
@@ -31,6 +32,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
         holder.nombreTextView.text = comida.Nombre
         val ingredientesTexto = comida.ingredientes.joinToString(", ") { it.nombre }
         holder.ingredientesTextView.text = "Ingredientes: $ingredientesTexto"
+
 
         // Cambiar el fondo del item según si está seleccionado
         holder.itemView.setBackgroundColor(
