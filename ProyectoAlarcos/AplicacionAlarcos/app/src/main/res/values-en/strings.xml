@@ -55,7 +55,20 @@
     <string name="boton_de_ajustes">" Settings button"</string>
     <string name="japones">Japanese</string>
     <string name="borrar">Delete</string>
-    <string name="nombre_no_disponible">Not available</string>
-    <string name="edad_no_disponible">Age not available</string>
+    <string name="usuario_no_disponible">User not available</string>
     <string name="edad_con_años">%1$d years</string>
+    <string name="edad_no_disponible">Age not available</string>
+    <string name="nombre_no_disponible">Name not available</string>
+    <string name="apellidos_no_disponibles">Last name not available</string>
+    <string name="fecha_no_disponible">Date not available</string>
+    <string name="error_campos_vacios">Please complete all fields</string>
+    <string name="seleccionar_fecha">Select a Date</string>
+    <string name="el_peso_y_la_altura_deben_ser_mayores_a_cero">Weight and height must be greater than zero.</string>
+    <string name="introduce_valores_num_ricos_v_lidos">Please enter valid numerical values.</string>
+    <string name="por_favor_completa_todos_los_campos">Please fill in all the fields.</string>
+    <string name="por_favor_ingresa_un_correo_v_lido">Please enter a valid email</string>
+    <string name="error_al_autenticar_con_firebase">Error authenticating with Firebase</string>
+    <string name="error_al_obtener_los_tokens_de_twitter">Error obtaining Twitter tokens</string>
+    <string name="error_al_autenticar_con_twitter">Error authenticating with Twitter</string>
+    <string name="bienvenido">Welcome: %1$s</string>
 </resources>

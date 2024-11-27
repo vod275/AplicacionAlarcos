@@ -55,13 +55,16 @@ class ImcActivity : AppCompatActivity() {
                     }
 
                 } else {
-                    Toast.makeText(this, "El peso y la altura deben ser mayores a cero.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.el_peso_y_la_altura_deben_ser_mayores_a_cero), Toast.LENGTH_SHORT).show()
                 }
             } catch (e: NumberFormatException) {
-                Toast.makeText(this, "Introduce valores numéricos válidos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.introduce_valores_num_ricos_v_lidos), Toast.LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.por_favor_completa_todos_los_campos), Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -1,6 +1,5 @@
 package com.example.aplicacionalarcos
 
-
 import android.content.Intent
 import java.util.Calendar
 import android.os.Bundle
@@ -14,17 +13,13 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDatosUsuarioBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-
         // Mostrar el email del usuario
-        binding.tvCorreo.text = UserSession.nombre ?: "Usuario no disponible"
+        binding.tvCorreo.text = UserSession.nombre ?: getString(R.string.usuario_no_disponible)
 
         // El icono del calendario es un botón para mostrar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
@@ -41,10 +36,13 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
         binding.btnAceptar.setOnClickListener {
             // Obtener los valores de los campos de texto
-            val nombre = binding.tvNombreAjustes.editText?.text.toString().takeIf { it.isNotEmpty() } ?: "No disponible"
-            val apellidos = binding.tvApellidos.editText?.text.toString().takeIf { it.isNotEmpty() } ?: "No disponible"
-            val fechaNacimiento = binding.etFechaNacimientoEditText.text.toString().takeIf { it.isNotEmpty() } ?: "No disponible"
-
+            val nombre = binding.tvNombreAjustes.editText?.text.toString().takeIf { it.isNotEmpty() }
+                ?: getString(R.string.nombre_no_disponible)
+            val apellidos = binding.tvApellidos.editText?.text.toString().takeIf { it.isNotEmpty() }
+                ?: getString(R.string.apellidos_no_disponibles)
+            val fechaNacimiento =
+                binding.etFechaNacimientoEditText.text.toString().takeIf { it.isNotEmpty() }
+                    ?: getString(R.string.fecha_no_disponible)
 
             // Validar que los campos no estén vacíos antes de pasar los datos (opcional)
             if (nombre.isNotEmpty() && apellidos.isNotEmpty() && fechaNacimiento.isNotEmpty()) {
@@ -52,19 +50,20 @@ class DatosUsuarioActivity : AppCompatActivity() {
                 val intent = Intent(this, AjustesActivity::class.java)
                 intent.putExtra("nombre", nombre)
                 intent.putExtra("apellidos", apellidos)
-                intent.putExtra("fechaNacimiento", fechaNacimiento) // Asegúrate de que la fecha esté en formato adecuado
+                intent.putExtra("fechaNacimiento", fechaNacimiento)
                 startActivity(intent)
             } else {
-                // Mostrar un mensaje si algún campo está vacío (opcional)
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                // Mostrar un mensaje si algún campo está vacío
+                Toast.makeText(this, getString(R.string.error_campos_vacios), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
-    //Funcion para la fecha
+    // Función para la fecha
     private fun showDatePickerDialog() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Selecciona una Fecha")
+            .setTitleText(getString(R.string.seleccionar_fecha))
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setTheme(R.style.ThemeOverlay_App_DatePicker) // Aplica el tema personalizado
             .build()
@@ -74,20 +73,18 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
         // Obtener la fecha y ponerla en el EditText
         datePicker.addOnPositiveButtonClickListener {
-            // Formato de fecha en DatosUsuarioActivity
             val selectedDate = it?.let { date ->
                 val calendar = Calendar.getInstance()
                 calendar.timeInMillis = date
                 val day = calendar.get(Calendar.DAY_OF_MONTH)
                 val month = calendar.get(Calendar.MONTH) + 1
                 val year = calendar.get(Calendar.YEAR)
-                // Usar un formato estándar para la fecha
-                "$year-$month-$day" // Cambio a un formato tipo "yyyy-MM-dd"
+                // Formato estándar para la fecha
+                "$year-$month-$day"
             }
 
             // Actualizar el TextInputEditText con la fecha seleccionada
             binding.etFechaNacimiento.editText?.setText(selectedDate)
         }
-
     }
 }

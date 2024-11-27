@@ -78,10 +78,11 @@ class MainActivity : AppCompatActivity() {
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     signIn(email, password)
                 } else {
-                    Toast.makeText(this, "Por favor, ingresa un correo válido", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.por_favor_ingresa_un_correo_v_lido), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.por_favor_completa_todos_los_campos), Toast.LENGTH_SHORT).show()
             }
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 register(email, password)
             } else {
-                Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.por_favor_completa_todos_los_campos), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -193,21 +194,24 @@ class MainActivity : AppCompatActivity() {
                                     } else {
                                         // Si hubo un error en la autenticación de Firebase, mostramos un mensaje
                                         Log.e("TwitterSignIn", "Error al autenticar con Firebase", signInTask.exception)
-                                        Toast.makeText(this, "Error al autenticar con Firebase", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this,
+                                            getString(R.string.error_al_autenticar_con_firebase), Toast.LENGTH_SHORT).show()
                                     }
                                 }
                         } else {
                             Log.e("TwitterSignIn", "Tokens de Twitter son nulos o vacíos")
-                            Toast.makeText(this, "Error al obtener los tokens de Twitter", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,
+                                getString(R.string.error_al_obtener_los_tokens_de_twitter), Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         Log.e("TwitterSignIn", "Credential no es de tipo OAuthCredential")
-                        Toast.makeText(this, "Error al autenticar con Twitter", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,
+                            getString(R.string.error_al_autenticar_con_twitter), Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     // Si hubo un error en la autenticación con Twitter, mostramos un mensaje
                     Log.e("TwitterSignIn", "Error al autenticar con Twitter", task.exception)
-                    Toast.makeText(this, "Error al autenticar con Twitter", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.error_al_autenticar_con_twitter), Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -243,13 +247,14 @@ class MainActivity : AppCompatActivity() {
                     val refreshedUser = auth.currentUser
                     if (refreshedUser != null) {
                         // Recuperamos el nombre de usuario  si está disponible
-                        val twitterUsername = refreshedUser.displayName ?: "Nombre no disponible"
+                        val twitterUsername = refreshedUser.displayName ?: getString(R.string.usuario_no_disponible)
 
                         // Guardamos el nombre de usuario en la sesión de usuario
                         UserSession.nombre = twitterUsername // Guardamos el nombre en la sesión
 
                         // Mostramos el nombre de usuario de Twitter en un Toast
-                        Toast.makeText(this, "Bienvenido: $twitterUsername", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,
+                            getString(R.string.bienvenido, twitterUsername), Toast.LENGTH_SHORT).show()
 
                         // Aquí mantienes el flujo original de la aplicación
                         val intent = Intent(this, MenuActivity::class.java)

@@ -55,7 +55,20 @@
     <string name="boton_de_ajustes">設定ボタン</string>
     <string name="japones">日本語</string>
     <string name="borrar">消去</string>
-    <string name="nombre_no_disponible">利用できません</string>
-    <string name="edad_no_disponible">年齢は利用できません</string>
+    <string name="usuario_no_disponible">ユーザーは利用できません</string>
+    <string name="nombre_no_disponible">名前は利用できません</string>
+    <string name="apellidos_no_disponibles">苗字は利用できません</string>
+    <string name="fecha_no_disponible">日付は利用できません</string>
+    <string name="error_campos_vacios">すべてのフィールドを入力してください</string>
+    <string name="seleccionar_fecha">日付を選択</string>
+    <string name="el_peso_y_la_altura_deben_ser_mayores_a_cero">体重と身長はゼロより大きい必要があります。</string>
+    <string name="introduce_valores_num_ricos_v_lidos">有効な数値を入力してください。</string>
+    <string name="por_favor_completa_todos_los_campos">すべての項目を入力してください。</string>
+    <string name="por_favor_ingresa_un_correo_v_lido">有効なメールアドレスを入力してください</string>
+    <string name="error_al_autenticar_con_firebase">Firebaseでの認証中にエラーが発生しました</string>
+    <string name="error_al_obtener_los_tokens_de_twitter">Twitterトークンの取得中にエラーが発生しました</string>
+    <string name="error_al_autenticar_con_twitter">Twitterでの認証中にエラーが発生しました</string>
+    <string name="bienvenido">ようこそ: %1$s</string>
     <string name="edad_con_años">%1$d 歳</string>
+    <string name="edad_no_disponible">年齢は利用できません</string>
 </resources>

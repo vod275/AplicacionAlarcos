@@ -37,6 +37,7 @@
     <string name="English">Inglés</string>
     <string name="Claro">Claro</string>
     <string name="Oscuro">Oscuro</string>
+    <string name="edad_con_años">%1$d años</string>
     <string name="usuario_registrado_exitosamente">Usuario registrado exitosamente</string>
     <string name="error_desconocido_intenta_nuevamente">Error desconocido. Intenta nuevamente.</string>
     <string name="el_correo_ya_est_registrado">El correo ya está registrado</string>
@@ -60,7 +61,19 @@
     <string name="boton_de_ajustes">Botón de ajustes</string>
     <string name="japones">Japonés</string>
     <string name="borrar">Borrar</string>
-    <string name="nombre_no_disponible">No disponible</string>
+    <string name="usuario_no_disponible">Usuario no disponible</string>
+    <string name="nombre_no_disponible">Nombre no disponible</string>
+    <string name="apellidos_no_disponibles">Apellidos no disponibles</string>
+    <string name="fecha_no_disponible">Fecha no disponible</string>
+    <string name="error_campos_vacios">Por favor, complete todos los campos</string>
+    <string name="seleccionar_fecha">Selecciona una Fecha</string>
+    <string name="el_peso_y_la_altura_deben_ser_mayores_a_cero">El peso y la altura deben ser mayores a cero.</string>
+    <string name="introduce_valores_num_ricos_v_lidos">Introduce valores numéricos válidos.</string>
+    <string name="por_favor_completa_todos_los_campos">Por favor, completa todos los campos.</string>
+    <string name="por_favor_ingresa_un_correo_v_lido">Por favor, ingresa un correo válido</string>
+    <string name="error_al_autenticar_con_firebase">Error al autenticar con Firebase</string>
+    <string name="error_al_obtener_los_tokens_de_twitter">Error al obtener los tokens de Twitter</string>
+    <string name="error_al_autenticar_con_twitter">Error al autenticar con Twitter</string>
+    <string name="bienvenido">Bienvenido: %1$s</string>
     <string name="edad_no_disponible">Edad no disponible</string>
-    <string name="edad_con_años">%1$d años</string>
 </resources>
