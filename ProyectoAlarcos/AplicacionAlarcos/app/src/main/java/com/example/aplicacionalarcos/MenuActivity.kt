@@ -110,7 +110,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
 
-
+   //Dialogo cuando sales de la aplicacion al login
     private fun showDialog() {
         val email = auth.currentUser?.email // Obtiene el correo del usuario actual
 
@@ -154,7 +154,7 @@ class MenuActivity : AppCompatActivity() {
 
 
 
-
+    //Ir a los ajustes
     private fun navigateToPrefilActivity() {
         val intent = Intent(this, AjustesActivity::class.java)
         startActivity(intent)
@@ -172,6 +172,7 @@ class MenuActivity : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.a_calcular_el_imc), Toast.LENGTH_SHORT).show()
     }
 
+    // Función para iniciar las Animaciones
     private fun iniciarAnimacion(button: Button) {
         // Animación de escala (aumenta y vuelve al tamaño original)
         val scaleUp = ObjectAnimator.ofPropertyValuesHolder(

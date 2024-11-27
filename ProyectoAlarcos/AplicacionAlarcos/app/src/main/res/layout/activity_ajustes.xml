@@ -172,25 +172,33 @@
         <!-- RadioGroup para seleccionar el idioma -->
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="105dp"
+            android:layout_height="115dp"
             android:checkedButton="@+id/RbSpanish"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/RbSpanish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
                 android:text="@string/Español"
                 android:textColor="@color/VerdeFont"
                 app:buttonTint="@color/VerdeFont" />
 
             <RadioButton
                 android:id="@+id/RBIngles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
                 android:text="@string/English"
+                android:textColor="@color/VerdeFont"
+                app:buttonTint="@color/VerdeFont" />
+
+            <RadioButton
+                android:id="@+id/RBJapones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/japones"
                 android:textColor="@color/VerdeFont"
                 app:buttonTint="@color/VerdeFont" />
         </RadioGroup>

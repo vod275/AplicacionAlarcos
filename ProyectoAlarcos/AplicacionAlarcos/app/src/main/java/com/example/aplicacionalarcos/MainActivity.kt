@@ -16,7 +16,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.OAuthCredential
@@ -158,6 +157,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    //Inicio sesion con X
     private fun signInWithTwitter() {
         // Crea el proveedor OAuth para Twitter
         val provider = OAuthProvider.newBuilder("twitter.com")
@@ -211,8 +211,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
-
-
 
 
 

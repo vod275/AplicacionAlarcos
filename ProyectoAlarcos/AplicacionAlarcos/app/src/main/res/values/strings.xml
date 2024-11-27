@@ -6,33 +6,33 @@
     <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="apellidos">Apellidos</string>
     <string name="nombre">Nombre</string>
-    <string name="atras">Atras</string>
+    <string name="atras">Atrás</string>
     <string name="aceptar">Aceptar</string>
     <string name="iniciar_con_google">Iniciar con Google</string>
     <string name="registrarse">Registrarse</string>
     <string name="mantente_saludable_inicia_sesi_n_ahora">Mantente saludable, inicia sesión ahora</string>
     <string name="contrase_a">Contraseña</string>
     <string name="correo">Correo</string>
-    <string name="email">Email</string>
+    <string name="email">Correo electrónico</string>
     <string name="logo_de_la_app">Logo de la app</string>
     <string name="introduce_el_nombre">Introduce el nombre</string>
     <string name="introduce_los_apellidos">Introduce los apellidos</string>
     <string name="introduce_tu_fecha_de_nacimiento">Introduce tu fecha de nacimiento</string>
     <string name="altura">Altura</string>
-    <string name="en_centimetros">En Centimetros</string>
+    <string name="en_centimetros">En centímetros</string>
     <string name="peso">Peso</string>
-    <string name="en_kilogramos">En Kilogramos</string>
+    <string name="en_kilogramos">En kilogramos</string>
     <string name="vamos">¡Vamos!</string>
     <string name="imagen_fondo_login" translatable="false">Imagen Fondo Login</string>
     <string name="CalcularImc">Calcular IMC</string>
-    <string name="InfoNutricional">Info Nutricional</string>
-    <string name="UltimasComidas">Ultimas comidas</string>
-    <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">Recuerda que la felicidad esta en ti y que el imc no te define puesto que eres una persona maravillosa</string>
-    <string name="MinusPeso">"PESO POR DEBAJO DEL RECOMENDADO TU IMC ES: "</string>
-    <string name="PesoRecomendado">PESO EN EL RANGO RECOMENDADO TU IMC ES:</string>
-    <string name="SobrePeso">PESO POR ENCIMA DEL RECOMENDADO TU IMC ES:</string>
+    <string name="InfoNutricional">Información Nutricional</string>
+    <string name="UltimasComidas">Últimas comidas</string>
+    <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">Recuerda que la felicidad está en ti y que el IMC no te define, puesto que eres una persona maravillosa</string>
+    <string name="MinusPeso">Peso por debajo del recomendado. Tu IMC es:</string>
+    <string name="PesoRecomendado">Peso en el rango recomendado. Tu IMC es:</string>
+    <string name="SobrePeso">Peso por encima del recomendado. Tu IMC es:</string>
     <string name="bgimage" translatable="false">bgImage</string>
-    <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">El IMC Recomendado para una persona adulta con ejercicio fisico ligero se encuentra entre 18.5 y 25</string>
+    <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">El IMC recomendado para una persona adulta con ejercicio físico ligero se encuentra entre 18.5 y 25</string>
     <string name="Español">Español</string>
     <string name="English">Inglés</string>
     <string name="Claro">Claro</string>
@@ -48,13 +48,15 @@
     <string name="error_al_verificar_usuario">Error al verificar usuario:</string>
     <string name="por_favor_inicia_sesi_n_o_reg_strate">Por favor, inicia sesión o regístrate</string>
     <string name="cerrar_sesi_n">Cerrar sesión</string>
-    <string name="desea_continuar">" ¿Desea continuar?"</string>
+    <string name="desea_continuar">¿Desea continuar?</string>
     <string name="se_cerrar_la_sesi_n_con_el_correo">Se cerrará la sesión con el correo:</string>
     <string name="cancelar">Cancelar</string>
     <string name="a_calcular_el_imc">¡A calcular el IMC!</string>
     <string name="Implementando">Implementando</string>
-    <string name="cambiar_datosdel_perfil">Cambiar Datos Del Perfil</string>
+    <string name="cambiar_datosdel_perfil">Cambiar datos del perfil</string>
     <string name="edad">Edad</string>
     <string name="usuario">Usuario</string>
-
+    <string name="todo">Todo</string>
+    <string name="boton_de_ajustes">Botón de ajustes</string>
+    <string name="japones">Japonés</string>
 </resources>

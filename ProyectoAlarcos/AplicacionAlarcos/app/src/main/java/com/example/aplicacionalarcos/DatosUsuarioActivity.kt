@@ -1,15 +1,13 @@
 package com.example.aplicacionalarcos
 
-import android.app.AlertDialog
+
 import android.content.Intent
 import java.util.Calendar
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionalarcos.databinding.ActivityDatosUsuarioBinding
-import com.example.aplicacionalarcos.databinding.ActivityMensajeMotivacionalBinding
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.firebase.auth.FirebaseAuth
 import objetos.UserSession
 
 class DatosUsuarioActivity : AppCompatActivity() {
@@ -63,6 +61,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
         }
     }
 
+    //Funcion para la fecha
     private fun showDatePickerDialog() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Selecciona una Fecha")
@@ -91,7 +90,4 @@ class DatosUsuarioActivity : AppCompatActivity() {
         }
 
     }
-
-
-
 }

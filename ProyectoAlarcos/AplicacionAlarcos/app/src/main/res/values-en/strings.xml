@@ -48,4 +48,10 @@
     <string name="cancelar">Cancel</string>
     <string name="a_calcular_el_imc">Let\'s calculate BMI!</string>
     <string name="Implementando">Working on it</string>
+    <string name="cambiar_datosdel_perfil">Change profile data</string>
+    <string name="edad">Age</string>
+    <string name="usuario">User</string>
+    <string name="todo">ALL</string>
+    <string name="boton_de_ajustes">" Settings button"</string>
+    <string name="japones">Japanese</string>
 </resources>

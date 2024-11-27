@@ -17,9 +17,7 @@ import java.util.Locale
 class AjustesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAjustesBinding
-    private var currentLanguage: String = "es" // Idioma predeterminado
-
-
+    private var currentLanguage: String = "es"  // Idioma por defecto
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,39 +27,34 @@ class AjustesActivity : AppCompatActivity() {
 
         // Restaurar el idioma del Bundle si existe
         savedInstanceState?.getString("currentLanguage")?.let {
-
             currentLanguage = it
-            applyLanguage(currentLanguage)
         }
+
+        applyLanguage(currentLanguage)
 
         val nombre = intent.getStringExtra("nombre") ?: "No disponible"
         val apellidos = intent.getStringExtra("apellidos") ?: "No disponible"
         val fechaNacimiento = intent.getStringExtra("fechaNacimiento") ?: "No disponible"
 
-
-        // Asignar a los TextViews
         binding.tvNombreAjustes.text = nombre
         binding.tvApellidosAjustes.text = apellidos
 
-        // Calcular la edad si la fecha no está vacía
         if (fechaNacimiento != "No disponible") {
-            val fechaNacimientoDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(fechaNacimiento)
+            val fechaNacimientoDate =
+                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(fechaNacimiento)
             val edad = calcularEdad(fechaNacimientoDate)
             binding.tvEdad.text = "$edad años"
         } else {
             binding.tvEdad.text = "Edad no disponible"
         }
 
-
-
-        // Configuración de margenes del sistema
+        // Configuración de márgenes del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Configuración del botón "Atrás"
         binding.obAtras.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
@@ -79,6 +72,13 @@ class AjustesActivity : AppCompatActivity() {
         // Configuración del idioma
         setupLanguageSelection()
 
+        // Configurar el estado del RadioButton según el idioma actual
+        when (currentLanguage) {
+            "es" -> binding.RbSpanish.isChecked = true
+            "en" -> binding.RBIngles.isChecked = true
+            "ja" -> binding.RBJapones.isChecked = true
+        }
+
         // Configuración del Switch de tema
         setupThemeSwitch()
     }
@@ -90,16 +90,14 @@ class AjustesActivity : AppCompatActivity() {
     }
 
     private fun setupLanguageSelection() {
-        // Selección de idioma español
         binding.RbSpanish.setOnClickListener {
-            binding.RBIngles.isChecked = false
             changeLanguage("es")
         }
-
-        // Selección de idioma inglés
         binding.RBIngles.setOnClickListener {
-            binding.RbSpanish.isChecked = false
             changeLanguage("en")
+        }
+        binding.RBJapones.setOnClickListener {
+            changeLanguage("ja")
         }
     }
 
@@ -125,9 +123,11 @@ class AjustesActivity : AppCompatActivity() {
     }
 
     private fun changeLanguage(languageCode: String) {
-        currentLanguage = languageCode
-        applyLanguage(languageCode)
-        recreate()
+        if (currentLanguage != languageCode) {
+            currentLanguage = languageCode
+            applyLanguage(languageCode)
+            recreate() // Reinicia la actividad para aplicar el idioma
+        }
     }
 
     private fun applyLanguage(languageCode: String) {
@@ -137,6 +137,7 @@ class AjustesActivity : AppCompatActivity() {
         val resources = resources
         val config = Configuration(resources.configuration)
         config.setLocale(locale)
+        createConfigurationContext(config)  // Esto asegura que el idioma se aplique correctamente
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
