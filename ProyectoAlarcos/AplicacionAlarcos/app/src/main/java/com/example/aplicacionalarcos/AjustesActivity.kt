@@ -17,20 +17,18 @@ import java.util.Locale
 class AjustesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAjustesBinding
-    private var currentLanguage: String = "es"  // Idioma por defecto
+    private var currentLanguage: String = "it" // Idioma por defecto
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Cargar el idioma guardado
+        currentLanguage = loadLanguage()
+        applyLanguage(currentLanguage)
+
         enableEdgeToEdge()
         binding = ActivityAjustesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Restaurar el idioma del Bundle si existe
-        savedInstanceState?.getString("currentLanguage")?.let {
-            currentLanguage = it
-        }
-
-        applyLanguage(currentLanguage)
 
         val nombre = intent.getStringExtra("nombre") ?: "No disponible"
         val apellidos = intent.getStringExtra("apellidos") ?: "No disponible"
@@ -125,6 +123,7 @@ class AjustesActivity : AppCompatActivity() {
     private fun changeLanguage(languageCode: String) {
         if (currentLanguage != languageCode) {
             currentLanguage = languageCode
+            saveLanguage(languageCode) // Guardar el idioma seleccionado
             applyLanguage(languageCode)
             recreate() // Reinicia la actividad para aplicar el idioma
         }
@@ -147,6 +146,21 @@ class AjustesActivity : AppCompatActivity() {
 
     private fun setLightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    // Guardar el idioma seleccionado en SharedPreferences
+    private fun saveLanguage(languageCode: String) {
+        val sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("language", languageCode)
+            apply()
+        }
+    }
+
+    // Cargar el idioma guardado desde SharedPreferences
+    private fun loadLanguage(): String {
+        val sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE)
+        return sharedPreferences.getString("language", "it") ?: "it" // Por defecto "it"
     }
 
     // Función para calcular la edad
