@@ -1,8 +1,6 @@
 package com.example.aplicacionalarcos
 
 import ComidaAdapter
-import adaptador.Comida
-import adaptador.Ingrediente
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -12,6 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aplicacionalarcos.databinding.ActivityUltimasComidasBinding
+import modelosUltimasComidas.Comida
+import modelosUltimasComidas.Ingrediente
 
 class UltimasComidasActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUltimasComidasBinding

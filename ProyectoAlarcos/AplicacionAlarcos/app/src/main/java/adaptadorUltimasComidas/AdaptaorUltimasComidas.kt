@@ -1,4 +1,3 @@
-import adaptador.Comida
 import android.app.AlertDialog
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -9,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
+import modelosUltimasComidas.Comida
 
 class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
 
