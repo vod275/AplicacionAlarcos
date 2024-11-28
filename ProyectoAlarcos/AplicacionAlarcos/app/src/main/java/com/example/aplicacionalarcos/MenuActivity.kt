@@ -153,7 +153,6 @@ class MenuActivity : AppCompatActivity() {
     }
 
 
-
     //Ir a los ajustes
     private fun navigateToPrefilActivity() {
         val intent = Intent(this, AjustesActivity::class.java)

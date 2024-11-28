@@ -64,7 +64,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
-                android:hint="@string/nombre"
                 android:textColor="@color/VerdeFont" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -91,7 +90,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/apellidos"
                 android:textColor="@color/VerdeFont" />
 
         </com.google.android.material.textfield.TextInputLayout>

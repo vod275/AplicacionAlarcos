@@ -67,5 +67,4 @@ class ImcActivity : AppCompatActivity() {
                 getString(R.string.por_favor_completa_todos_los_campos), Toast.LENGTH_SHORT).show()
         }
     }
-
 }

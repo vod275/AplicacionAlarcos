@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -215,7 +214,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
-
 
 
     // Lanzador de actividad para manejar el resultado de la autenticación
