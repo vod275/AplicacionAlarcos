@@ -141,6 +141,7 @@
             android:textColorHint="@color/VerdeFont"
             app:hintTextColor="@color/VerdeFont"
             app:cursorColor="@color/VerdeFont"
+            app:endIconTint="@color/VerdeFont"
             android:textStyle="bold"
             app:boxStrokeColor="@color/VerdeFont"
             app:endIconMode="clear_text"
