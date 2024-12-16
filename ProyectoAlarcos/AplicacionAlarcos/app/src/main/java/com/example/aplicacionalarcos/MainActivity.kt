@@ -191,8 +191,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveUserToFirestore(email: String?, name: String?) {
-        val documentId = email ?: name ?: auth.currentUser?.uid ?: "UnknownUser"
+        // Determinar el identificador del documento
+        val documentId = when {
+            !email.isNullOrEmpty() -> email.replace(" ", "_") // Reemplazar espacios por _
+            !name.isNullOrEmpty() -> name.replace(" ", "_")  // Reemplazar espacios por _
+            auth.currentUser?.uid != null -> auth.currentUser!!.uid
+            else -> "UnknownUser_${System.currentTimeMillis()}"
+        }
 
+        // Datos a guardar
         val userData = mapOf(
             "email" to (email ?: "Correo no disponible"),
             "name" to (name ?: "Sin nombre"),
@@ -200,6 +207,7 @@ class MainActivity : AppCompatActivity() {
             "timestamp" to System.currentTimeMillis()
         )
 
+        // Guardar en Firestore
         firestore.collection("users").document(documentId)
             .set(userData)
             .addOnSuccessListener {
@@ -209,6 +217,7 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Firestore", "Error al guardar usuario en Firestore", e)
             }
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
