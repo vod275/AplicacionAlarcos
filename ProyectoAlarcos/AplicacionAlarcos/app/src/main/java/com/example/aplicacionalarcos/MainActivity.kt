@@ -18,10 +18,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.OAuthProvider
 import com.google.firebase.auth.TwitterAuthProvider
-import objetos.UserSession
+import com.google.firebase.firestore.FirebaseFirestore
 
 private const val RC_SIGN_IN = 9001
 
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    private val firestore: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Configurar Google Sign-In (One Tap y estándar)
+        // Configuración de Google Sign-In
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder()
             .setGoogleIdTokenRequestOptions(
@@ -60,52 +59,39 @@ class MainActivity : AppCompatActivity() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        // Configurar botones de autenticación
+        binding.googleSignInButton.setOnClickListener { signInWithGoogle() }
+        binding.loginButton.setOnClickListener { handleEmailSignIn() }
+        binding.registerButton.setOnClickListener { handleRegister() }
+        binding.XSignInButton.setOnClickListener { signInWithTwitter() }
+    }
 
+    private fun handleEmailSignIn() {
+        val email = binding.emailInput.editText?.text.toString().trim()
+        val password = binding.passwordInput.editText?.text.toString().trim()
 
-        // Acción del botón de Google Sign-In
-        binding.googleSignInButton.setOnClickListener {
-            signInWithGoogle()
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        }
-
-        // Acción del botón de Login por correo
-        binding.loginButton.setOnClickListener {
-            val email = binding.emailInput.editText?.text.toString().trim()
-            val password = binding.passwordInput.editText?.text.toString().trim()
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    signIn(email, password)
-                } else {
-                    Toast.makeText(this,
-                        getString(R.string.por_favor_ingresa_un_correo_v_lido), Toast.LENGTH_SHORT).show()
-                }
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                signIn(email, password)
             } else {
-                Toast.makeText(this, getString(R.string.por_favor_completa_todos_los_campos), Toast.LENGTH_SHORT).show()
+                showToast(getString(R.string.por_favor_ingresa_un_correo_v_lido))
             }
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        }
-
-        // Acción del botón de Registro
-        binding.registerButton.setOnClickListener {
-            val email = binding.emailInput.editText?.text.toString().trim()
-            val password = binding.passwordInput.editText?.text.toString().trim()
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                register(email, password)
-            } else {
-                Toast.makeText(this, getString(R.string.por_favor_completa_todos_los_campos), Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        // Acción del botón de Twitter Sign-In
-        binding.XSignInButton.setOnClickListener {
-            signInWithTwitter()
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        } else {
+            showToast(getString(R.string.por_favor_completa_todos_los_campos))
         }
     }
 
-    // Método de autenticación con correo y contraseña
+    private fun handleRegister() {
+        val email = binding.emailInput.editText?.text.toString().trim()
+        val password = binding.passwordInput.editText?.text.toString().trim()
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            register(email, password)
+        } else {
+            showToast(getString(R.string.por_favor_completa_todos_los_campos))
+        }
+    }
+
     private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -114,31 +100,29 @@ class MainActivity : AppCompatActivity() {
                     updateUI(user)
                 } else {
                     Log.w("Login", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    showToast("Error: ${task.exception?.message}")
                     updateUI(null)
                 }
             }
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
-    // Método de registro con correo y contraseña
     private fun register(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    Toast.makeText(this, getString(R.string.usuario_registrado_exitosamente), Toast.LENGTH_SHORT).show()
+                    showToast(getString(R.string.usuario_registrado_exitosamente))
                     updateUI(user)
                 } else {
-                    val errorMessage = task.exception?.message ?: getString(R.string.error_desconocido_intenta_nuevamente)
+                    val errorMessage = task.exception?.message
+                        ?: getString(R.string.error_desconocido_intenta_nuevamente)
                     Log.w("Register", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this, getString(R.string.error_al_registrar) + errorMessage, Toast.LENGTH_SHORT).show()
+                    showToast(getString(R.string.error_al_registrar) + errorMessage)
                     updateUI(null)
                 }
             }
     }
 
-    // Método para iniciar sesión con Google
     private fun signInWithGoogle() {
         oneTapClient.beginSignIn(signInRequest)
             .addOnSuccessListener(this) { result ->
@@ -157,126 +141,79 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    //Inicio sesion con X
     private fun signInWithTwitter() {
-        // Crea el proveedor OAuth para Twitter
         val provider = OAuthProvider.newBuilder("twitter.com")
-
-        // Inicia la autenticación con Twitter
         auth.startActivityForSignInWithProvider(this, provider.build())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Accedemos al credential que contiene el token y el secreto
-                    val credential = task.result?.credential
-
-                    // Verificamos que el credential sea un OAuthCredential
-                    if (credential is OAuthCredential) {
-                        // Obtén los tokens desde el credential de OAuth
-                        val twitterAuthToken = credential.accessToken // El accessToken
-                        val twitterAuthSecret = credential.secret // El accessTokenSecret
-
-                        // Verificamos que los tokens no sean nulos antes de crear el credential de Firebase
-                        if (!twitterAuthToken.isNullOrEmpty() && !twitterAuthSecret.isNullOrEmpty()) {
-                            // Creamos el credential de Firebase utilizando estos tokens
-                            val firebaseCredential = TwitterAuthProvider.getCredential(
-                                twitterAuthToken, // El accessToken
-                                twitterAuthSecret  // El accessTokenSecret
-                            )
-
-                            // Autenticar con Firebase utilizando las credenciales de Twitter
-                            auth.signInWithCredential(firebaseCredential)
-                                .addOnCompleteListener { signInTask ->
-                                    if (signInTask.isSuccessful) {
-                                        // Si la autenticación fue exitosa, obtenemos el usuario autenticado
-                                        val user = auth.currentUser
-                                        updateUI(user)
-                                    } else {
-                                        // Si hubo un error en la autenticación de Firebase, mostramos un mensaje
-                                        Log.e("TwitterSignIn", "Error al autenticar con Firebase", signInTask.exception)
-                                        Toast.makeText(this,
-                                            getString(R.string.error_al_autenticar_con_firebase), Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                        } else {
-                            Log.e("TwitterSignIn", "Tokens de Twitter son nulos o vacíos")
-                            Toast.makeText(this,
-                                getString(R.string.error_al_obtener_los_tokens_de_twitter), Toast.LENGTH_SHORT).show()
-                        }
-                    } else {
-                        Log.e("TwitterSignIn", "Credential no es de tipo OAuthCredential")
-                        Toast.makeText(this,
-                            getString(R.string.error_al_autenticar_con_twitter), Toast.LENGTH_SHORT).show()
-                    }
+                    val user = auth.currentUser
+                    updateUI(user)
                 } else {
-                    // Si hubo un error en la autenticación con Twitter, mostramos un mensaje
                     Log.e("TwitterSignIn", "Error al autenticar con Twitter", task.exception)
-                    Toast.makeText(this, getString(R.string.error_al_autenticar_con_twitter), Toast.LENGTH_SHORT).show()
+                    showToast(getString(R.string.error_al_autenticar_con_twitter))
                 }
             }
     }
 
-
-    // Lanzador de actividad para manejar el resultado de la autenticación
-    private val signInLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val credential = oneTapClient.getSignInCredentialFromIntent(result.data)
-            val idToken = credential.googleIdToken
-            if (idToken != null) {
-                val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
-                auth.signInWithCredential(firebaseCredential)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            val user = auth.currentUser
-                            updateUI(user)
-                        } else {
-                            Log.w("GoogleSignIn", "signInWithCredential:failure", task.exception)
-                            Toast.makeText(this, getString(R.string.error_al_autenticar_con_google), Toast.LENGTH_SHORT).show()
+    private val signInLauncher =
+        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val credential = oneTapClient.getSignInCredentialFromIntent(result.data)
+                val idToken = credential.googleIdToken
+                if (idToken != null) {
+                    val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
+                    auth.signInWithCredential(firebaseCredential)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                val user = auth.currentUser
+                                updateUI(user)
+                            } else {
+                                showToast(getString(R.string.error_al_autenticar_con_google))
+                            }
                         }
-                    }
+                }
             }
         }
-    }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            // Recarga la información del usuario para asegurarse de tener la más reciente
-            user.reload().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val refreshedUser = auth.currentUser
-                    if (refreshedUser != null) {
-                        // Recuperamos el nombre de usuario  si está disponible
-                        val twitterUsername = refreshedUser.displayName ?: getString(R.string.usuario_no_disponible)
+            val userEmail = user.email
+            val userName = user.displayName ?: "Usuario sin nombre"
+            saveUserToFirestore(userEmail, userName)
 
-                        // Guardamos el nombre de usuario en la sesión de usuario
-                        UserSession.nombre = twitterUsername // Guardamos el nombre en la sesión
-
-                        // Mostramos el nombre de usuario de Twitter en un Toast
-                        Toast.makeText(this,
-                            getString(R.string.bienvenido, twitterUsername), Toast.LENGTH_SHORT).show()
-
-                        // Aquí mantienes el flujo original de la aplicación
-                        val intent = Intent(this, MenuActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this, getString(R.string.usuario_no_encontrado_inicia_sesi_n_nuevamente), Toast.LENGTH_SHORT).show()
-                        auth.signOut()
-                    }
-                } else {
-                    Toast.makeText(this, getString(R.string.error_al_verificar_usuario) + task.exception?.message, Toast.LENGTH_SHORT).show()
-                    auth.signOut()
-                }
-            }
+            showToast(getString(R.string.bienvenido, userName))
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+            finish()
         } else {
-            Toast.makeText(this, getString(R.string.por_favor_inicia_sesi_n_o_reg_strate), Toast.LENGTH_SHORT).show()
+            showToast(getString(R.string.por_favor_inicia_sesi_n_o_reg_strate))
         }
     }
 
+    private fun saveUserToFirestore(email: String?, name: String?) {
+        val documentId = email ?: name ?: auth.currentUser?.uid ?: "UnknownUser"
 
+        val userData = mapOf(
+            "email" to (email ?: "Correo no disponible"),
+            "name" to (name ?: "Sin nombre"),
+            "userId" to (auth.currentUser?.uid ?: "Sin ID"),
+            "timestamp" to System.currentTimeMillis()
+        )
 
+        firestore.collection("users").document(documentId)
+            .set(userData)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Usuario guardado exitosamente: $userData")
+            }
+            .addOnFailureListener { e ->
+                Log.e("Firestore", "Error al guardar usuario en Firestore", e)
+            }
+    }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
-    // Comprobamos el estado del usuario cuando la actividad se inicia
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
