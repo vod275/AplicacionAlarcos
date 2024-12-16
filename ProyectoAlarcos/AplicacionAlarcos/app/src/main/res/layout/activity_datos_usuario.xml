@@ -31,15 +31,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transparentContainer"
-        android:layout_width="371dp"
-        android:layout_height="562dp"
+        android:layout_width="380dp"
+        android:layout_height="619dp"
         android:background="#C4FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443">
+        app:layout_constraintVertical_bias="0.651">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,16 +51,15 @@
             app:boxStrokeColor="@color/VerdeFont"
             app:cursorColor="@color/VerdeFont"
             app:endIconMode="clear_text"
-            app:helperTextEnabled="true"
             app:endIconTint="@color/VerdeFont"
+            app:helperTextEnabled="true"
             app:helperTextTextColor="@color/VerdeFont"
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.157">
+            app:layout_constraintVertical_bias="0.249">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -77,17 +76,16 @@
             android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
             app:cursorColor="@color/VerdeFont"
-            app:endIconTint="@color/VerdeFont"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/VerdeFont"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/VerdeFont"
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.379">
+            app:layout_constraintVertical_bias="0.448">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -96,28 +94,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etFechaNacimiento"
             android:layout_width="240dp"
             android:layout_height="93dp"
             android:hint="@string/fecha_de_nacimiento"
             android:textColorHint="@color/VerdeFont"
-            app:endIconTint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
             app:boxStrokeWidthFocused="2dp"
             app:cursorColor="@color/VerdeFont"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/VerdeFont"
             app:helperText="@string/introduce_tu_fecha_de_nacimiento"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/VerdeFont"
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.609"
+            app:layout_constraintVertical_bias="0.661"
             app:startIconDrawable="@drawable/baseline_calendar_month_24"
             app:startIconTint="@color/VerdeFont">
 
@@ -129,7 +125,6 @@
                 android:inputType="datetime"
                 android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/obAtras"
@@ -176,15 +171,27 @@
 
         <TextView
             android:id="@+id/tvCorreo"
-            android:layout_width="279dp"
-            android:layout_height="24dp"
+            android:layout_width="270dp"
+            android:layout_height="23dp"
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintHorizontal_bias="0.771"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.026" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="75dp"
+            android:layout_height="81dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.092"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
