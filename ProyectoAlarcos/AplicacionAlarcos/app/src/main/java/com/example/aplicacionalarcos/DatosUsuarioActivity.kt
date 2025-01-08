@@ -1,12 +1,15 @@
 package com.example.aplicacionalarcos
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.aplicacionalarcos.databinding.ActivityDatosUsuarioBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -18,6 +21,8 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+
+private val REQUEST_CODE_CAMERA = 1001
 
 class DatosUsuarioActivity : AppCompatActivity() {
 
@@ -77,10 +82,20 @@ class DatosUsuarioActivity : AppCompatActivity() {
         builder.setItems(options) { _, which ->
             when (which) {
                 0 -> selectImageResultLauncher.launch("image/*")
-                1 -> launchCamera()
+                1 -> checkCameraPermissionAndLaunch()
             }
         }
         builder.show()
+    }
+
+    private fun checkCameraPermissionAndLaunch() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // Solicitar el permiso de la cámara si no está concedido
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CODE_CAMERA)
+        } else {
+            // Lanzar la cámara si el permiso ya está concedido
+            launchCamera()
+        }
     }
 
     private fun launchCamera() {
@@ -162,5 +177,19 @@ class DatosUsuarioActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error al subir la imagen: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    // Este método se llama cuando se solicita el permiso de la cámara y se otorga o deniega.
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_CAMERA) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permiso concedido, lanzar la cámara
+                launchCamera()
+            } else {
+                // Permiso denegado
+                Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

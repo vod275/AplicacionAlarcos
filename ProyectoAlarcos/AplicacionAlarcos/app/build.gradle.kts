@@ -55,6 +55,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(kotlin("script-runtime"))
+    implementation(kotlin("script-runtime"))  // Posiblemente innecesario
     implementation ("com.google.android.material:material:1.11.0")
     implementation("org.twitter4j:twitter4j-core:4.0.7")
 
