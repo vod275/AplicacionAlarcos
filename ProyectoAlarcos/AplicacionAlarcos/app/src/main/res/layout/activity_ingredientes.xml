@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityIngredientes">
+
+    <!-- Contenedor semitransparente -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/transparentContainer"
+        android:layout_width="380dp"
+        android:layout_height="619dp"
+        android:background="#C4FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Nombre del Ingrediente -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvNombreAjustes"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del ingrediente"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/VerdeFont"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:textColor="@color/VerdeFont" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Valor energético -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlValorEnergetico"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:hint="Valor energético (kcal/kJ)"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreAjustes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etValorEnergetico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Grasas -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlGrasas"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:hint="Grasas (incluidas saturadas)"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:layout_constraintTop_toBottomOf="@id/tlValorEnergetico"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etGrasas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Carbohidratos -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlCarbohidratos"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:hint="Carbohidratos (incluidos azúcares)"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:layout_constraintTop_toBottomOf="@id/tlGrasas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCarbohidratos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Proteínas -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlProteinas"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:hint="Proteínas"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:layout_constraintTop_toBottomOf="@id/tlCarbohidratos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etProteinas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Sal -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlSal"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:hint="Sal/Sodio"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:layout_constraintTop_toBottomOf="@id/tlProteinas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnVolver"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.985"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:strokeColor="@color/VerdeFont" />
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:textColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintVertical_bias="0.985" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
