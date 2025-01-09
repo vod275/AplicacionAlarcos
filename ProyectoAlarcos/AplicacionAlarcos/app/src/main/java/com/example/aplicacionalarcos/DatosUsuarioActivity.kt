@@ -53,6 +53,8 @@ class DatosUsuarioActivity : AppCompatActivity() {
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         // Mostrar el email del usuario
         binding.tvCorreo.text = UserSession.nombre ?: getString(R.string.usuario_no_disponible)
 
@@ -73,7 +75,31 @@ class DatosUsuarioActivity : AppCompatActivity() {
         binding.ibFotoPerfil.setOnClickListener {
             showImageOptions()
         }
+
+        binding.btnAceptar.setOnClickListener {
+            val nombre =
+                binding.tvNombreAjustes.editText?.text.toString().takeIf { it.isNotEmpty() }
+                    ?: getString(R.string.nombre_no_disponible)
+            val apellidos = binding.tvApellidos.editText?.text.toString().takeIf { it.isNotEmpty() }
+                ?: getString(R.string.apellidos_no_disponibles)
+            val fechaNacimiento =
+                binding.etFechaNacimientoEditText.text.toString().takeIf { it.isNotEmpty() }
+                    ?: getString(R.string.fecha_no_disponible)
+
+            if (nombre.isNotEmpty() && apellidos.isNotEmpty() && fechaNacimiento.isNotEmpty()) {
+                // Aquí puedes pasar los datos junto con la ruta de la imagen
+                val intent = Intent(this, AjustesActivity::class.java)
+                intent.putExtra("nombre", nombre)
+                intent.putExtra("apellidos", apellidos)
+                intent.putExtra("fechaNacimiento", fechaNacimiento)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, getString(R.string.error_campos_vacios), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
+
 
     private fun showImageOptions() {
         val options = arrayOf("Seleccionar desde galería", "Tomar una foto")
