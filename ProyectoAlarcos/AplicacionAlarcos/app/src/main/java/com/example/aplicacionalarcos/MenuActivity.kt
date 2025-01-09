@@ -43,7 +43,8 @@ class MenuActivity : AppCompatActivity() {
             binding.InfoNutriButton,
             binding.UltimasComidasButton,
             binding.AjustesButton,
-            binding.obAtras
+            binding.obAtras,
+            binding.AddIngredienteButton
             // Añade más botones aquí, como binding.InfoNutriButton o binding.UltimasComidasButton si están en tu layout
         )
 
@@ -71,6 +72,13 @@ class MenuActivity : AppCompatActivity() {
             val intent = Intent(this, UltimasComidasActivity::class.java)
             startActivity(intent)
            // Agregar animación
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
+        binding.AddIngredienteButton.setOnClickListener {
+            val intent = Intent(this, ActivityIngredientes::class.java)
+            startActivity(intent)
+            // Agregar animación
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 

@@ -114,6 +114,24 @@
             app:strokeColor="@color/VerdeFont" />
 
         <Button
+            android:id="@+id/AddIngredienteButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="208dp"
+            android:layout_height="53dp"
+            android:text="Agregar Ingrediente"
+            android:textColor="@color/VerdeFont"
+            android:textColorHint="@color/VerdeFont"
+            app:boxStrokeColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.697"
+            app:strokeColor="@color/VerdeFont" />
+
+        <Button
             android:id="@+id/obAtras"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"

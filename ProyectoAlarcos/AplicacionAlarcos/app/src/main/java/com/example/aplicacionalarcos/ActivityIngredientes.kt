@@ -1,5 +1,6 @@
 package com.example.aplicacionalarcos
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -58,7 +59,10 @@ class ActivityIngredientes : AppCompatActivity() {
 
         // Configuración del botón Volver
         binding.btnVolver.setOnClickListener {
-            finish() // Cierra esta actividad y regresa a la anterior
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
         }
     }
 }
