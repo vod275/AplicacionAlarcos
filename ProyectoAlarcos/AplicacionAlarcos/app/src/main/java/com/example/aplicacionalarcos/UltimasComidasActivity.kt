@@ -1,6 +1,7 @@
 package com.example.aplicacionalarcos
 
-import ComidaAdapter
+
+import adaptadorUltimasComidas.ComidaAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
