@@ -1,3 +1,5 @@
+package adaptadorUltimasComidas
+
 import android.app.AlertDialog
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
