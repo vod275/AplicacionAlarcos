@@ -76,4 +76,6 @@
     <string name="error_al_autenticar_con_twitter">Error al autenticar con Twitter</string>
     <string name="bienvenido">Bienvenido: %1$s</string>
     <string name="edad_no_disponible">Edad no disponible</string>
+    <string name="volver">Volver</string>
+    <string name="guardar">Guardar</string>
 </resources>

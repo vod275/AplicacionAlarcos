@@ -8,30 +8,45 @@
     android:layout_height="match_parent"
     tools:context=".ActivityIngredientes">
 
+
+    <!-- Imagen de fondo ajustada -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/imc"
+        tools:ignore="MissingConstraints" />
+
     <!-- Contenedor semitransparente -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transparentContainer"
-        android:layout_width="380dp"
-        android:layout_height="619dp"
+        android:layout_width="331dp"
+        android:layout_height="577dp"
         android:background="#C4FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Nombre del Ingrediente -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvNombreAjustes"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Nombre del ingrediente"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
+            app:cursorColor="@color/VerdeFont"
             app:endIconMode="clear_text"
             app:endIconTint="@color/VerdeFont"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.2">
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -40,99 +55,132 @@
                 android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Valor energético -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tlValorEnergetico"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Valor energético (kcal/kJ)"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
-            app:layout_constraintTop_toBottomOf="@id/tvNombreAjustes"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconTint="@color/VerdeFont"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreAjustes">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etValorEnergetico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Grasas -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tlGrasas"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Grasas (incluidas saturadas)"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
-            app:layout_constraintTop_toBottomOf="@id/tlValorEnergetico"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconTint="@color/VerdeFont"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tlValorEnergetico">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGrasas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Carbohidratos -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tlCarbohidratos"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Carbohidratos (incluidos azúcares)"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
-            app:layout_constraintTop_toBottomOf="@id/tlGrasas"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconTint="@color/VerdeFont"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tlGrasas">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCarbohidratos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Proteínas -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tlProteinas"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
-            android:hint="Proteínas"
+            android:layout_marginTop="20dp"
+            android:hint="Proteinas"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
-            app:layout_constraintTop_toBottomOf="@id/tlCarbohidratos"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconTint="@color/VerdeFont"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tlCarbohidratos">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etProteinas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Sal -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tlSal"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:hint="Sal/Sodio"
+            android:textColorHint="@color/VerdeFont"
             app:boxStrokeColor="@color/VerdeFont"
-            app:layout_constraintTop_toBottomOf="@id/tlProteinas"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cursorColor="@color/VerdeFont"
+            app:endIconTint="@color/VerdeFont"
+            app:helperTextTextColor="@color/VerdeFont"
+            app:hintTextColor="@color/VerdeFont"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tlProteinas">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/VerdeFont" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -140,12 +188,12 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volver"
+            android:text="@string/volver"
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.985"
-            app:layout_constraintHorizontal_bias="0.2"
             app:strokeColor="@color/VerdeFont" />
 
         <!-- Botón Guardar -->
@@ -154,12 +202,13 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guardar"
+            android:text="@string/guardar"
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintVertical_bias="0.985" />
+            app:layout_constraintVertical_bias="0.985"
+            app:strokeColor="@color/VerdeFont" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
