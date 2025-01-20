@@ -18,6 +18,9 @@
         android:theme="@style/Theme.AplicacionAlarcos"
         tools:targetApi="31">
         <activity
+            android:name=".NuevasComidas"
+            android:exported="false" />
+        <activity
             android:name=".IngredientesActivity"
             android:exported="false" />
         <activity

@@ -43,7 +43,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvNombreAjustes"
+            android:id="@+id/tvNombreIngrediente"
             android:layout_width="240dp"
             android:layout_height="93dp"
             android:hint="@string/nombre"

@@ -136,5 +136,13 @@ class UltimasComidasActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             finish()
         }
+
+        // Configuración del botón "Añadir Comida"
+        binding.obAnadirComida.setOnClickListener {
+            val intent = Intent(this, NuevasComidas::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
+        }
     }
 }
