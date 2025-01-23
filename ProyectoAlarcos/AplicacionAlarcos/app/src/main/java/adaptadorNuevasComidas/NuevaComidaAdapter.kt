@@ -11,6 +11,7 @@ import modelosNuevasComidas.Ingrediente
 
 
 class NuevaComidaAdapter(private val ingredientes: List<Ingrediente>) : RecyclerView.Adapter<NuevaComidaAdapter.IngredienteViewHolder>() {
+
     inner class IngredienteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvNombre: TextView = itemView.findViewById(R.id.tvNombre)
         val tvValorEnergetico: TextView = itemView.findViewById(R.id.tvValorEnergetico)
@@ -21,9 +22,11 @@ class NuevaComidaAdapter(private val ingredientes: List<Ingrediente>) : Recycler
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredienteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_nuevas_comidas, parent, false)
+        // Inflar el layout del item (item_ingrediente.xml)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.nueva_comida_item, parent, false)
         return IngredienteViewHolder(view)
     }
+
 
     override fun onBindViewHolder(holder: IngredienteViewHolder, position: Int) {
         val ingrediente = ingredientes[position]

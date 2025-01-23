@@ -82,7 +82,12 @@ class MenuActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
-
+        binding.NuevasComidas.setOnClickListener(){
+            val intent = Intent(this, NuevasComidas::class.java)
+            startActivity(intent)
+            // Agregar animación
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
             binding.obAtras.setOnClickListener {
 
                 showDialog()
