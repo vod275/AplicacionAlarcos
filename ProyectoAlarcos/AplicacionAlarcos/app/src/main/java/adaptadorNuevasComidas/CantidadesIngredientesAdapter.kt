@@ -1,0 +1,4 @@
+package adaptadorNuevasComidas
+
+class CantidadesIngredientesAdapter {
+}

@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
 }
 
@@ -41,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -51,20 +49,14 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.storage.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation(kotlin("script-runtime"))
-    implementation(kotlin("script-runtime"))  // Posiblemente innecesario
-    implementation ("com.google.android.material:material:1.11.0")
-    implementation("org.twitter4j:twitter4j-core:4.0.7")
 
     implementation(platform(libs.firebase.bom))
-
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
     implementation(libs.google.firebase.analytics)
     implementation(libs.play.services.auth)
 
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation("org.twitter4j:twitter4j-core:4.0.7")
 }
