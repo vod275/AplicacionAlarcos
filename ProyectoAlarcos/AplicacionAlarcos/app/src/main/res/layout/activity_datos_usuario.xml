@@ -64,7 +64,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
-                android:textColor="@color/VerdeFont" />
+                android:textColor="@color/VerdeFont"
+                android:textSelectHandle="@drawable/cursor"
+                android:textSelectHandleLeft="@drawable/cursor"
+                android:textSelectHandleRight="@drawable/cursor"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +93,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/VerdeFont" />
+                android:textColor="@color/VerdeFont"
+                android:textSelectHandle="@drawable/cursor"
+                android:textSelectHandleLeft="@drawable/cursor"
+                android:textSelectHandleRight="@drawable/cursor"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

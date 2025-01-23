@@ -7,15 +7,14 @@
         <item name="colorOnPrimary">@color/white</item>
         <!-- Asocia el tema personalizado para el DatePicker -->
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+
     </style>
 
     <!-- Tema personalizado para el DatePicker -->
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
         <!-- Personalización de colores -->
-
         <item name="colorPrimary">@color/swicth</item> <!-- Color principal (encabezado, botones) -->
         <item name="colorSurface">@color/swicth</item> <!-- Fondo principal del selector -->
-
 
         <!-- Formas personalizadas -->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
@@ -39,5 +38,8 @@
     <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="boxStrokeColor">@color/VerdeFont</item>
         <item name="hintTextColor">@color/VerdeFont</item>
+
     </style>
+
+
 </resources>
