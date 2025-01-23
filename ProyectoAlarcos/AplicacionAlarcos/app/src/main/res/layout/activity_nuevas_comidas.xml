@@ -7,35 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".NuevasComidas">
 
-    <Button
-        android:id="@+id/Cargar"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="211dp"
-        android:layout_height="53dp"
-        android:text="Cargar"
-        android:textColor="@color/VerdeFont"
-        android:textColorHint="@color/VerdeFont"
-        app:boxStrokeColor="@color/VerdeFont"
-        app:hintTextColor="@color/VerdeFont"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124"
-        app:strokeColor="@color/VerdeFont" />
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ajustimage"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="MissingConstraints" />
+
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVNuevasComidas"
-        android:layout_width="327dp"
-        android:layout_height="465dp"
+        android:layout_width="324dp"
+        android:layout_height="501dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintVertical_bias="0.383" />
 
     <ImageView
         android:id="@+id/appLogo"
@@ -84,16 +79,31 @@
     <Button
         android:id="@+id/obAnadirIngredientes"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
         android:text="Añadir Ingredientes"
         android:textColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintHorizontal_bias="0.819"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925"
+        app:layout_constraintVertical_bias="0.958"
+        app:strokeColor="@color/VerdeFont" />
+
+    <Button
+        android:id="@+id/obAnadirComida"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
+        android:text="Añadir Comida"
+        android:textColor="@color/VerdeFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.876"
         app:strokeColor="@color/VerdeFont" />
 
     <Button

@@ -72,16 +72,16 @@
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.124"
+            app:layout_constraintVertical_bias="0.043"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/InfoNutriButton"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="208dp"
+            android:layout_width="211dp"
             android:layout_height="53dp"
             android:text="@string/InfoNutricional"
             android:textColor="@color/VerdeFont"
@@ -90,16 +90,16 @@
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.308"
+            app:layout_constraintVertical_bias="0.221"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/UltimasComidasButton"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="208dp"
+            android:layout_width="211dp"
             android:layout_height="53dp"
             android:text="@string/UltimasComidas"
             android:textColor="@color/VerdeFont"
@@ -108,15 +108,16 @@
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.397"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
             android:id="@+id/AddIngredienteButton"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="208dp"
+            android:layout_width="211dp"
             android:layout_height="53dp"
             android:text="Agregar Ingrediente"
             android:textColor="@color/VerdeFont"
@@ -125,10 +126,10 @@
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.697"
+            app:layout_constraintVertical_bias="0.57"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
@@ -159,10 +160,10 @@
             app:hintTextColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.859"
+            app:layout_constraintVertical_bias="0.756"
             app:strokeColor="@color/VerdeFont" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
