@@ -22,15 +22,15 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/Ingrediente"
+            android:id="@+id/TVIngrediente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ingrediente"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.523">
@@ -39,21 +39,27 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etCantidad"
-            android:layout_width="145dp"
-            android:layout_height="48dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
             android:hint="Cantidad"
             android:inputType="numberDecimal"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSelectHandle="@drawable/cursor"
-            android:textSelectHandleLeft="@drawable/cursor"
-            android:textSelectHandleRight="@drawable/cursor"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:background="@drawable/edit_text_border"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:cursorVisible="true"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

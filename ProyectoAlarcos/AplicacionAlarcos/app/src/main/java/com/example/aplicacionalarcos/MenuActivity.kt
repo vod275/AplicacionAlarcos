@@ -114,7 +114,7 @@ class MenuActivity : AppCompatActivity() {
 
         // Crear y mostrar el cuadro de diálogo
         val dialog = dialogBuilder.create()
-        dialogBinding.btnAcceptDialog.setOnClickListener {
+        dialogBinding.btnAccept.setOnClickListener {
             dialog.dismiss()
             navigateToImcActivity() // Navegar a la pantalla de IMC después de aceptar el diálogo
         }

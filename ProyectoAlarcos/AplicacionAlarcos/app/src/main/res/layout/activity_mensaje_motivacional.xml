@@ -35,7 +35,7 @@
 
     <!-- Botón Aceptar -->
     <Button
-        android:id="@+id/btnAcceptDialog"
+        android:id="@+id/btnAccept"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

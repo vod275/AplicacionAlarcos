@@ -66,13 +66,14 @@
         app:layout_constraintVertical_bias="0.046">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EtNombrePlato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
             android:textColor="@color/VerdeFont"
             android:textSelectHandle="@drawable/cursor"
             android:textSelectHandleLeft="@drawable/cursor"
-            android:textSelectHandleRight="@drawable/cursor"/>
+            android:textSelectHandleRight="@drawable/cursor" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

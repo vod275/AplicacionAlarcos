@@ -25,7 +25,7 @@ class ImcActivity : AppCompatActivity() {
         }
 
         // Configuración del botón para calcular IMC
-        binding.btnAcceptDialog.setOnClickListener {
+        binding.btnAccept.setOnClickListener {
             calcularIMC()
         }
     }
