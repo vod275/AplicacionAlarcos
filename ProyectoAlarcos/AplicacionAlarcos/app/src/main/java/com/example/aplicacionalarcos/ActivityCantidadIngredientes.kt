@@ -58,7 +58,6 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
         val cantidadesEnOrden = arrayListOf<Int>() // Lista para almacenar las cantidades en orden
 
         // Variables para almacenar los totales
-        var caloriasTotales = 0.0
         var proteinasTotales = 0.0
         var grasasTotales = 0.0
         var carbohidratosTotales = 0.0
@@ -77,7 +76,6 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             cantidadesEnOrden.add(cantidadIngresada) // Añadir las cantidades en el mismo orden de los ingredientes
 
             // Aplicar la regla de tres para cada valor nutricional
-            caloriasTotales += (cantidadIngresada * ingredientes[i].caloriasPor100g) / 100
             proteinasTotales += (cantidadIngresada * ingredientes[i].proteinasPor100g) / 100
             grasasTotales += (cantidadIngresada * ingredientes[i].grasasPor100g) / 100
             carbohidratosTotales += (cantidadIngresada * ingredientes[i].carbohidratosPor100g) / 100
@@ -90,7 +88,6 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             nombre = nombrePlato,
             ingredientes = ingredientes,
             cantidad = cantidadesEnOrden,
-            caloriasTotales = caloriasTotales,
             proteinasTotales = proteinasTotales,
             grasasTotales = grasasTotales,
             carbohidratosTotales = carbohidratosTotales
@@ -100,7 +97,6 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
         Log.d("PlatoCreado", "Plato: ${plato.nombre}")
         Log.d("PlatoCreado", "Ingredientes: ${plato.ingredientes.map { it.nombre }}")
         Log.d("PlatoCreado", "Cantidades: ${plato.cantidad}")
-        Log.d("PlatoCreado", "Calorías Totales: $caloriasTotales")
         Log.d("PlatoCreado", "Proteínas Totales: $proteinasTotales")
         Log.d("PlatoCreado", "Grasas Totales: $grasasTotales")
         Log.d("PlatoCreado", "Carbohidratos Totales: $carbohidratosTotales")
@@ -121,7 +117,6 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
                 mapOf(
                     "nombre" to ingrediente.nombre,
                     "valorEnergeticoPor100g" to ingrediente.valorEnergeticoPor100g,
-                    "caloriasPor100g" to ingrediente.caloriasPor100g,
                     "proteinasPor100g" to ingrediente.proteinasPor100g,
                     "grasasPor100g" to ingrediente.grasasPor100g,
                     "salPor100g" to ingrediente.salPor100g,
@@ -129,7 +124,6 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
                 )
             },
             "cantidad" to plato.cantidad,
-            "caloriasTotales" to plato.caloriasTotales,
             "proteinasTotales" to plato.proteinasTotales,
             "grasasTotales" to plato.grasasTotales,
             "carbohidratosTotales" to plato.carbohidratosTotales,

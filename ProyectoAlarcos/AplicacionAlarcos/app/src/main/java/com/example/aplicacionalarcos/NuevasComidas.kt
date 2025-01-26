@@ -90,13 +90,12 @@ class NuevasComidas : AppCompatActivity() {
                     val proteinas = document.getString("proteinas")?.toDoubleOrNull() ?: 0.0
                     val sal = document.getString("sal")?.toDoubleOrNull() ?: 0.0
                     val valorEnergetico = document.getString("valorEnergetico")?.toDoubleOrNull() ?: 0.0
-                    val calorias = document.getString("calorias")?.toDoubleOrNull() ?: 0.0
+
 
                     listaIngredientes.add(
                         Ingrediente(
                             nombre = nombre,
                             valorEnergeticoPor100g = valorEnergetico,
-                            caloriasPor100g = calorias,
                             proteinasPor100g = proteinas,
                             grasasPor100g = grasas,
                             salPor100g = sal,
