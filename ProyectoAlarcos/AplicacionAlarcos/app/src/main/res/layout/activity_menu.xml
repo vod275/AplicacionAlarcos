@@ -22,20 +22,21 @@
         android:layout_alignParentEnd="true"
         tools:ignore="MissingConstraints" />
 
-    <Button
+
+    <ImageButton
         android:id="@+id/AjustesButton"
-        style="?attr/materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/VerdeFont"
-        android:contentDescription="@string/boton_de_ajustes"
-        app:icon="@android:drawable/ic_menu_manage"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.957"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.039"
+        app:srcCompat="@drawable/engranaje" />
 
     <ImageView
         android:id="@+id/appLogo"
@@ -93,7 +94,7 @@
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.221"
+            app:layout_constraintVertical_bias="0.748"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
@@ -111,7 +112,7 @@
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.397"
+            app:layout_constraintVertical_bias="0.218"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
@@ -129,7 +130,7 @@
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.57"
+            app:layout_constraintVertical_bias="0.394"
             app:strokeColor="@color/VerdeFont" />
 
         <Button
@@ -163,8 +164,24 @@
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.756"
+            app:layout_constraintVertical_bias="0.564"
             app:strokeColor="@color/VerdeFont" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/ibInfo"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039"
+        app:srcCompat="@drawable/informacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

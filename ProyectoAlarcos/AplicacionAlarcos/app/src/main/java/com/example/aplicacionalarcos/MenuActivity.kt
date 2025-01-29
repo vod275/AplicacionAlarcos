@@ -3,7 +3,6 @@ package com.example.aplicacionalarcos
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +15,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
 
@@ -43,6 +43,7 @@ class MenuActivity : AppCompatActivity() {
             binding.InfoNutriButton,
             binding.UltimasComidasButton,
             binding.AjustesButton,
+            binding.ibInfo,
             binding.obAtras,
             binding.AddIngredienteButton
             // Añade más botones aquí, como binding.InfoNutriButton o binding.UltimasComidasButton si están en tu layout
@@ -185,7 +186,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     // Función para iniciar las Animaciones
-    private fun iniciarAnimacion(button: Button) {
+    private fun iniciarAnimacion(button: View) {
         // Animación de escala (aumenta y vuelve al tamaño original)
         val scaleUp = ObjectAnimator.ofPropertyValuesHolder(
             button,
