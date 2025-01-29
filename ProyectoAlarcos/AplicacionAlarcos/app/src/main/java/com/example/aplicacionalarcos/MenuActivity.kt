@@ -18,6 +18,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
+import com.example.aplicacionalarcos.fragmentInfo.ViewTab
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
@@ -97,6 +98,13 @@ class MenuActivity : AppCompatActivity() {
 
         binding.AjustesButton.setOnClickListener {
            navigateToPrefilActivity()
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
+        binding.ibInfo.setOnClickListener{
+            val intent = Intent(this, ViewTab::class.java)
+            startActivity(intent)
+            // Agregar animación
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }

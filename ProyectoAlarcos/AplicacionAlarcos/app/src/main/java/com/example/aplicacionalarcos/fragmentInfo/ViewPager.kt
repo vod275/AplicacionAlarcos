@@ -1,4 +1,4 @@
-package fragmentInfo
+package com.example.aplicacionalarcos.fragmentInfo
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
