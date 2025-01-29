@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
@@ -19,9 +20,8 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
     inner class ComidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombreTextView: TextView = itemView.findViewById(R.id.comidaNombre)
         val ingredientesTextView: TextView = itemView.findViewById(R.id.comidaIngredientes)
-
+        val linearLayout: ConstraintLayout = itemView.findViewById(R.id.linearLayout) // Asegúrate de que este ID exista en el XML
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidaViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.comida_item, parent, false)
@@ -42,6 +42,13 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                 holder.itemView.context.getColor(R.color.swicth) // Color para seleccionado
             else
                 holder.itemView.context.getColor(R.color.VerdeFont) // Color para no seleccionado
+        )
+
+        holder.linearLayout.setBackgroundColor(
+            if (selectedItems.contains(position))
+                ContextCompat.getColor(holder.itemView.context, R.color.swicth) // Color seleccionado
+            else
+                ContextCompat.getColor(holder.itemView.context, R.color.VerdeFont) // Color normal
         )
 
         // Evento de clic corto para seleccionar/desmarcar

@@ -21,11 +21,10 @@
         tools:ignore="MissingConstraints" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVNuevasComidas"
         android:layout_width="324dp"
-        android:layout_height="501dp"
+        android:layout_height="426dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +49,7 @@
         android:id="@+id/tvNombreReceta"
         android:layout_width="281dp"
         android:layout_height="wrap_content"
-        android:hint="Introduce el nombre de la receta"
+        android:hint="@string/introduce_el_nombre_de_la_receta"
         android:textColorHint="@color/VerdeFont"
         app:boxStrokeColor="@color/VerdeFont"
         app:cursorColor="@color/VerdeFont"
@@ -60,7 +59,7 @@
         app:hintTextColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.669"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.046">
@@ -69,6 +68,8 @@
             android:id="@+id/EtNombrePlato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:background="@android:color/white"
             android:inputType="textCapWords"
             android:textColor="@color/VerdeFont"
             android:textSelectHandle="@drawable/cursor"
@@ -76,20 +77,18 @@
             android:textSelectHandleRight="@drawable/cursor" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <Button
         android:id="@+id/obAnadirIngredientes"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="173dp"
         android:layout_height="55dp"
-        android:text="Añadir Ingredientes"
+        android:text="@string/a_adir_ingredientes"
         android:textColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.819"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958"
+        app:layout_constraintVertical_bias="0.918"
         app:strokeColor="@color/VerdeFont" />
 
     <Button
@@ -97,29 +96,28 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="173dp"
         android:layout_height="55dp"
-        android:text="Añadir Comida"
+        android:text="@string/a_adir_comida"
         android:textColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.823"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876"
+        app:layout_constraintVertical_bias="0.821"
         app:strokeColor="@color/VerdeFont" />
 
     <Button
         android:id="@+id/obAtras2"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="87dp"
+        android:layout_height="55dp"
         android:text="@string/atras"
         android:textColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925"
+        app:layout_constraintVertical_bias="0.918"
         app:strokeColor="@color/VerdeFont" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

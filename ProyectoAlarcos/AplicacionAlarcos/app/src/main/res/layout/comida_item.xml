@@ -12,8 +12,8 @@
 
     <ImageButton
         android:id="@+id/appLogo"
-        android:layout_width="88dp"
-        android:layout_height="92dp"
+        android:layout_width="73dp"
+        android:layout_height="79dp"
         android:background="@drawable/logoapp"
         android:contentDescription="@string/logo_de_la_app"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,10 +23,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
-        android:layout_width="273dp"
-        android:layout_height="110dp"
+        android:layout_width="255dp"
+        android:layout_height="112dp"
         android:background="@color/VerdeFont"
         android:orientation="vertical"
         android:padding="16dp"
@@ -41,23 +41,33 @@
             android:id="@+id/comidaNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
             android:text="Comida Nombre"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/comidaIngredientes"
-            android:layout_width="251dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
+            android:layout_width="234dp"
+            android:layout_height="48dp"
             android:text="Ingredientes"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/divider"

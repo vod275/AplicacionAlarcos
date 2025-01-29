@@ -78,4 +78,7 @@
     <string name="edad_no_disponible">Edad no disponible</string>
     <string name="volver">Volver</string>
     <string name="guardar">Guardar</string>
+    <string name="introduce_el_nombre_de_la_receta">Introduce el nombre de la receta</string>
+    <string name="a_adir_ingredientes">Añadir Ingredientes</string>
+    <string name="a_adir_comida">Añadir Comida</string>
 </resources>
