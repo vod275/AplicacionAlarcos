@@ -47,13 +47,15 @@ class ActivityIngredientes : AppCompatActivity() {
             // Guardar en Firestore con un ID automático
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection("ingredientes")
-                .add(ingredienteData) // Firestore generará un ID único
+                .add(ingredienteData)
                 .addOnSuccessListener { documentReference ->
-                    Toast.makeText(
-                        this,
-                        "Ingrediente guardado con ID: ${documentReference.id}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.etSal.text?.clear()
+                    binding.etGrasas.text?.clear()
+                    binding.etCarbohidratos.text?.clear()
+                    binding.etProteinas.text?.clear()
+                    binding.etValorEnergetico.text?.clear()
+                    binding.etNombre.text?.clear()
+
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()

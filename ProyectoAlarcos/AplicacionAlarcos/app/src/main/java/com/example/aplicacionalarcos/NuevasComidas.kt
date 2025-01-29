@@ -18,6 +18,7 @@ class NuevasComidas : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var binding: ActivityNuevasComidasBinding
     private lateinit var adapter: NuevaComidaAdapter // Adaptador para el RecyclerView
+    private val listaIngredientes = mutableListOf<Ingrediente>() // Lista mutable para actualizar dinámicamente
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +52,11 @@ class NuevasComidas : AppCompatActivity() {
         // Obtener y mostrar los ingredientes
         obtenerIngredientes()
 
+        // Configurar el botón para eliminar ingredientes seleccionados
+        binding.obBorrar.setOnClickListener {
+            eliminarIngredientesSeleccionados()
+        }
+
         // Configurar el botón para guardar los seleccionados y enviarlos a otra actividad
         binding.obAnadirComida.setOnClickListener {
             if (::adapter.isInitialized) {
@@ -78,12 +84,14 @@ class NuevasComidas : AppCompatActivity() {
         }
     }
 
+    // Función para obtener ingredientes desde Firestore
     private fun obtenerIngredientes() {
         db.collection("ingredientes")
             .get()
             .addOnSuccessListener { result ->
-                val listaIngredientes = mutableListOf<Ingrediente>()
+                listaIngredientes.clear() // Limpiar la lista antes de agregar nuevos datos
                 for (document in result) {
+                    val id = document.id // Obtener el ID único del documento
                     val nombre = document.getString("nombre") ?: "Sin nombre"
                     val carbohidratos = document.getString("carbohidratos")?.toDoubleOrNull() ?: 0.0
                     val grasas = document.getString("grasas")?.toDoubleOrNull() ?: 0.0
@@ -91,9 +99,9 @@ class NuevasComidas : AppCompatActivity() {
                     val sal = document.getString("sal")?.toDoubleOrNull() ?: 0.0
                     val valorEnergetico = document.getString("valorEnergetico")?.toDoubleOrNull() ?: 0.0
 
-
                     listaIngredientes.add(
                         Ingrediente(
+                            id = id, // Guardar el ID único
                             nombre = nombre,
                             valorEnergeticoPor100g = valorEnergetico,
                             proteinasPor100g = proteinas,
@@ -105,8 +113,7 @@ class NuevasComidas : AppCompatActivity() {
                 }
 
                 // Inicializar y asignar el adaptador al RecyclerView
-                adapter = NuevaComidaAdapter(listaIngredientes) { ingrediente ->
-                    // Manejar el clic en un ingrediente
+                adapter = NuevaComidaAdapter(binding, listaIngredientes) { ingrediente ->
                     Toast.makeText(this, "Seleccionaste: ${ingrediente.nombre}", Toast.LENGTH_SHORT).show()
                 }
                 binding.RVNuevasComidas.adapter = adapter
@@ -118,4 +125,35 @@ class NuevasComidas : AppCompatActivity() {
             }
     }
 
+    // Función para eliminar los ingredientes seleccionados de Firestore
+    private fun eliminarIngredientesSeleccionados() {
+        if (!::adapter.isInitialized) {
+            Toast.makeText(this, "Espere a que se carguen los ingredientes.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val ingredientesAEliminar = adapter.getSeleccionados()
+
+        if (ingredientesAEliminar.isEmpty()) {
+            Toast.makeText(this, "No has seleccionado ningún ingrediente.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        for (ingrediente in ingredientesAEliminar) {
+            db.collection("ingredientes")
+                .document(ingrediente.id) // Usamos el ID único para eliminar
+                .delete()
+                .addOnSuccessListener {
+                    Log.d("Firestore", "Ingrediente ${ingrediente.nombre} eliminado correctamente")
+                }
+                .addOnFailureListener { e ->
+                    Log.e("Firestore", "Error al eliminar ${ingrediente.nombre}: ${e.message}")
+                }
+        }
+
+        // Eliminar de la lista local y actualizar la UI
+        listaIngredientes.removeAll(ingredientesAEliminar)
+        adapter.notifyDataSetChanged()
+        Toast.makeText(this, "Ingredientes eliminados.", Toast.LENGTH_SHORT).show()
+    }
 }

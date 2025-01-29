@@ -21,6 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.OAuthProvider
 import com.google.firebase.auth.TwitterAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import objetos.UserSession
 
 private const val RC_SIGN_IN = 9001
 
@@ -179,6 +180,8 @@ class MainActivity : AppCompatActivity() {
         if (user != null) {
             val userEmail = user.email
             val userName = user.displayName ?: "Usuario sin nombre"
+            UserSession.email = userEmail
+            UserSession.nombre= userName
             saveUserToFirestore(userEmail, userName)
 
             showToast(getString(R.string.bienvenido, userName))
