@@ -2,6 +2,7 @@ package adaptadorUltimasComidas
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,14 +63,50 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
             val dialog = AlertDialog.Builder(context)
                 .setTitle("Opciones para ${comida.nombre}")
                 .setMessage("¿Qué acción quieres realizar con este elemento?")
-                .setNegativeButton("Eliminar") { _, _ ->
+                .setPositiveButton("Ver detalles") { _, _ ->
+                    mostrarDetalles(comida, context)
+                }
+                .setNegativeButton("Eliminar elemento") { _, _ ->
                     eliminarPlatoPorNombreDocumento(nombreDocumento, position, context)
                 }
                 .setNeutralButton("Cancelar") { dialog, _ -> dialog.dismiss() }
                 .create()
 
+            personalizarDialogo(dialog, context)
             dialog.show()
             true
+        }
+    }
+
+    private fun mostrarDetalles(comida: Plato, context: Context) {
+        val detalles = comida.ingredientes.zip(comida.cantidad)
+            .joinToString("\n") { (ingrediente, cantidad) ->
+                "${ingrediente.nombre}: $cantidad"
+            }
+
+        val detallesDialog = AlertDialog.Builder(context)
+            .setTitle("Detalles de ${comida.nombre}")
+            .setMessage(detalles)
+            .setPositiveButton("Cerrar") { d, _ -> d.dismiss() }
+            .create()
+
+        personalizarDialogo(detallesDialog, context)
+        detallesDialog.show()
+    }
+
+    private fun personalizarDialogo(dialog: AlertDialog, context: Context) {
+        dialog.setOnShowListener {
+            val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+            val neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+            val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont)
+
+            positiveButton?.setTextColor(buttonColor)
+            negativeButton?.setTextColor(buttonColor)
+            neutralButton?.setTextColor(buttonColor)
+
+            val backgroundColor = ContextCompat.getColor(context, R.color.swicth)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
         }
     }
 

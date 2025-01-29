@@ -1,6 +1,7 @@
 package com.example.aplicacionalarcos
 
 import adaptadorNuevasComidas.CantidadesIngredientesAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -46,6 +47,10 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
         // Botón para confirmar las cantidades
         binding.btnAccept.setOnClickListener {
             confirmarCantidades(ingredientesSeleccionados, nombrePlato)
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
         }
     }
 
