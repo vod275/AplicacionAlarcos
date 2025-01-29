@@ -11,9 +11,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
-import modelosUltimasComidas.Comida
+import modelosNuevasComidas.Plato
+import modelosNuevasComidas.Ingrediente
 
-class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
+class ComidaAdapter(private val comidas: MutableList<Plato>) : RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
 
     private val selectedItems = mutableSetOf<Int>() // Índices de elementos seleccionados
 
@@ -22,6 +23,7 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
         val ingredientesTextView: TextView = itemView.findViewById(R.id.comidaIngredientes)
         val linearLayout: ConstraintLayout = itemView.findViewById(R.id.linearLayout) // Asegúrate de que este ID exista en el XML
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidaViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.comida_item, parent, false)
@@ -31,25 +33,20 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ComidaViewHolder, position: Int) {
         val comida = comidas[position]
 
-        holder.nombreTextView.text = comida.Nombre
-        val ingredientesTexto = comida.ingredientes.joinToString(", ") { it.nombre }
+        holder.nombreTextView.text = comida.nombre
+
+        // Adaptar para usar el nuevo modelo
+        val ingredientesTexto = comida.ingredientes.zip(comida.cantidad)
+            .joinToString(", ") { (ingrediente, cantidad) -> "${ingrediente.nombre}: $cantidad" }
         holder.ingredientesTextView.text = "Ingredientes: $ingredientesTexto"
 
+        val color = if (selectedItems.contains(position))
+            ContextCompat.getColor(holder.itemView.context, R.color.swicth)
+        else
+            ContextCompat.getColor(holder.itemView.context, R.color.VerdeFont)
 
-        // Cambiar el fondo del item según si está seleccionado
-        holder.itemView.setBackgroundColor(
-            if (selectedItems.contains(position))
-                holder.itemView.context.getColor(R.color.swicth) // Color para seleccionado
-            else
-                holder.itemView.context.getColor(R.color.VerdeFont) // Color para no seleccionado
-        )
-
-        holder.linearLayout.setBackgroundColor(
-            if (selectedItems.contains(position))
-                ContextCompat.getColor(holder.itemView.context, R.color.swicth) // Color seleccionado
-            else
-                ContextCompat.getColor(holder.itemView.context, R.color.VerdeFont) // Color normal
-        )
+        holder.itemView.setBackgroundColor(color)
+        holder.linearLayout.setBackgroundColor(color)
 
         // Evento de clic corto para seleccionar/desmarcar
         holder.itemView.setOnClickListener {
@@ -66,16 +63,17 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
             val context = holder.itemView.context
 
             val dialog = AlertDialog.Builder(context)
-                .setTitle("Opciones para ${comida.Nombre}")
+                .setTitle("Opciones para ${comida.nombre}")
                 .setMessage("¿Qué acción quieres realizar con este elemento?")
                 .setPositiveButton("Ver detalles") { _, _ ->
                     // Mostrar detalles
-                    val detalles = comida.ingredientes.joinToString("\n") {
-                        "${it.nombre}: ${it.cantidad}"
-                    }
+                    val detalles = comida.ingredientes.zip(comida.cantidad)
+                        .joinToString("\n") { (ingrediente, cantidad) ->
+                            "${ingrediente.nombre}: $cantidad"
+                        }
 
                     val detallesDialog = AlertDialog.Builder(context)
-                        .setTitle("Detalles de ${comida.Nombre}")
+                        .setTitle("Detalles de ${comida.nombre}")
                         .setMessage(detalles)
                         .setPositiveButton("Cerrar") { d, _ -> d.dismiss() }
                         .create()
@@ -93,7 +91,11 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                 }
                 .setNegativeButton("Eliminar elemento") { _, _ ->
                     // Eliminar elemento
-                    comidas.removeAt(position)
+                    if (position in comidas.indices) {
+                        comidas.removeAt(position)
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position, comidas.size)
+                    }
 
                     // Actualizar índices en `selectedItems`
                     val updatedSelectedItems = mutableSetOf<Int>()
@@ -104,16 +106,14 @@ class ComidaAdapter(private val comidas: MutableList<Comida>) : RecyclerView.Ada
                             updatedSelectedItems.add(index - 1) // Ajustar índices después de la posición eliminada
                         }
                     }
-                    selectedItems.clear()
-                    selectedItems.addAll(updatedSelectedItems)
 
                     // Notificar al RecyclerView del cambio
-                    notifyItemRemoved(position)
-                    notifyItemRangeChanged(position, comidas.size)
+                    selectedItems.clear() // Limpiar la selección tras eliminar
+                    notifyDataSetChanged() // Actualizar la lista
 
                     Toast.makeText(
                         context,
-                        "${comida.Nombre} eliminado",
+                        "${comida.nombre} eliminado",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
