@@ -157,33 +157,47 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/ibInfo"
-        android:layout_width="36dp"
-        android:layout_height="40dp"
-        android:adjustViewBounds="true"
+        android:id="@+id/ibMenu"
+        android:layout_width="57dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="12dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.039"
+        app:srcCompat="@drawable/menu4" />
+
+    <ImageButton
+        android:id="@+id/ibInfo"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053"
         app:srcCompat="@drawable/informacion" />
 
     <ImageButton
         android:id="@+id/AjustesButton"
         android:layout_width="36dp"
         android:layout_height="40dp"
-        android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039"
+        app:layout_constraintVertical_bias="0.053"
         app:srcCompat="@drawable/engranaje" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,7 @@ import com.example.aplicacionalarcos.fragmentInfo.ViewTab
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
     private lateinit var auth: FirebaseAuth // Declarar FirebaseAuth
+    private var menuAbierto = false // Estado del menú
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -106,6 +107,15 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
             // Agregar animación
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
+        binding.ibMenu.setOnClickListener {
+            if (menuAbierto) {
+                cerrarMenu()
+            } else {
+                abrirMenu()
+            }
+            menuAbierto = !menuAbierto
         }
     }
 
@@ -222,5 +232,35 @@ class MenuActivity : AppCompatActivity() {
             })
             start()
         }
+    }
+
+
+    private fun abrirMenu() {
+        binding.ibInfo.visibility = View.VISIBLE
+        binding.AjustesButton.visibility = View.VISIBLE
+
+        val animInfo = ObjectAnimator.ofFloat(binding.ibInfo, "translationX", 0f, -370f)
+        val animAjustes = ObjectAnimator.ofFloat(binding.AjustesButton, "translationX", 0f, -170f)
+
+        animInfo.duration = 300
+        animAjustes.duration = 300
+
+        animInfo.start()
+        animAjustes.start()
+    }
+
+    private fun cerrarMenu() {
+        val animInfo = ObjectAnimator.ofFloat(binding.ibInfo, "translationX", -370f, 0f)
+        val animAjustes = ObjectAnimator.ofFloat(binding.AjustesButton, "translationX", -170f, 0f)
+
+        animInfo.duration = 300
+        animAjustes.duration = 300
+
+        animInfo.start()
+        animAjustes.start()
+
+        // Retrasa la invisibilidad para que la animación se vea
+        binding.ibInfo.postDelayed({ binding.ibInfo.visibility = View.INVISIBLE }, 300)
+        binding.AjustesButton.postDelayed({ binding.AjustesButton.visibility = View.INVISIBLE }, 300)
     }
 }

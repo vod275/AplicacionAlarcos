@@ -62,11 +62,11 @@
 
     <ImageButton
         android:id="@+id/ibFoto"
-        android:layout_width="224dp"
-        android:layout_height="236dp"
+        android:layout_width="167dp"
+        android:layout_height="248dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/victor"
+        android:src="@drawable/manue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
