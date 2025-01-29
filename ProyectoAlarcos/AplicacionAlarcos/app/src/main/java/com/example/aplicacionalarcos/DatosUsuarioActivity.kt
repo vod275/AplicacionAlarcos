@@ -56,7 +56,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
 
         // Mostrar el email del usuario
-        binding.tvCorreo.text = UserSession.nombre ?: getString(R.string.usuario_no_disponible)
+        binding.tvCorreo.text = UserSession.email ?: getString(R.string.usuario_no_disponible)
 
         // El icono del calendario es un botón para mostrar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
