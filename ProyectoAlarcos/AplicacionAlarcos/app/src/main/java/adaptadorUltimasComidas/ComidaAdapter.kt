@@ -1,7 +1,7 @@
 package adaptadorUltimasComidas
 
 import android.app.AlertDialog
-import android.graphics.drawable.ColorDrawable
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +11,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
+import com.google.firebase.firestore.FirebaseFirestore
 import modelosNuevasComidas.Plato
-import modelosNuevasComidas.Ingrediente
 
-class ComidaAdapter(private val comidas: MutableList<Plato>) : RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
+class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
 
-    private val selectedItems = mutableSetOf<Int>() // Índices de elementos seleccionados
+    private val selectedItems = mutableSetOf<Int>()
 
     inner class ComidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombreTextView: TextView = itemView.findViewById(R.id.comidaNombre)
         val ingredientesTextView: TextView = itemView.findViewById(R.id.comidaIngredientes)
-        val linearLayout: ConstraintLayout = itemView.findViewById(R.id.linearLayout) // Asegúrate de que este ID exista en el XML
+        val linearLayout: ConstraintLayout = itemView.findViewById(R.id.linearLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidaViewHolder {
@@ -31,11 +31,10 @@ class ComidaAdapter(private val comidas: MutableList<Plato>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ComidaViewHolder, position: Int) {
-        val comida = comidas[position]
+        val (nombreDocumento, comida) = comidas[position]
 
         holder.nombreTextView.text = comida.nombre
 
-        // Adaptar para usar el nuevo modelo
         val ingredientesTexto = comida.ingredientes.zip(comida.cantidad)
             .joinToString(", ") { (ingrediente, cantidad) -> "${ingrediente.nombre}: $cantidad" }
         holder.ingredientesTextView.text = "Ingredientes: $ingredientesTexto"
@@ -48,108 +47,74 @@ class ComidaAdapter(private val comidas: MutableList<Plato>) : RecyclerView.Adap
         holder.itemView.setBackgroundColor(color)
         holder.linearLayout.setBackgroundColor(color)
 
-        // Evento de clic corto para seleccionar/desmarcar
         holder.itemView.setOnClickListener {
             if (selectedItems.contains(position)) {
                 selectedItems.remove(position)
             } else {
                 selectedItems.add(position)
             }
-            notifyItemChanged(position) // Actualizar visualmente el item
+            notifyItemChanged(position)
         }
 
-        // Evento de clic largo para mostrar diálogo con opciones
         holder.itemView.setOnLongClickListener {
             val context = holder.itemView.context
 
             val dialog = AlertDialog.Builder(context)
                 .setTitle("Opciones para ${comida.nombre}")
                 .setMessage("¿Qué acción quieres realizar con este elemento?")
-                .setPositiveButton("Ver detalles") { _, _ ->
-                    // Mostrar detalles
-                    val detalles = comida.ingredientes.zip(comida.cantidad)
-                        .joinToString("\n") { (ingrediente, cantidad) ->
-                            "${ingrediente.nombre}: $cantidad"
-                        }
-
-                    val detallesDialog = AlertDialog.Builder(context)
-                        .setTitle("Detalles de ${comida.nombre}")
-                        .setMessage(detalles)
-                        .setPositiveButton("Cerrar") { d, _ -> d.dismiss() }
-                        .create()
-
-                    // Personalización del fondo y color del botón
-                    detallesDialog.setOnShowListener {
-                        val positiveButton = detallesDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                        val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont)
-                        positiveButton.setTextColor(buttonColor)
-                        val backgroundColor = ContextCompat.getColor(context, R.color.swicth)
-                        detallesDialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
-                    }
-
-                    detallesDialog.show()
-                }
-                .setNegativeButton("Eliminar elemento") { _, _ ->
-                    // Eliminar elemento
-                    if (position in comidas.indices) {
-                        comidas.removeAt(position)
-                        notifyItemRemoved(position)
-                        notifyItemRangeChanged(position, comidas.size)
-                    }
-
-                    // Actualizar índices en `selectedItems`
-                    val updatedSelectedItems = mutableSetOf<Int>()
-                    for (index in selectedItems) {
-                        if (index < position) {
-                            updatedSelectedItems.add(index) // Índices antes de la posición eliminada no cambian
-                        } else if (index > position) {
-                            updatedSelectedItems.add(index - 1) // Ajustar índices después de la posición eliminada
-                        }
-                    }
-
-                    // Notificar al RecyclerView del cambio
-                    selectedItems.clear() // Limpiar la selección tras eliminar
-                    notifyDataSetChanged() // Actualizar la lista
-
-                    Toast.makeText(
-                        context,
-                        "${comida.nombre} eliminado",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                .setNegativeButton("Eliminar") { _, _ ->
+                    eliminarPlatoPorNombreDocumento(nombreDocumento, position, context)
                 }
                 .setNeutralButton("Cancelar") { dialog, _ -> dialog.dismiss() }
                 .create()
 
-            // Personalización al mostrar el diálogo
-            dialog.setOnShowListener {
-                val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-                val neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
-                val buttonColor = ContextCompat.getColor(context, R.color.VerdeFont)
-                positiveButton.setTextColor(buttonColor)
-                negativeButton.setTextColor(buttonColor)
-                neutralButton.setTextColor(buttonColor)
-                val backgroundColor = ContextCompat.getColor(context, R.color.swicth)
-                dialog.window?.setBackgroundDrawable(ColorDrawable(backgroundColor))
-            }
-
             dialog.show()
-
-            true // Indicar que el evento ha sido consumido
+            true
         }
     }
 
-    override fun getItemCount(): Int {
-        return comidas.size
+    override fun getItemCount(): Int = comidas.size
+
+    private fun eliminarPlatoPorNombreDocumento(nombreDocumento: String, position: Int, context: Context) {
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("platos").document(nombreDocumento)
+            .delete()
+            .addOnSuccessListener {
+                if (position in comidas.indices) {
+                    comidas.removeAt(position)
+                    notifyItemRemoved(position)
+                    notifyItemRangeChanged(position, comidas.size)
+                }
+                Toast.makeText(context, "Plato eliminado correctamente", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(context, "Error al eliminar: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
-    // Método para eliminar los elementos seleccionados
     fun eliminarSeleccionados() {
-        val indicesParaEliminar = selectedItems.sortedDescending() // Ordenar de mayor a menor
-        for (i in indicesParaEliminar) {
-            comidas.removeAt(i)
+        val db = FirebaseFirestore.getInstance()
+        val indicesParaEliminar = selectedItems.sortedDescending()
+
+        for (index in indicesParaEliminar) {
+            if (index in comidas.indices) {
+                val nombreDocumento = comidas[index].first
+
+                db.collection("platos").document(nombreDocumento)
+                    .delete()
+                    .addOnSuccessListener {
+                        println("Plato eliminado correctamente: $nombreDocumento")
+                    }
+                    .addOnFailureListener { exception ->
+                        println("Error al eliminar: ${exception.message}")
+                    }
+
+                comidas.removeAt(index)
+            }
         }
-        selectedItems.clear() // Limpiar selección tras eliminar
-        notifyDataSetChanged() // Actualizar la lista
+
+        selectedItems.clear()
+        notifyDataSetChanged()
     }
 }

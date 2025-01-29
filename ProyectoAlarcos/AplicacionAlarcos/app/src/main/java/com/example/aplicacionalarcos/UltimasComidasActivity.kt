@@ -13,12 +13,11 @@ import com.example.aplicacionalarcos.databinding.ActivityUltimasComidasBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import modelosNuevasComidas.Plato
 
-
 class UltimasComidasActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUltimasComidasBinding
     private lateinit var comidaAdapter: ComidaAdapter
     private val db = FirebaseFirestore.getInstance()
-    private val listaComidas = mutableListOf<Plato>()
+    private val listaComidas = mutableListOf<Pair<String, Plato>>() // Guardamos (nombreDocumento, Plato)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,7 @@ class UltimasComidasActivity : AppCompatActivity() {
         }
 
         // Configurar RecyclerView
-        comidaAdapter = ComidaAdapter(listaComidas) // Pasamos listaComidas al adaptador
+        comidaAdapter = ComidaAdapter(listaComidas)
         binding.RVComidas.adapter = comidaAdapter
         binding.RVComidas.layoutManager = LinearLayoutManager(this)
 
@@ -65,19 +64,18 @@ class UltimasComidasActivity : AppCompatActivity() {
     }
 
     private fun cargarComidasDesdeFirebase() {
-        db.collection("platos") // Asegúrate de que esta colección existe en Firestore
+        db.collection("platos")
             .get()
             .addOnSuccessListener { documents ->
-                listaComidas.clear() // Limpiar la lista antes de agregar nuevos elementos
+                listaComidas.clear()
                 for (document in documents) {
                     val comida = document.toObject(Plato::class.java)
-                    listaComidas.add(comida) // Agregar el plato a la lista
+                    listaComidas.add(Pair(document.id, comida)) // Guardamos el nombre del documento
                 }
-                comidaAdapter.notifyDataSetChanged() // Notificar al adaptador para que actualice el RecyclerView
+                comidaAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(this, "Error al cargar las comidas: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }
-
