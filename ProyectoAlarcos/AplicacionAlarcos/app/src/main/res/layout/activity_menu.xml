@@ -199,5 +199,20 @@
         app:layout_constraintVertical_bias="0.053"
         app:srcCompat="@drawable/engranaje" />
 
+    <ImageButton
+        android:id="@+id/VideoButton"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053"
+        app:srcCompat="@drawable/reproduccion" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,6 +109,13 @@ class MenuActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
+        binding.VideoButton.setOnClickListener {
+            val intent = Intent(this, VideoTutorial::class.java)
+            startActivity(intent)
+            // Agregar animación
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
         binding.ibMenu.setOnClickListener {
             if (menuAbierto) {
                 cerrarMenu()
@@ -238,29 +245,36 @@ class MenuActivity : AppCompatActivity() {
     private fun abrirMenu() {
         binding.ibInfo.visibility = View.VISIBLE
         binding.AjustesButton.visibility = View.VISIBLE
+       binding.VideoButton.visibility = View.VISIBLE
 
         val animInfo = ObjectAnimator.ofFloat(binding.ibInfo, "translationX", 0f, -370f)
         val animAjustes = ObjectAnimator.ofFloat(binding.AjustesButton, "translationX", 0f, -170f)
-
+        val animVideo = ObjectAnimator.ofFloat(binding.VideoButton, "translationX", 0f, -570f)
         animInfo.duration = 300
         animAjustes.duration = 300
+        animVideo.duration = 300
 
         animInfo.start()
         animAjustes.start()
+        animVideo.start()
     }
 
     private fun cerrarMenu() {
         val animInfo = ObjectAnimator.ofFloat(binding.ibInfo, "translationX", -370f, 0f)
         val animAjustes = ObjectAnimator.ofFloat(binding.AjustesButton, "translationX", -170f, 0f)
+        val animVideo = ObjectAnimator.ofFloat(binding.VideoButton, "translationX", -570f, 0f)
 
         animInfo.duration = 300
         animAjustes.duration = 300
+        animVideo.duration = 300
 
         animInfo.start()
         animAjustes.start()
+        animVideo.start()
 
         // Retrasa la invisibilidad para que la animación se vea
         binding.ibInfo.postDelayed({ binding.ibInfo.visibility = View.INVISIBLE }, 300)
         binding.AjustesButton.postDelayed({ binding.AjustesButton.visibility = View.INVISIBLE }, 300)
+        binding.VideoButton.postDelayed({ binding.VideoButton.visibility = View.INVISIBLE }, 300)
     }
 }

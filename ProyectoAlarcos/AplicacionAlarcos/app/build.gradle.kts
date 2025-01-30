@@ -53,7 +53,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.google.firebase.analytics)
     implementation(libs.play.services.auth)
-
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
