@@ -5,12 +5,17 @@ import android.content.res.Configuration
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.aplicacionalarcos.databinding.ActivityAjustesBinding
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import objetos.UserSession
 import java.util.Date
 import java.util.Locale
 
@@ -21,14 +26,17 @@ class AjustesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityAjustesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Cargar el idioma guardado
         currentLanguage = loadLanguage()
         applyLanguage(currentLanguage)
 
         enableEdgeToEdge()
-        binding = ActivityAjustesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        // Cargar la foto del usuario en el ImageView
+        loadUserProfileImage()
 
         val nombre = intent.getStringExtra("nombre") ?: getString(R.string.nombre_no_disponible)
         val apellidos = intent.getStringExtra("apellidos") ?: getString(R.string.nombre_no_disponible)
@@ -38,10 +46,13 @@ class AjustesActivity : AppCompatActivity() {
         binding.tvApellidosAjustes.text = apellidos
 
         if (fechaNacimiento != getString(R.string.nombre_no_disponible)) {
-            val fechaNacimientoDate =
-                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(fechaNacimiento)
-            val edad = calcularEdad(fechaNacimientoDate)
-            binding.tvEdad.text = getString(R.string.edad_con_años, edad)
+            try {
+                val fechaNacimientoDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(fechaNacimiento)
+                val edad = fechaNacimientoDate?.let { calcularEdad(it) } ?: 0
+                binding.tvEdad.text = getString(R.string.edad_con_años, edad)
+            } catch (e: Exception) {
+                binding.tvEdad.text = getString(R.string.edad_no_disponible)
+            }
         } else {
             binding.tvEdad.text = getString(R.string.edad_no_disponible)
         }
@@ -84,20 +95,13 @@ class AjustesActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        // Guardar el idioma actual en el Bundle
         outState.putString("currentLanguage", currentLanguage)
     }
 
     private fun setupLanguageSelection() {
-        binding.RbSpanish.setOnClickListener {
-            changeLanguage("es")
-        }
-        binding.RBIngles.setOnClickListener {
-            changeLanguage("en")
-        }
-        binding.RBJapones.setOnClickListener {
-            changeLanguage("ja")
-        }
+        binding.RbSpanish.setOnClickListener { changeLanguage("es") }
+        binding.RBIngles.setOnClickListener { changeLanguage("en") }
+        binding.RBJapones.setOnClickListener { changeLanguage("ja") }
     }
 
     private fun setupThemeSwitch() {
@@ -111,7 +115,6 @@ class AjustesActivity : AppCompatActivity() {
             binding.SWTheme.text = getString(R.string.Claro)
         }
 
-        // Cambiar el tema al activar el Switch
         binding.SWTheme.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 setDarkMode()
@@ -124,9 +127,9 @@ class AjustesActivity : AppCompatActivity() {
     private fun changeLanguage(languageCode: String) {
         if (currentLanguage != languageCode) {
             currentLanguage = languageCode
-            saveLanguage(languageCode) // Guardar el idioma seleccionado
+            saveLanguage(languageCode)
             applyLanguage(languageCode)
-            recreate() // Reinicia la actividad para aplicar el idioma
+            recreate()
         }
     }
 
@@ -137,7 +140,7 @@ class AjustesActivity : AppCompatActivity() {
         val resources = resources
         val config = Configuration(resources.configuration)
         config.setLocale(locale)
-        createConfigurationContext(config)  // Esto asegura que el idioma se aplique correctamente
+        createConfigurationContext(config)
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
@@ -149,7 +152,6 @@ class AjustesActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
-    // Guardar el idioma seleccionado en SharedPreferences
     private fun saveLanguage(languageCode: String) {
         val sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE)
         with(sharedPreferences.edit()) {
@@ -158,13 +160,11 @@ class AjustesActivity : AppCompatActivity() {
         }
     }
 
-    // Cargar el idioma guardado desde SharedPreferences
     private fun loadLanguage(): String {
         val sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE)
-        return sharedPreferences.getString("language", "it") ?: "it" // Por defecto "it"
+        return sharedPreferences.getString("language", "it") ?: "it"
     }
 
-    // Función para calcular la edad
     private fun calcularEdad(fechaNacimiento: Date): Int {
         val today = Calendar.getInstance()
         val birthDate = Calendar.getInstance()
@@ -172,12 +172,38 @@ class AjustesActivity : AppCompatActivity() {
 
         var edad = today.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR)
 
-        // Si no ha pasado el cumpleaños de este año, restamos 1
         if (today.get(Calendar.MONTH) < birthDate.get(Calendar.MONTH) ||
             (today.get(Calendar.MONTH) == birthDate.get(Calendar.MONTH) && today.get(Calendar.DAY_OF_MONTH) < birthDate.get(Calendar.DAY_OF_MONTH))) {
             edad--
         }
 
         return edad
+    }
+
+    /**
+     * Cargar la foto del usuario en el `ImageView FotoPrefil`
+     */
+    private fun loadUserProfileImage() {
+        val storageRef: StorageReference
+
+        // Determinar el nombre de la imagen según el email o nombre del usuario
+        val userIdentifier = UserSession.email ?: UserSession.nombre ?: "usuario"
+        val fileName = "FotosUsers/$userIdentifier.jpg"
+
+        storageRef = FirebaseStorage.getInstance().reference.child(fileName)
+
+        // Descargar la imagen desde Firebase Storage y cargarla con Glide
+        storageRef.downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(this)
+                .load(uri.toString())
+                .into(binding.FotoPrefil)
+        }.addOnFailureListener {
+            // Si no se encuentra la imagen, mostrar una por defecto
+            Glide.with(this)
+                .load(R.drawable.defecto) // Asegúrate de tener un recurso en drawable
+                .into(binding.FotoPrefil)
+
+            Toast.makeText(this, "No se encontró imagen de perfil", Toast.LENGTH_SHORT).show()
+        }
     }
 }

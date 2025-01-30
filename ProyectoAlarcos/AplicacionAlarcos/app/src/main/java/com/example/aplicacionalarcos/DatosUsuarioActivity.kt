@@ -16,32 +16,29 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.storage.FirebaseStorage
 import objetos.UserSession
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-private val REQUEST_CODE_CAMERA = 1001
+private const val REQUEST_CODE_CAMERA = 1001
 
 class DatosUsuarioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDatosUsuarioBinding
     private lateinit var currentPhotoPath: String
 
-    // Registrar el ActivityResultLauncher para la selección de imagen
+    // Selector de imagen desde galería
     private val selectImageResultLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            uri?.let {
-                handleImageSelection(it)
-            }
+            uri?.let { handleImageSelection(it) }
         }
 
-    // Registrar el ActivityResultLauncher para capturar una foto con la cámara
+    // Toma de foto con la cámara
     private val takePictureResultLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
-                val uri = Uri.fromFile(File(currentPhotoPath))
+                val file = File(currentPhotoPath)
+                val uri = Uri.fromFile(file)
                 handleImageSelection(uri)
             } else {
                 Toast.makeText(this, "No se tomó ninguna foto.", Toast.LENGTH_SHORT).show()
@@ -53,17 +50,15 @@ class DatosUsuarioActivity : AppCompatActivity() {
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Mostrar el email del usuario o su nombre
+        binding.tvCorreo.text = UserSession.nombre ?: UserSession.email
 
-
-        // Mostrar el email del usuario
-        binding.tvCorreo.text = UserSession.email ?: getString(R.string.usuario_no_disponible)
-
-        // El icono del calendario es un botón para mostrar la fecha
+        // Icono del calendario para seleccionar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
             showDatePickerDialog()
         }
 
-        // Botón atrás: cerrar sesión y volver al inicio
+        // Botón para ir atrás
         binding.obAtras.setOnClickListener {
             val intent = Intent(this, AjustesActivity::class.java)
             startActivity(intent)
@@ -76,10 +71,10 @@ class DatosUsuarioActivity : AppCompatActivity() {
             showImageOptions()
         }
 
+        // Botón de aceptar datos
         binding.btnAceptar.setOnClickListener {
-            val nombre =
-                binding.tvNombreAjustes.editText?.text.toString().takeIf { it.isNotEmpty() }
-                    ?: getString(R.string.nombre_no_disponible)
+            val nombre = binding.tvNombreAjustes.editText?.text.toString().takeIf { it.isNotEmpty() }
+                ?: getString(R.string.nombre_no_disponible)
             val apellidos = binding.tvApellidos.editText?.text.toString().takeIf { it.isNotEmpty() }
                 ?: getString(R.string.apellidos_no_disponibles)
             val fechaNacimiento =
@@ -87,19 +82,18 @@ class DatosUsuarioActivity : AppCompatActivity() {
                     ?: getString(R.string.fecha_no_disponible)
 
             if (nombre.isNotEmpty() && apellidos.isNotEmpty() && fechaNacimiento.isNotEmpty()) {
-                // Aquí puedes pasar los datos junto con la ruta de la imagen
                 val intent = Intent(this, AjustesActivity::class.java)
                 intent.putExtra("nombre", nombre)
                 intent.putExtra("apellidos", apellidos)
                 intent.putExtra("fechaNacimiento", fechaNacimiento)
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, getString(R.string.error_campos_vacios), Toast.LENGTH_SHORT)
                     .show()
             }
         }
     }
-
 
     private fun showImageOptions() {
         val options = arrayOf("Seleccionar desde galería", "Tomar una foto")
@@ -116,10 +110,8 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
     private fun checkCameraPermissionAndLaunch() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            // Solicitar el permiso de la cámara si no está concedido
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CODE_CAMERA)
         } else {
-            // Lanzar la cámara si el permiso ya está concedido
             launchCamera()
         }
     }
@@ -135,85 +127,64 @@ class DatosUsuarioActivity : AppCompatActivity() {
     }
 
     private fun createImageFile(): File {
-        val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val storageDir: File? = getExternalFilesDir(null)
-        return File.createTempFile("JPEG_${timestamp}_", ".jpg", storageDir).apply {
-            currentPhotoPath = absolutePath
-        }
+
+        // 🔹 Usar email o nombre como nombre de archivo único y fijo
+        val userIdentifier = UserSession.email ?: UserSession.nombre ?: "usuario"
+        val fileName = "Perfil_${userIdentifier}.jpg"
+
+        val photoFile = File(storageDir, fileName)
+
+        // 🔹 Asignar la ruta del archivo para su uso posterior
+        currentPhotoPath = photoFile.absolutePath
+
+        return photoFile
     }
 
     private fun handleImageSelection(uri: Uri) {
-        val imageSize = getFileSize(uri)
-        if (imageSize <= 50 * 1024 * 1024) { // Limitar a 50 MB
-            // Cargar la imagen en el ImageButton
-            binding.ibFotoPerfil.setImageURI(uri)
-
-            // Guardar la imagen en Firebase Storage
-            uploadImageToFirebase(uri)
-        } else {
-            Toast.makeText(this, "La imagen excede el tamaño máximo permitido de 50MB", Toast.LENGTH_SHORT).show()
-        }
+        binding.ibFotoPerfil.setImageURI(uri) // Mostrar la imagen en el botón
+        uploadImageToFirebase(uri)
     }
 
     private fun showDatePickerDialog() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText(getString(R.string.seleccionar_fecha))
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-            .setTheme(R.style.ThemeOverlay_App_DatePicker) // Aplica el tema personalizado
+            .setTheme(R.style.ThemeOverlay_App_DatePicker)
             .build()
 
         datePicker.show(supportFragmentManager, "datePicker")
         datePicker.addOnPositiveButtonClickListener {
             val selectedDate = it?.let { date ->
-                val calendar = Calendar.getInstance()
-                calendar.timeInMillis = date
-                val day = calendar.get(Calendar.DAY_OF_MONTH)
-                val month = calendar.get(Calendar.MONTH) + 1
-                val year = calendar.get(Calendar.YEAR)
-                "$year-$month-$day"
+                val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                format.format(Date(date))
             }
             binding.etFechaNacimiento.editText?.setText(selectedDate)
         }
     }
 
-    private fun getFileSize(uri: Uri): Long {
-        return try {
-            val fileDescriptor = contentResolver.openFileDescriptor(uri, "r")
-            val fileInputStream = FileInputStream(fileDescriptor?.fileDescriptor)
-            val size = fileInputStream.available().toLong()
-            fileInputStream.close()
-            size
-        } catch (e: IOException) {
-            e.printStackTrace()
-            0
-        }
-    }
-
     private fun uploadImageToFirebase(uri: Uri) {
         val storageRef = FirebaseStorage.getInstance().reference
-        val imagesRef = storageRef.child("FotosUsers/${System.currentTimeMillis()}.jpg")
+        val userIdentifier = UserSession.email ?: UserSession.nombre ?: "usuario"
+
+        // 🔹 Guardar la imagen con un nombre FIJO para sobreescribirla siempre
+        val imagesRef = storageRef.child("FotosUsers/$userIdentifier.jpg")
 
         imagesRef.putFile(uri)
             .addOnSuccessListener {
                 Toast.makeText(this, "Imagen subida exitosamente", Toast.LENGTH_SHORT).show()
-                imagesRef.downloadUrl.addOnSuccessListener { downloadUri ->
-                    val imageUrl = downloadUri.toString()
-                }
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error al subir la imagen: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
-    // Este método se llama cuando se solicita el permiso de la cámara y se otorga o deniega.
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_CAMERA) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permiso concedido, lanzar la cámara
                 launchCamera()
             } else {
-                // Permiso denegado
                 Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
             }
         }

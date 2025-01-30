@@ -35,6 +35,19 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <!-- Contenedor transparente -->
+
+    <ImageView
+        android:id="@+id/FotoPrefil"
+        android:layout_width="88dp"
+        android:layout_height="92dp"
+        android:contentDescription="fotoPrefil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transparentContainer"
         android:layout_width="349dp"
