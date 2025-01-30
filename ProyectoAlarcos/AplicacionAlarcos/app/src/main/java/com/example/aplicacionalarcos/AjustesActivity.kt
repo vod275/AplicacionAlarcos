@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -184,26 +185,27 @@ class AjustesActivity : AppCompatActivity() {
      * Cargar la foto del usuario en el `ImageView FotoPrefil`
      */
     private fun loadUserProfileImage() {
-        val storageRef: StorageReference
-
-        // Determinar el nombre de la imagen según el email o nombre del usuario
-        val userIdentifier = UserSession.email ?: UserSession.nombre ?: "usuario"
+        val userIdentifier = UserSession.id ?: "usuario"
         val fileName = "FotosUsers/$userIdentifier.jpg"
 
-        storageRef = FirebaseStorage.getInstance().reference.child(fileName)
+        Log.d("FirebaseStorage", "Intentando cargar: $fileName") // Verifica el nombre del archivo
 
-        // Descargar la imagen desde Firebase Storage y cargarla con Glide
+        val storageRef = FirebaseStorage.getInstance().reference.child(fileName)
+
         storageRef.downloadUrl.addOnSuccessListener { uri ->
             Glide.with(this)
                 .load(uri.toString())
                 .into(binding.FotoPrefil)
-        }.addOnFailureListener {
+        }.addOnFailureListener { e ->
+            Log.e("FirebaseStorage", "Error al cargar la imagen", e)
+
             // Si no se encuentra la imagen, mostrar una por defecto
             Glide.with(this)
-                .load(R.drawable.defecto) // Asegúrate de tener un recurso en drawable
+                .load(R.drawable.defecto)
                 .into(binding.FotoPrefil)
 
             Toast.makeText(this, "No se encontró imagen de perfil", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

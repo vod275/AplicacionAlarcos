@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -27,13 +28,11 @@ class DatosUsuarioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDatosUsuarioBinding
     private lateinit var currentPhotoPath: String
 
-    // Selector de imagen desde galería
     private val selectImageResultLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let { handleImageSelection(it) }
         }
 
-    // Toma de foto con la cámara
     private val takePictureResultLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
@@ -50,15 +49,12 @@ class DatosUsuarioActivity : AppCompatActivity() {
         binding = ActivityDatosUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mostrar el email del usuario o su nombre
         binding.tvCorreo.text = UserSession.nombre ?: UserSession.email
 
-        // Icono del calendario para seleccionar la fecha
         binding.etFechaNacimiento.setStartIconOnClickListener {
             showDatePickerDialog()
         }
 
-        // Botón para ir atrás
         binding.obAtras.setOnClickListener {
             val intent = Intent(this, AjustesActivity::class.java)
             startActivity(intent)
@@ -66,12 +62,10 @@ class DatosUsuarioActivity : AppCompatActivity() {
             finish()
         }
 
-        // Botón para seleccionar o tomar una foto
         binding.ibFotoPerfil.setOnClickListener {
             showImageOptions()
         }
 
-        // Botón de aceptar datos
         binding.btnAceptar.setOnClickListener {
             val nombre = binding.tvNombreAjustes.editText?.text.toString().takeIf { it.isNotEmpty() }
                 ?: getString(R.string.nombre_no_disponible)
@@ -117,32 +111,35 @@ class DatosUsuarioActivity : AppCompatActivity() {
     }
 
     private fun launchCamera() {
-        val photoFile = createImageFile()
-        val photoURI = FileProvider.getUriForFile(
-            this,
-            "${applicationContext.packageName}.provider",
-            photoFile
-        )
-        takePictureResultLauncher.launch(photoURI)
+        try {
+            val photoFile = createImageFile()
+            val photoURI = FileProvider.getUriForFile(
+                this,
+                "${applicationContext.packageName}.provider",
+                photoFile
+            )
+            takePictureResultLauncher.launch(photoURI)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Toast.makeText(this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun createImageFile(): File {
-        val storageDir: File? = getExternalFilesDir(null)
+        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            ?: throw IOException("No se pudo obtener el directorio de almacenamiento")
 
-        // 🔹 Usar email o nombre como nombre de archivo único y fijo
-        val userIdentifier = UserSession.email ?: UserSession.nombre ?: "usuario"
+        val userIdentifier = UserSession.id ?: "usuario"
         val fileName = "Perfil_${userIdentifier}.jpg"
 
         val photoFile = File(storageDir, fileName)
 
-        // 🔹 Asignar la ruta del archivo para su uso posterior
         currentPhotoPath = photoFile.absolutePath
-
         return photoFile
     }
 
     private fun handleImageSelection(uri: Uri) {
-        binding.ibFotoPerfil.setImageURI(uri) // Mostrar la imagen en el botón
+        binding.ibFotoPerfil.setImageURI(uri)
         uploadImageToFirebase(uri)
     }
 
@@ -165,9 +162,8 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
     private fun uploadImageToFirebase(uri: Uri) {
         val storageRef = FirebaseStorage.getInstance().reference
-        val userIdentifier = UserSession.email ?: UserSession.nombre ?: "usuario"
+        val userIdentifier = UserSession.id ?: "usuario"
 
-        // 🔹 Guardar la imagen con un nombre FIJO para sobreescribirla siempre
         val imagesRef = storageRef.child("FotosUsers/$userIdentifier.jpg")
 
         imagesRef.putFile(uri)

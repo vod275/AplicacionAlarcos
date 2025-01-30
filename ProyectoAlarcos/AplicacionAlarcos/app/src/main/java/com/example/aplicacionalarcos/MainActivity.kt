@@ -180,6 +180,8 @@ class MainActivity : AppCompatActivity() {
         if (user != null) {
             val userEmail = user.email
             val userName = user.displayName ?: "Usuario sin nombre"
+            val userId = user.uid
+            UserSession.id = userId
             UserSession.email = userEmail
             UserSession.nombre= userName
             saveUserToFirestore(userEmail, userName)
