@@ -28,7 +28,7 @@ class VideoTutorial : AppCompatActivity() {
         youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 // Aquí se define el ID del video directamente
-                val videoId = "16uJ-jxcKHo" // Reemplaza con el ID de tu video
+                val videoId = "avPmJ9wXFyY" // Reemplaza con el ID de tu video
                 youTubePlayer.loadVideo(videoId, 0f)
             }
         })

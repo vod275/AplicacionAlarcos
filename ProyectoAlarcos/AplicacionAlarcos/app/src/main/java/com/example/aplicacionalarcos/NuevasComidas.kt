@@ -82,6 +82,12 @@ class NuevasComidas : AppCompatActivity() {
                 Toast.makeText(this, "Espere a que se carguen los ingredientes.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.obAnadirIngredientes.setOnClickListener {
+            val intent = Intent(this, ActivityIngredientes::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     // Función para obtener ingredientes desde Firestore

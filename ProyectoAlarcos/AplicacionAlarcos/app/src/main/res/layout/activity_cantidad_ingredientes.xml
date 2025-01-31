@@ -7,10 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".ActivityCantidadIngredientes">
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ajustimage"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="MissingConstraints" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVCantidades"
-        android:layout_width="357dp"
-        android:layout_height="461dp"
+        android:layout_width="402dp"
+        android:layout_height="456dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +39,10 @@
         android:textColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882"
+        app:layout_constraintVertical_bias="0.871"
         app:strokeColor="@color/VerdeFont" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

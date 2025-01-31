@@ -71,4 +71,14 @@
     <string name="bienvenido">ようこそ: %1$s</string>
     <string name="edad_con_años">%1$d 歳</string>
     <string name="edad_no_disponible">年齢は利用できません</string>
+    <string name="volver">戻る</string>
+    <string name="guardar">保つ</string>
+    <string name="introduce_el_nombre_de_la_receta">レシピの名前を入力してください</string>
+    <string name="a_adir_ingredientes">材料を追加する</string>
+    <string name="a_adir_comida">食べ物を追加する</string>
+    <string name="descripci_n_hola_me_llamo_manuel_p_rez_s_nchez_soy_estudiante_de_programacion_y_tengo_21_a_os">"\n            説明: こんにちは!!私の名前はマヌエル ペレス サンチェス、プログラミング学生で、21 歳です。\n        "</string>
+    <string name="descripci_n_healthybites_es_una_app_para_llevar_un_mejor_control_de_tu_alimentaci_n_de_forma_sana_y_saludable_healthybites_versi_n_1_0_fecha_2024_autores_manuel_p_rez_s_nchez_y_v_ctor_oliver_donoso">"\n            説明: HealthyBites は、食生活をより適切に管理するためのアプリです \n            健康的に、健康的に.\n\n            HealthyBites \n            バージョン: 1.0 \n            日付: 2024 \n            著者: マヌエル・ペレス・サンチェス、ビクトル・オリバー・ドノソ\n        "</string>
+    <string name="descripci_n_hola_me_llamo_v_ctor_oliver_soy_estudiante_de_programacion_y_tengo_27_a_os">"\n           説明: こんにちは!!私の名前はビクター・オリバー、プログラミングの学生で、27 歳です。.\n        "</string>
+    <string name="agregar_ingrediente">成分を追加する</string>
+    <string name="nuevascomidas">新しい食事</string>
 </resources>

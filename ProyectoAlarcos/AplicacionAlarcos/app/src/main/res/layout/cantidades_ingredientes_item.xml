@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="@color/VerdeFont"
+        android:background="@color/swicth"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,23 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.523">
+            app:layout_constraintVertical_bias="0.555">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/TVCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cantidad_gr"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.618"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.555">
 
         </TextView>
 
@@ -41,26 +57,26 @@
             android:id="@+id/etCantidad"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:minHeight="40dp"
+            android:background="@drawable/edit_text_border"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:inputType="numberDecimal"
+            android:minHeight="40dp"
+            android:padding="8dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="12sp"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
+            app:cursorColor="@color/white"
+            app:endIconTint="@color/white"
+            app:helperTextTextColor="@color/white"
+            app:hintTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:cursorVisible="true"/>
-
-
-
-
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,14 +46,15 @@
 
         <TextView
             android:id="@+id/tvInfo"
-            android:layout_width="312dp"
-            android:layout_height="155dp"
+            android:layout_width="318dp"
+            android:layout_height="257dp"
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.432"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.18" />
+            app:layout_constraintVertical_bias="0.161" />
 
         <Button
             android:id="@+id/obAtras2"
