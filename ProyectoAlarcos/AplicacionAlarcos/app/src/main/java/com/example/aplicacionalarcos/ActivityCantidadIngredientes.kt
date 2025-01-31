@@ -3,6 +3,8 @@ package com.example.aplicacionalarcos
 import adaptadorNuevasComidas.CantidadesIngredientesAdapter
 import android.content.Intent
 import android.os.Bundle
+import java.text.SimpleDateFormat
+import java.util.*
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -115,9 +117,13 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
     private fun guardarPlatoEnFirestore(plato: Plato, valorEnergeticoTotal: Double, salTotal: Double) {
         val db = FirebaseFirestore.getInstance()
 
+        // Obtener fecha actual
+        val fechaActual = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
         // Convertir el objeto Plato a un mapa para Firestore
         val platoMap = hashMapOf(
             "nombre" to plato.nombre,
+            "fechaRegistro" to fechaActual,  // Agregar la fecha
             "ingredientes" to plato.ingredientes.map { ingrediente ->
                 mapOf(
                     "nombre" to ingrediente.nombre,
@@ -136,7 +142,7 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             "salTotal" to salTotal
         )
 
-        // Guardar en la colección "platos"
+        // Guardar en Firestore
         db.collection("platos")
             .add(platoMap)
             .addOnSuccessListener { documentReference ->

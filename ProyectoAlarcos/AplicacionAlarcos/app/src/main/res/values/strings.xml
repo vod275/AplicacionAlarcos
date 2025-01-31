@@ -88,4 +88,5 @@
     <string name="nuevascomidas">NuevasComidas</string>
     <string name="cantidad">Cantidad</string>
     <string name="cantidad_gr">Cantidad(gr):</string>
+    <string name="fecha">Fecha</string>
 </resources>

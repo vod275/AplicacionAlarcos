@@ -124,6 +124,13 @@ class MenuActivity : AppCompatActivity() {
             }
             menuAbierto = !menuAbierto
         }
+
+        binding.InfoNutriButton.setOnClickListener{
+            val intent = Intent(this, InformacionNutricionalActivity::class.java)
+            startActivity(intent)
+            // Agregar animación
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     override fun onBackPressed() {
