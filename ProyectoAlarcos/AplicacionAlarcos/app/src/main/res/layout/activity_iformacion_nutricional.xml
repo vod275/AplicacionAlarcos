@@ -15,11 +15,23 @@
         android:src="@drawable/og"
         tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="88dp"
+        android:layout_height="92dp"
+        android:background="@drawable/logoapp"
+        android:contentDescription="@string/logo_de_la_app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transparentContainer"
-        android:layout_width="380dp"
-        android:layout_height="619dp"
+        android:layout_width="378dp"
+        android:layout_height="586dp"
         android:background="#C4FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,8 +82,8 @@
             android:layout_height="59dp"
             android:padding="16dp"
             android:text="Calorías totales: 0 kcal"
-            android:textSize="18sp"
             android:textColor="@color/VerdeFont"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.937"
@@ -86,8 +98,8 @@
             android:layout_height="58dp"
             android:padding="16dp"
             android:text="Proteínas totales: 0 g"
-            android:textSize="18sp"
             android:textColor="@color/VerdeFont"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.949"
@@ -97,12 +109,12 @@
 
         <TextView
             android:id="@+id/tvGrasas"
-            android:layout_width="297dp"
-            android:layout_height="53dp"
+            android:layout_width="300dp"
+            android:layout_height="59dp"
             android:padding="16dp"
             android:text="Grasas totales: 0 g"
-            android:textSize="18sp"
             android:textColor="@color/VerdeFont"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.903"
