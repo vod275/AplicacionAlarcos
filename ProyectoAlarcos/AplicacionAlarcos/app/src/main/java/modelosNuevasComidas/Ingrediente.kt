@@ -14,4 +14,16 @@ data class Ingrediente(
     // Constructor vacío necesario para deserialización de Firestore
     constructor() : this("", "", 0.0, 0.0, 0.0, 0.0, 0.0)
 
+
+    override fun toString(): String {
+        return """
+        - $nombre:
+          • Energía: ${valorEnergeticoPor100g} Kcal/100g
+          • Grasas: ${grasasPor100g} g/100g
+          • Carbohidratos: ${carbohidratosPor100g} g/100g
+          • Proteínas: ${proteinasPor100g} g/100g
+          • Sal: ${salPor100g} g/100g
+        """.trimIndent()
+    }
 }
+

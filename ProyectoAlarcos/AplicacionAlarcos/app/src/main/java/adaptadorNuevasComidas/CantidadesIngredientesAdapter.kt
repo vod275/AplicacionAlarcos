@@ -1,5 +1,7 @@
 package adaptadorNuevasComidas
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,13 +31,27 @@ class CantidadesIngredientesAdapter(
         val ingrediente = ingredientes[position]
         holder.tvNombreIngrediente.text = ingrediente.nombre
 
-        // Manejar cambios en la cantidad ingresada
-        holder.etCantidad.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) { // Solo cuando pierde el foco
-                val cantidad = holder.etCantidad.text.toString()
-                onCantidadCambiada(position, cantidad) // Llamar al callback con la posición y la cantidad ingresada
-            }
+        // Remover TextWatcher previo si existe para evitar bucles infinitos
+        holder.etCantidad.tag?.let {
+            (it as? TextWatcher)?.let { watcher -> holder.etCantidad.removeTextChangedListener(watcher) }
         }
+
+        // Crear un nuevo TextWatcher para capturar cambios en tiempo real
+        val textWatcher = object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val currentPosition = holder.adapterPosition
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    onCantidadCambiada(currentPosition, s.toString()) // Usamos la posición actualizada
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        }
+
+        // Asignar el TextWatcher y almacenar la referencia en el tag para evitar conflictos
+        holder.etCantidad.addTextChangedListener(textWatcher)
+        holder.etCantidad.tag = textWatcher
     }
 
     override fun getItemCount() = ingredientes.size

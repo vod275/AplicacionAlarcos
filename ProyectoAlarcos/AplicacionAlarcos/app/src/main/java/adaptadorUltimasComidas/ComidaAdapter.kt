@@ -79,10 +79,14 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
     }
 
     private fun mostrarDetalles(comida: Plato, context: Context) {
-        val detalles = comida.ingredientes.zip(comida.cantidad)
-            .joinToString("\n") { (ingrediente, cantidad) ->
-                "${ingrediente.nombre}: $cantidad"
-            }
+        val detalles = buildString {
+            append("${comida.nombre} : ${comida.cantidad} : ${comida.caloriasTotales} Kcal, ")
+            append("${comida.proteinasTotales} gr proteína, ")
+            append("${comida.carbohidratosTotales} gr carbohidratos, ")
+            append("${comida.grasasTotales} gr grasas\n\n")
+            append("Ingredientes:\n")
+            append(comida.ingredientes.joinToString("\n") { it.toString() })
+        }
 
         val detallesDialog = AlertDialog.Builder(context)
             .setTitle("Detalles de ${comida.nombre}")
