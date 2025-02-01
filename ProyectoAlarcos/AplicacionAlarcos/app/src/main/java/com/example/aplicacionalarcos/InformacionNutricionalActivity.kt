@@ -3,13 +3,14 @@ package com.example.aplicacionalarcos
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import java.text.SimpleDateFormat
-import android.widget.Toast
+import android.util.Log
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import objetos.UserSession
+import java.text.SimpleDateFormat
 import java.util.*
 
 class InformacionNutricionalActivity : AppCompatActivity() {
@@ -21,7 +22,9 @@ class InformacionNutricionalActivity : AppCompatActivity() {
     private lateinit var tvCarbohidratos: TextView
     private lateinit var btnSeleccionarFecha: Button
     private lateinit var obAtras2: Button
+    private lateinit var spinnerFiltro: Spinner
     private val db = FirebaseFirestore.getInstance()
+    private var opcionSeleccionada = "Día"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +37,28 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         tvCarbohidratos = findViewById(R.id.tvCarbohidratos)
         btnSeleccionarFecha = findViewById(R.id.btnSeleccionarFecha)
         obAtras2 = findViewById(R.id.obAtras2)
+        spinnerFiltro = findViewById(R.id.spinnerFiltro)
+
+        // Configurar Spinner con las opciones de filtro
+        val opciones = arrayOf("Día", "Semana", "Mes")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerFiltro.adapter = adapter
+
+        // Listener del Spinner
+        spinnerFiltro.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                opcionSeleccionada = opciones[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
         btnSeleccionarFecha.setOnClickListener {
             seleccionarFecha()
         }
 
-        // Configuración del botón "Atrás"
         obAtras2.setOnClickListener {
-            val intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MenuActivity::class.java))
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             finish()
         }
@@ -74,46 +90,88 @@ class InformacionNutricionalActivity : AppCompatActivity() {
             // Convertir "dd/MM/yyyy" a "yyyy-MM-dd"
             val formatoEntrada = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             val formatoSalida = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-
             val fechaConvertida = formatoSalida.format(formatoEntrada.parse(fecha)!!)
 
+            val (fechaInicio, fechaFin) = obtenerRangoFechas(fechaConvertida, opcionSeleccionada)
+
+            Log.d("Firestore", "Buscando datos entre: $fechaInicio y $fechaFin para usuario: $userId")
+
             db.collection("platos")
-                .whereEqualTo("id", userId) // Filtrar por el usuario actual
-                .whereEqualTo("fechaRegistro", fechaConvertida) // Filtrar por la fecha seleccionada
+                .whereEqualTo("id", userId)
+                .whereGreaterThanOrEqualTo("fechaRegistro", fechaInicio)
+                .whereLessThanOrEqualTo("fechaRegistro", fechaFin)
                 .get()
                 .addOnSuccessListener { documents ->
                     if (documents.isEmpty) {
-                        tvCalorias.text = "Calorías totales: 0 kcal"
-                        tvProteinas.text = "Proteínas totales: 0 g"
-                        tvGrasas.text = "Grasas totales: 0 g"
-                        tvCarbohidratos.text = "Carbohidratos totales: 0 g"
-                        Toast.makeText(this, "No hay datos para esta fecha", Toast.LENGTH_SHORT).show()
+                        mostrarDatosVacios()
                     } else {
-                        var totalCalorias = 0.0
-                        var totalProteinas = 0.0
-                        var totalGrasas = 0.0
-                        var totalCarbohidratos = 0.0
-
-                        for (document in documents) {
-                            totalCalorias += document.getDouble("valorEnergeticoTotal") ?: 0.0
-                            totalProteinas += document.getDouble("proteinasTotales") ?: 0.0
-                            totalGrasas += document.getDouble("grasasTotales") ?: 0.0
-                            totalCarbohidratos += document.getDouble("carbohidratosTotales") ?: 0.0
-                        }
-
-                        tvCalorias.text = "Calorías totales: ${totalCalorias.toInt()} kcal"
-                        tvProteinas.text = "Proteínas totales: %.2f g".format(totalProteinas)
-                        tvGrasas.text = "Grasas totales: %.2f g".format(totalGrasas)
-                        tvCarbohidratos.text = "Carbohidratos totales: %.2f g".format(totalCarbohidratos)
+                        procesarResultados(documents)
                     }
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Error al obtener datos", Toast.LENGTH_SHORT).show()
-                    e.printStackTrace()
+                    Log.e("Firestore", "Error al consultar datos", e)
                 }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e("Fecha", "Error en la conversión de fecha", e)
             Toast.makeText(this, "Formato de fecha inválido", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun obtenerRangoFechas(fecha: String, tipo: String): Pair<String, String> {
+        val formato = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val calendar = Calendar.getInstance()
+        calendar.time = formato.parse(fecha)!!
+
+        return when (tipo) {
+            "Semana" -> {
+                calendar.firstDayOfWeek = Calendar.MONDAY
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+                val fechaInicio = formato.format(calendar.time)
+
+                calendar.add(Calendar.DAY_OF_WEEK, 6)
+                val fechaFin = formato.format(calendar.time)
+
+                Pair(fechaInicio, fechaFin)
+            }
+            "Mes" -> {
+                calendar.set(Calendar.DAY_OF_MONTH, 1)
+                val fechaInicio = formato.format(calendar.time)
+
+                calendar.add(Calendar.MONTH, 1)
+                calendar.add(Calendar.DAY_OF_MONTH, -1)
+                val fechaFin = formato.format(calendar.time)
+
+                Pair(fechaInicio, fechaFin)
+            }
+            else -> Pair(fecha, fecha)
+        }
+    }
+
+    private fun procesarResultados(documents: QuerySnapshot) {
+        var totalCalorias = 0.0
+        var totalProteinas = 0.0
+        var totalGrasas = 0.0
+        var totalCarbohidratos = 0.0
+
+        for (document in documents) {
+            totalCalorias += document.getDouble("valorEnergeticoTotal") ?: 0.0
+            totalProteinas += document.getDouble("proteinasTotales") ?: 0.0
+            totalGrasas += document.getDouble("grasasTotales") ?: 0.0
+            totalCarbohidratos += document.getDouble("carbohidratosTotales") ?: 0.0
+        }
+
+        tvCalorias.text = "Calorías totales: ${totalCalorias.toInt()} kcal"
+        tvProteinas.text = "Proteínas totales: %.2f g".format(totalProteinas)
+        tvGrasas.text = "Grasas totales: %.2f g".format(totalGrasas)
+        tvCarbohidratos.text = "Carbohidratos totales: %.2f g".format(totalCarbohidratos)
+    }
+
+    private fun mostrarDatosVacios() {
+        tvCalorias.text = "Calorías totales: 0 kcal"
+        tvProteinas.text = "Proteínas totales: 0 g"
+        tvGrasas.text = "Grasas totales: 0 g"
+        tvCarbohidratos.text = "Carbohidratos totales: 0 g"
+        Toast.makeText(this, "No hay datos para este periodo", Toast.LENGTH_SHORT).show()
     }
 }

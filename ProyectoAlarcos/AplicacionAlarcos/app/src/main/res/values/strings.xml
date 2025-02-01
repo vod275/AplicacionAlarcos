@@ -89,4 +89,10 @@
     <string name="cantidad">Cantidad</string>
     <string name="cantidad_gr">Cantidad(gr):</string>
     <string name="fecha">Fecha</string>
+    <string-array name="opciones_filtro">
+        <item>Día</item>
+        <item>Semana</item>
+        <item>Mes</item>
+    </string-array>
+
 </resources>

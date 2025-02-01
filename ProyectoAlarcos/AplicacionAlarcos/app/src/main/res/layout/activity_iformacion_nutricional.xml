@@ -1,156 +1,173 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".InformacionNutricionalActivity">
-
-
-    <ImageView
-        android:id="@+id/backgroundImage"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/og"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/appLogo"
-        android:layout_width="88dp"
-        android:layout_height="92dp"
-        android:background="@drawable/logoapp"
-        android:contentDescription="@string/logo_de_la_app"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.021"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/transparentContainer"
-        android:layout_width="378dp"
-        android:layout_height="586dp"
-        android:background="#C4FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <!-- Selección de fecha -->
-
-        <!-- Información nutricional -->
+        android:background="@color/VerdeFont"
+        android:backgroundTint="@color/VerdeFont"
+        tools:context=".InformacionNutricionalActivity">
 
 
-        <TextView
-            android:id="@+id/tvFecha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/seleccionar_fecha"
-            android:textColor="@color/VerdeFont"
-            android:textSize="18sp"
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/og"
+            tools:ignore="MissingConstraints" />
+
+
+
+
+
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="88dp"
+            android:layout_height="92dp"
+            android:background="@drawable/logoapp"
+            android:contentDescription="@string/logo_de_la_app"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.021"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.028" />
+            app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/btnSeleccionarFecha"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="199dp"
-            android:layout_height="45dp"
-            android:text="@string/fecha"
-            android:textColor="@color/VerdeFont"
-            app:boxStrokeColor="@color/VerdeFont"
-            app:helperTextTextColor="@color/VerdeFont"
-            app:hintTextColor="@color/VerdeFont"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/transparentContainer"
+            android:layout_width="378dp"
+            android:layout_height="586dp"
+            android:background="#C4FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.144"
-            app:strokeColor="@color/VerdeFont" />
+            app:layout_constraintTop_toTopOf="parent">
+            <!-- Selección de fecha -->
 
-        <TextView
-            android:id="@+id/tvCalorias"
-            android:layout_width="300dp"
-            android:layout_height="59dp"
-            android:padding="16dp"
-            android:text="Calorías totales: 0 kcal"
-            android:textColor="@color/VerdeFont"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.937"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.362" />
+            <!-- Información nutricional -->
 
 
-        <TextView
-            android:id="@+id/tvProteinas"
-            android:layout_width="301dp"
-            android:layout_height="58dp"
-            android:padding="16dp"
-            android:text="Proteínas totales: 0 g"
-            android:textColor="@color/VerdeFont"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.949"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.499" />
+            <TextView
+                android:id="@+id/tvFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/seleccionar_fecha"
+                android:textColor="@color/VerdeFont"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.028" />
 
-        <TextView
-            android:id="@+id/tvGrasas"
-            android:layout_width="300dp"
-            android:layout_height="59dp"
-            android:padding="16dp"
-            android:text="Grasas totales: 0 g"
-            android:textColor="@color/VerdeFont"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.903"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.628" />
+            <Button
+                android:id="@+id/btnSeleccionarFecha"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:text="@string/fecha"
+                android:textColor="@color/VerdeFont"
+                app:boxStrokeColor="@color/VerdeFont"
+                app:helperTextTextColor="@color/VerdeFont"
+                app:hintTextColor="@color/VerdeFont"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.231"
+                app:strokeColor="@color/VerdeFont" />
 
-        <TextView
-            android:id="@+id/tvCarbohidratos"
-            android:layout_width="297dp"
-            android:layout_height="58dp"
-            android:padding="16dp"
-            android:text="Carbohidratos totales: 0 g"
-            android:textColor="@color/VerdeFont"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.903"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.761" />
+            <Spinner
+                android:id="@+id/spinnerFiltro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/spinner_background"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvFecha" />
 
-        <Button
-            android:id="@+id/obAtras2"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="118dp"
-            android:layout_height="47dp"
-            android:text="@string/atras"
-            android:textColor="@color/VerdeFont"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.896"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.972"
-            app:strokeColor="@color/VerdeFont" />
+            <TextView
+                android:id="@+id/tvCalorias"
+                android:layout_width="300dp"
+                android:layout_height="59dp"
+                android:padding="16dp"
+                android:text="Calorías totales: 0 kcal"
+                android:textColor="@color/VerdeFont"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.937"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.362" />
+
+
+            <TextView
+                android:id="@+id/tvProteinas"
+                android:layout_width="301dp"
+                android:layout_height="58dp"
+                android:padding="16dp"
+                android:text="Proteínas totales: 0 g"
+                android:textColor="@color/VerdeFont"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.949"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.499" />
+
+            <TextView
+                android:id="@+id/tvGrasas"
+                android:layout_width="300dp"
+                android:layout_height="59dp"
+                android:padding="16dp"
+                android:text="Grasas totales: 0 g"
+                android:textColor="@color/VerdeFont"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.903"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.628" />
+
+            <TextView
+                android:id="@+id/tvCarbohidratos"
+                android:layout_width="297dp"
+                android:layout_height="58dp"
+                android:padding="16dp"
+                android:text="Carbohidratos totales: 0 g"
+                android:textColor="@color/VerdeFont"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.903"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.761" />
+
+            <Button
+                android:id="@+id/obAtras2"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="118dp"
+                android:layout_height="47dp"
+                android:text="@string/atras"
+                android:textColor="@color/VerdeFont"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.896"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.972"
+                app:strokeColor="@color/VerdeFont" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
