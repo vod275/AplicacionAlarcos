@@ -171,5 +171,6 @@
     <string name="cerrar">閉じる</string>
     <string name="plato_eliminado_correctamente">料理が正常に削除されました</string>
     <string name="error_al_eliminar">削除エラー: %1$s</string>
+    <string name="sal_total">総塩分: %.2f g</string>
 
 </resources>

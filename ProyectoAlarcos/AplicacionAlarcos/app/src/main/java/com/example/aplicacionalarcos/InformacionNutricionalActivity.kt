@@ -24,6 +24,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
     private lateinit var btnSeleccionarFecha: Button
     private lateinit var obAtras2: Button
     private lateinit var spinnerFiltro: Spinner
+    private lateinit var tvSal: TextView
     private val db = FirebaseFirestore.getInstance()
     private var opcionSeleccionada = ""
 
@@ -35,6 +36,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         tvCalorias = findViewById(R.id.tvCalorias)
         tvProteinas = findViewById(R.id.tvProteinas)
         tvGrasas = findViewById(R.id.tvGrasas)
+        tvSal = findViewById(R.id.tvSal)
         tvCarbohidratos = findViewById(R.id.tvCarbohidratos)
         btnSeleccionarFecha = findViewById(R.id.btnSeleccionarFecha)
         obAtras2 = findViewById(R.id.obAtras2)
@@ -173,6 +175,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         tvProteinas.text = getString(R.string.proteinas_totales, totalProteinas)
         tvGrasas.text = getString(R.string.grasas_totales, totalGrasas)
         tvCarbohidratos.text = getString(R.string.carbohidratos_totales, totalCarbohidratos)
+        tvSal.text = getString(R.string.sal_total, totalSal)
     }
 
     private fun mostrarDatosVacios() {

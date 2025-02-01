@@ -108,6 +108,7 @@
     <string name="proteinas_totales">Proteínas totales: %.2f g</string>
     <string name="grasas_totales">Grasas totales: %.2f g</string>
     <string name="carbohidratos_totales">Carbohidratos totales: %.2f g</string>
+    <string name="sal_total">Sal total: %.2f g</string>
 
     <string name="calorias_vacias">Calorías totales: 0 kcal</string>
     <string name="proteinas_vacias">Proteínas totales: 0 g</string>

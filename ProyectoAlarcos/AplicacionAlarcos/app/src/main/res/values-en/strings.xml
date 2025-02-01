@@ -171,5 +171,6 @@
     <string name="cerrar">Close</string>
     <string name="plato_eliminado_correctamente">Dish successfully deleted</string>
     <string name="error_al_eliminar">Error deleting: %1$s</string>
+    <string name="sal_total">Total salt: %.2f g</string>
 
 </resources>
