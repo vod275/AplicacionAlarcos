@@ -3,6 +3,7 @@
     <string name="your_web_client_id" translatable="false">607025074040-tj1d6c6jvkf27baj084ef3be0cqkdh84.apps.googleusercontent.com</string>
     <string name="twitter_consumer_key" translatable="false">eCaPTc8qoKV7m8xHphOgkXGRD</string>
     <string name="twitter_consumer_secret" translatable="false">nc1b4paM2WHKzUVnscZdES93bdFKwGwYk82PfRvpNlYHYnyQfu</string>
+
     <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="apellidos">Apellidos</string>
     <string name="nombre">Nombre</string>
@@ -23,76 +24,99 @@
     <string name="peso">Peso</string>
     <string name="en_kilogramos">En kilogramos</string>
     <string name="vamos">¡Vamos!</string>
+
     <string name="imagen_fondo_login" translatable="false">Imagen Fondo Login</string>
     <string name="CalcularImc">Calcular IMC</string>
     <string name="InfoNutricional">Información Nutricional</string>
     <string name="UltimasComidas">Últimas comidas</string>
-    <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">Recuerda que la felicidad está en ti y que el IMC no te define, puesto que eres una persona maravillosa</string>
+
+    <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">
+        Recuerda que la felicidad está en ti y que el IMC no te define, puesto que eres una persona maravillosa
+    </string>
+
     <string name="MinusPeso">Peso por debajo del recomendado. Tu IMC es:</string>
     <string name="PesoRecomendado">Peso en el rango recomendado. Tu IMC es:</string>
     <string name="SobrePeso">Peso por encima del recomendado. Tu IMC es:</string>
+
     <string name="bgimage" translatable="false">bgImage</string>
-    <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">El IMC recomendado para una persona adulta con ejercicio físico ligero se encuentra entre 18.5 y 25</string>
+    <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">
+        El IMC recomendado para una persona adulta con ejercicio físico ligero se encuentra entre 18.5 y 25
+    </string>
+
     <string name="Español">Español</string>
     <string name="English">Inglés</string>
+    <string name="japones">Japonés</string>
+
     <string name="Claro">Claro</string>
     <string name="Oscuro">Oscuro</string>
+
     <string name="edad_con_años">%1$d años</string>
     <string name="usuario_registrado_exitosamente">Usuario registrado exitosamente</string>
     <string name="error_desconocido_intenta_nuevamente">Error desconocido. Intenta nuevamente.</string>
     <string name="el_correo_ya_est_registrado">El correo ya está registrado</string>
     <string name="la_contrase_a_es_demasiado_d_bil">La contraseña es demasiado débil</string>
-    <string name="error_al_registrar">Error al registrar:</string>
+
+    <string name="error_al_registrar">Error al registrar</string>
     <string name="error_al_autenticar_con_google">Error al autenticar con Google</string>
     <string name="error_al_iniciar_sesi_n_con_google">Error al iniciar sesión con Google</string>
     <string name="usuario_no_encontrado_inicia_sesi_n_nuevamente">Usuario no encontrado, inicia sesión nuevamente.</string>
-    <string name="error_al_verificar_usuario">Error al verificar usuario:</string>
+    <string name="error_al_verificar_usuario">Error al verificar usuario</string>
+
     <string name="por_favor_inicia_sesi_n_o_reg_strate">Por favor, inicia sesión o regístrate</string>
     <string name="cerrar_sesi_n">Cerrar sesión</string>
     <string name="desea_continuar">¿Desea continuar?</string>
     <string name="se_cerrar_la_sesi_n_con_el_correo">Se cerrará la sesión con el correo:</string>
     <string name="cancelar">Cancelar</string>
+
     <string name="a_calcular_el_imc">¡A calcular el IMC!</string>
-    <string name="Implementando">Implementando</string>
     <string name="cambiar_datosdel_perfil">Cambiar datos del perfil</string>
     <string name="edad">Edad</string>
     <string name="usuario">Usuario</string>
-    <string name="todo">Todo</string>
     <string name="boton_de_ajustes">Botón de ajustes</string>
-    <string name="japones">Japonés</string>
+
     <string name="borrar">Borrar</string>
     <string name="usuario_no_disponible">Usuario no disponible</string>
     <string name="nombre_no_disponible">Nombre no disponible</string>
     <string name="apellidos_no_disponibles">Apellidos no disponibles</string>
     <string name="fecha_no_disponible">Fecha no disponible</string>
+
     <string name="error_campos_vacios">Por favor, complete todos los campos</string>
     <string name="seleccionar_fecha">Selecciona una Fecha</string>
     <string name="el_peso_y_la_altura_deben_ser_mayores_a_cero">El peso y la altura deben ser mayores a cero.</string>
-    <string name="introduce_valores_num_ricos_v_lidos">Introduce valores numéricos válidos.</string>
-    <string name="por_favor_completa_todos_los_campos">Por favor, completa todos los campos.</string>
-    <string name="por_favor_ingresa_un_correo_v_lido">Por favor, ingresa un correo válido</string>
-    <string name="error_al_autenticar_con_firebase">Error al autenticar con Firebase</string>
-    <string name="error_al_obtener_los_tokens_de_twitter">Error al obtener los tokens de Twitter</string>
-    <string name="error_al_autenticar_con_twitter">Error al autenticar con Twitter</string>
-    <string name="bienvenido">Bienvenido: %1$s</string>
-    <string name="edad_no_disponible">Edad no disponible</string>
-    <string name="volver">Volver</string>
-    <string name="guardar">Guardar</string>
-    <string name="introduce_el_nombre_de_la_receta">Introduce el nombre de la receta</string>
-    <string name="a_adir_ingredientes">Añadir Ingredientes</string>
-    <string name="a_adir_comida">Añadir Comida</string>
-    <string name="descripci_n_hola_me_llamo_manuel_p_rez_s_nchez_soy_estudiante_de_programacion_y_tengo_21_a_os">"\n            Descripción: Hola!! Me llamo Manuel Pérez Sánchez, soy estudiante de programacion y tengo 21 años.\n        "</string>
-    <string name="descripci_n_healthybites_es_una_app_para_llevar_un_mejor_control_de_tu_alimentaci_n_de_forma_sana_y_saludable_healthybites_versi_n_1_0_fecha_2024_autores_manuel_p_rez_s_nchez_y_v_ctor_oliver_donoso">"\n            Descripción: HealthyBites es una app para llevar un mejor control de tu alimentación \n            de forma sana y saludable.\n\n            HealthyBites \n            Versión: 1.0 \n            Fecha: 2024 \n            Autores: Manuel Pérez Sánchez y Víctor Oliver Donoso\n        "</string>
-    <string name="descripci_n_hola_me_llamo_v_ctor_oliver_soy_estudiante_de_programacion_y_tengo_27_a_os">"\n            Descripción: Hola!! Me llamo Víctor Oliver, soy estudiante de programacion y tengo 27 años.\n        "</string>
-    <string name="agregar_ingrediente">Agregar Ingrediente</string>
-    <string name="nuevascomidas">NuevasComidas</string>
-    <string name="cantidad">Cantidad</string>
-    <string name="cantidad_gr">Cantidad(gr):</string>
-    <string name="fecha">Fecha</string>
-    <string-array name="opciones_filtro">
-        <item>Día</item>
-        <item>Semana</item>
-        <item>Mes</item>
-    </string-array>
 
+    <string name="error_conversion_fecha">Error al convertir la fecha</string>
+    <string name="error_formato_fecha">Formato de fecha inválido</string>
+    <string name="error_firebase">Error en Firebase</string>
+    <string name="error_datos_firebase">Error al obtener datos de Firebase</string>
+
+    <string name="fecha_seleccionada">Fecha seleccionada: %1$s</string>
+
+    <string name="error_usuario">Error al obtener el usuario</string>
+    <string name="error_al_autenticar_con_twitter">Error al autenticar con Twitter</string>
+
+    <string name="log_busqueda_firebase">Buscando datos entre %1$s y %2$s para usuario: %3$s</string>
+    <string name="opcion_dia">Dia</string>
+    <string name="opcion_semana">Semana</string>
+    <string name="opcion_mes">Mes</string>
+
+    <string name="calorias_totales">Calorías totales: %1$d kcal</string>
+    <string name="proteinas_totales">Proteínas totales: %.2f g</string>
+    <string name="grasas_totales">Grasas totales: %.2f g</string>
+    <string name="carbohidratos_totales">Carbohidratos totales: %.2f g</string>
+
+    <string name="calorias_vacias">Calorías totales: 0 kcal</string>
+    <string name="proteinas_vacias">Proteínas totales: 0 g</string>
+    <string name="grasas_vacias">Grasas totales: 0 g</string>
+    <string name="carbohidratos_vacias">Carbohidratos totales: 0 g</string>
+
+    <string name="no_datos">No hay datos para este periodo</string>
+    <string name="usuario_sin_nombre">Usuario sin nombre</string>
+
+    <string name="Implementando">Funcionalidad en desarrollo</string>
+    <string name="seleccionaste_ingrediente">Seleccionaste: %1$s</string>
+    <string name="no_has_seleccionado_ning_n_ingrediente">No has seleccionado ningún ingrediente.</string>
+    <string name="debes_escribir_un_nombre_para_el_plato">Debes escribir un nombre para el plato.</string>
+    <string name="elementos_eliminados">Elementos eliminados</string>
+    <string name="error_no_se_pudo_obtener_el_id_del_usuario">Error: No se pudo obtener el ID del usuario.</string>
+    <string name="error_al_cargar_las_comidas">Error al cargar las comidas: %1$s</string>
 </resources>

@@ -40,7 +40,7 @@ class DatosUsuarioActivity : AppCompatActivity() {
                 val uri = Uri.fromFile(file)
                 handleImageSelection(uri)
             } else {
-                Toast.makeText(this, "No se tomó ninguna foto.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.no_se_tom_ninguna_foto), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -90,7 +90,8 @@ class DatosUsuarioActivity : AppCompatActivity() {
     }
 
     private fun showImageOptions() {
-        val options = arrayOf("Seleccionar desde galería", "Tomar una foto")
+        val options = arrayOf(getString(R.string.seleccionar_desde_galer_a),
+            getString(R.string.tomar_una_foto))
         val builder = android.app.AlertDialog.Builder(this)
         builder.setTitle("Elige una opción")
         builder.setItems(options) { _, which ->
@@ -121,13 +122,14 @@ class DatosUsuarioActivity : AppCompatActivity() {
             takePictureResultLauncher.launch(photoURI)
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.error_al_crear_el_archivo_de_imagen), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun createImageFile(): File {
         val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-            ?: throw IOException("No se pudo obtener el directorio de almacenamiento")
+            ?: throw IOException(getString(R.string.no_se_pudo_obtener_el_directorio_de_almacenamiento))
 
         val userIdentifier = UserSession.id ?: "usuario"
         val fileName = "Perfil_${userIdentifier}.jpg"
@@ -168,10 +170,12 @@ class DatosUsuarioActivity : AppCompatActivity() {
 
         imagesRef.putFile(uri)
             .addOnSuccessListener {
-                Toast.makeText(this, "Imagen subida exitosamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.imagen_subida_exitosamente), Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al subir la imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.error_al_subir_la_imagen, e.message), Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -181,7 +185,8 @@ class DatosUsuarioActivity : AppCompatActivity() {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 launchCamera()
             } else {
-                Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.permiso_de_c_mara_denegado), Toast.LENGTH_SHORT).show()
             }
         }
     }

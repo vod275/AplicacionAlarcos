@@ -1,5 +1,6 @@
 package com.example.aplicacionalarcos
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -24,7 +25,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
     private lateinit var obAtras2: Button
     private lateinit var spinnerFiltro: Spinner
     private val db = FirebaseFirestore.getInstance()
-    private var opcionSeleccionada = "Día"
+    private var opcionSeleccionada = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,11 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         spinnerFiltro = findViewById(R.id.spinnerFiltro)
 
         // Configurar Spinner con las opciones de filtro
-        val opciones = arrayOf("Día", "Semana", "Mes")
+        val opciones = arrayOf(
+            getString(R.string.opcion_dia),
+            getString(R.string.opcion_semana),
+            getString(R.string.opcion_mes)
+        )
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerFiltro.adapter = adapter
@@ -64,6 +69,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun seleccionarFecha() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -72,7 +78,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
 
         val datePicker = DatePickerDialog(this, { _, year, month, dayOfMonth ->
             val fechaSeleccionada = "$dayOfMonth/${month + 1}/$year"
-            tvFecha.text = "Fecha seleccionada: $fechaSeleccionada"
+            getString(R.string.fecha_seleccionada, fechaSeleccionada).also { tvFecha.text = it }
             obtenerDatosPorFecha(fechaSeleccionada)
         }, year, month, day)
 
@@ -83,7 +89,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         try {
             val userId = UserSession.id
             if (userId.isNullOrEmpty()) {
-                Toast.makeText(this, "Error: No se pudo obtener el ID del usuario.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_usuario), Toast.LENGTH_SHORT).show()
                 return
             }
 
@@ -94,7 +100,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
 
             val (fechaInicio, fechaFin) = obtenerRangoFechas(fechaConvertida, opcionSeleccionada)
 
-            Log.d("Firestore", "Buscando datos entre: $fechaInicio y $fechaFin para usuario: $userId")
+            Log.d("Firestore", getString(R.string.log_busqueda_firebase, fechaInicio, fechaFin, userId))
 
             db.collection("platos")
                 .whereEqualTo("id", userId)
@@ -109,12 +115,12 @@ class InformacionNutricionalActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(this, "Error al obtener datos", Toast.LENGTH_SHORT).show()
-                    Log.e("Firestore", "Error al consultar datos", e)
+                    Toast.makeText(this, getString(R.string.error_datos_firebase), Toast.LENGTH_SHORT).show()
+                    Log.e("Firestore", getString(R.string.error_firebase), e)
                 }
         } catch (e: Exception) {
-            Log.e("Fecha", "Error en la conversión de fecha", e)
-            Toast.makeText(this, "Formato de fecha inválido", Toast.LENGTH_SHORT).show()
+            Log.e("Fecha", getString(R.string.error_conversion_fecha), e)
+            Toast.makeText(this, getString(R.string.error_formato_fecha), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -124,7 +130,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         calendar.time = formato.parse(fecha)!!
 
         return when (tipo) {
-            "Semana" -> {
+            getString(R.string.opcion_semana) -> {
                 calendar.firstDayOfWeek = Calendar.MONDAY
                 calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
                 val fechaInicio = formato.format(calendar.time)
@@ -134,7 +140,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
 
                 Pair(fechaInicio, fechaFin)
             }
-            "Mes" -> {
+            getString(R.string.opcion_mes) -> {
                 calendar.set(Calendar.DAY_OF_MONTH, 1)
                 val fechaInicio = formato.format(calendar.time)
 
@@ -161,17 +167,17 @@ class InformacionNutricionalActivity : AppCompatActivity() {
             totalCarbohidratos += document.getDouble("carbohidratosTotales") ?: 0.0
         }
 
-        tvCalorias.text = "Calorías totales: ${totalCalorias.toInt()} kcal"
-        tvProteinas.text = "Proteínas totales: %.2f g".format(totalProteinas)
-        tvGrasas.text = "Grasas totales: %.2f g".format(totalGrasas)
-        tvCarbohidratos.text = "Carbohidratos totales: %.2f g".format(totalCarbohidratos)
+        tvCalorias.text = getString(R.string.calorias_totales, totalCalorias.toInt())
+        tvProteinas.text = getString(R.string.proteinas_totales, totalProteinas)
+        tvGrasas.text = getString(R.string.grasas_totales, totalGrasas)
+        tvCarbohidratos.text = getString(R.string.carbohidratos_totales, totalCarbohidratos)
     }
 
     private fun mostrarDatosVacios() {
-        tvCalorias.text = "Calorías totales: 0 kcal"
-        tvProteinas.text = "Proteínas totales: 0 g"
-        tvGrasas.text = "Grasas totales: 0 g"
-        tvCarbohidratos.text = "Carbohidratos totales: 0 g"
-        Toast.makeText(this, "No hay datos para este periodo", Toast.LENGTH_SHORT).show()
+        tvCalorias.text = getString(R.string.calorias_vacias)
+        tvProteinas.text = getString(R.string.proteinas_vacias)
+        tvGrasas.text = getString(R.string.grasas_vacias)
+        tvCarbohidratos.text = getString(R.string.carbohidratos_vacias)
+        Toast.makeText(this, getString(R.string.no_datos), Toast.LENGTH_SHORT).show()
     }
 }

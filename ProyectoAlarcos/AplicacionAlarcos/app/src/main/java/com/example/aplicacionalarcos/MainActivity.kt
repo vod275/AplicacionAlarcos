@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             val userEmail = user.email
-            val userName = user.displayName ?: "Usuario sin nombre"
+            val userName = user.displayName ?: getString(R.string.usuario_sin_nombre)
             val userId = user.uid
             UserSession.id = userId
             UserSession.email = userEmail

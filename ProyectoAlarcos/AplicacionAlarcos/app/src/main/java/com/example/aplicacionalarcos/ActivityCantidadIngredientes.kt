@@ -59,7 +59,8 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
 
     private fun confirmarCantidades(ingredientes: ArrayList<Ingrediente>?, nombrePlato: String) {
         if (ingredientes == null) {
-            Toast.makeText(this, "Error: No se encontraron ingredientes.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.error_no_se_encontraron_ingredientes), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -77,7 +78,8 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             val cantidadIngresada = cantidades[i].toIntOrNull() ?: 0 // Convertir a Int o usar 0 si es inválido
 
             if (cantidadIngresada <= 0) {
-                Toast.makeText(this, "Por favor, ingresa cantidades válidas.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.por_favor_ingresa_cantidades_v_lidas), Toast.LENGTH_SHORT).show()
                 return
             }
 
@@ -94,7 +96,8 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
         // Obtener el ID de usuario de la sesión
         val userId = UserSession.id
         if (userId.isNullOrEmpty()) {
-            Toast.makeText(this, "Error: No se pudo obtener el ID del usuario.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.error_no_se_pudo_obtener_el_id_del_usuario), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -157,11 +160,13 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             .set(platoMap)
             .addOnSuccessListener {
                 Log.d("Firestore", "Plato guardado con ID: ${plato.id}")
-                Toast.makeText(this, "Plato guardado correctamente.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.plato_guardado_correctamente), Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 Log.w("Firestore", "Error al guardar el plato", e)
-                Toast.makeText(this, "Error al guardar el plato.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.error_al_guardar_el_plato), Toast.LENGTH_SHORT).show()
             }
     }
 }

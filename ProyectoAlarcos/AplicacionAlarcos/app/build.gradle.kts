@@ -59,7 +59,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("org.twitter4j:twitter4j-core:4.0.7")
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
 
 }

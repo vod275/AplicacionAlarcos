@@ -30,7 +30,8 @@ class NuevasComidas : AppCompatActivity() {
 
         // Inicializar adapter vacío
         adapter = NuevaComidaAdapter(listaIngredientes) { ingrediente ->
-            Toast.makeText(this, "Seleccionaste: ${ingrediente.nombre}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.seleccionaste_ingrediente, ingrediente.nombre), Toast.LENGTH_SHORT).show()
         }
         binding.RVNuevasComidas.adapter = adapter
 
@@ -71,8 +72,8 @@ class NuevasComidas : AppCompatActivity() {
                     }
                     startActivity(intent)
                 } else {
-                    val mensaje = if (seleccionados.isEmpty()) "No has seleccionado ningún ingrediente."
-                    else "Debes escribir un nombre para el plato."
+                    val mensaje = if (seleccionados.isEmpty()) getString(R.string.no_has_seleccionado_ning_n_ingrediente)
+                    else getString(R.string.debes_escribir_un_nombre_para_el_plato)
                     Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
                 }
             } else {
