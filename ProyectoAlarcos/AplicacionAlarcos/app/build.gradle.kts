@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.google.firebase.analytics)
     implementation(libs.play.services.auth)
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

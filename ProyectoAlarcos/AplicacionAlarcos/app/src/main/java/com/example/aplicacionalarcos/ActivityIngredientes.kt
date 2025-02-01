@@ -52,11 +52,13 @@ class ActivityIngredientes : AppCompatActivity() {
             firestore.collection("ingredientes")
                 .add(ingredienteData)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Ingrediente guardado correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.ingrediente_guardado_correctamente), Toast.LENGTH_SHORT).show()
                     limpiarCampos() // Limpia los campos después de guardar
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(this, "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        getString(R.string.error_al_guardar, e.message), Toast.LENGTH_SHORT).show()
                 }
         }
 

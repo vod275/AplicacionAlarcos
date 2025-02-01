@@ -204,7 +204,8 @@ class AjustesActivity : AppCompatActivity() {
                 .load(R.drawable.defecto)
                 .into(binding.FotoPrefil)
 
-            Toast.makeText(this, "No se encontró imagen de perfil", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.no_se_encontr_imagen_de_perfil), Toast.LENGTH_SHORT).show()
         }
     }
 

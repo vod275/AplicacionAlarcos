@@ -175,7 +175,9 @@ class DatosUsuarioActivity : AppCompatActivity() {
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this,
-                    getString(R.string.error_al_subir_la_imagen, e.message), Toast.LENGTH_SHORT).show()
+                    getString(R.string.error_al_subir_la_imagen) + ": ",
+                    Toast.LENGTH_SHORT).show();
+
             }
     }
 

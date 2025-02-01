@@ -23,7 +23,6 @@
     <string name="en_centimetros">En centímetros</string>
     <string name="peso">Peso</string>
     <string name="en_kilogramos">En kilogramos</string>
-    <string name="vamos">¡Vamos!</string>
 
     <string name="imagen_fondo_login" translatable="false">Imagen Fondo Login</string>
     <string name="CalcularImc">Calcular IMC</string>
@@ -67,8 +66,14 @@
     <string name="desea_continuar">¿Desea continuar?</string>
     <string name="se_cerrar_la_sesi_n_con_el_correo">Se cerrará la sesión con el correo:</string>
     <string name="cancelar">Cancelar</string>
+    <string name="a_calcular_el_imc">Calcular el IMC</string>
+    <string name="vamos">Vamos a calcular el IMC</string>
 
-    <string name="a_calcular_el_imc">¡A calcular el IMC!</string>
+
+
+
+
+
     <string name="cambiar_datosdel_perfil">Cambiar datos del perfil</string>
     <string name="edad">Edad</string>
     <string name="usuario">Usuario</string>
@@ -119,4 +124,46 @@
     <string name="elementos_eliminados">Elementos eliminados</string>
     <string name="error_no_se_pudo_obtener_el_id_del_usuario">Error: No se pudo obtener el ID del usuario.</string>
     <string name="error_al_cargar_las_comidas">Error al cargar las comidas: %1$s</string>
+    <string name="por_favor_ingresa_un_correo_v_lido">Por favor ingresa un correo valido</string>
+    <string name="por_favor_completa_todos_los_campos">Por favor completa todos los campos</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="foto_subida_exitosamente">Foto subida exitosamente</string>
+    <string name="error_al_subir_la_foto">Error al subir la foto</string>
+    <string name="url_de_la_imagen_guardada_correctamente">Url guardada correctamente</string>
+    <string name="error_al_guardar_url">Error al guardar la url de la imagen</string>
+    <string name="sin_nombre">Sin nombre</string>
+    <string name="error_al_obtener_ingredientes">Error al obtener ingreientes</string>
+    <string name="el_adaptador_no_ha_sido_inicializado_a_n">El adaptador no ha sido iniciado</string>
+    <string name="error_al_guardar">Error al guardar: %1$s</string>
+    <string name="ingrediente_guardado_correctamente">Ingrediente guardado correctamente</string>
+    <string name="edad_no_disponible">Edad no disponible</string>
+    <string name="no_se_encontr_imagen_de_perfil">No se encontró imagen de perfil</string>
+    <string name="error_al_crear_el_archivo_de_imagen">Error al crear el archivo de imagen</string>
+    <string name="no_se_pudo_obtener_el_directorio_de_almacenamiento">No se pudo obtener el directorio</string>
+    <string name="imagen_subida_exitosamente">Imagen subida exitosamente</string>
+    <string name="error_al_subir_la_imagen">Error al subir la imagen</string>
+    <string name="permiso_de_c_mara_denegado">Permiso de camara denegado</string>
+    <string name="seleccionar_desde_galer_a">Seleccionar desde la galeria</string>
+    <string name="tomar_una_foto">Tomar una foto</string>
+    <string name="no_se_tom_ninguna_foto">No se tomo ninguna foto</string>
+    <string name="introduce_valores_num_ricos_v_lidos">Introduce valores válidos</string>
+
+    <string name="todo">Todo</string>
+    <string name="fecha">Fecha</string>
+    <string name="volver">Volver</string>
+    <string name="guardar">Guardar</string>
+    <string name="agregar_ingrediente">Agregar Ingrediente</string>
+    <string name="nuevascomidas">Nuevas Comidas</string>
+    <string name="introduce_el_nombre_de_la_receta">Introduce el nombre de la receta</string>
+    <string name="a_adir_ingredientes">Añadir ingredientes</string>
+    <string name="a_adir_comida">Añadir comida</string>
+    <string name="cantidad_gr">Cantidad (gr)</string>
+    <string name="error_no_se_encontraron_ingredientes">No se encontraron ingredientes</string>
+    <string name="por_favor_ingresa_cantidades_v_lidas">Por favor ingresa cantidades validas</string>
+    <string name="plato_guardado_correctamente">Plato guardado correctamente</string>
+    <string name="error_al_guardar_el_plato">Error al guardar el plato</string>
+
+    <string name="descripci_n_hola_me_llamo_manuel_p_rez_s_nchez_soy_estudiante_de_programacion_y_tengo_21_a_os">"\n Descripción: Hola!! Me llamo Manuel Pérez Sánchez, soy estudiante de programacion y tengo 21 años.\n "</string>
+    <string name="descripci_n_healthybites_es_una_app_para_llevar_un_mejor_control_de_tu_alimentaci_n_de_forma_sana_y_saludable_healthybites_versi_n_1_0_fecha_2024_autores_manuel_p_rez_s_nchez_y_v_ctor_oliver_donoso">"\n Descripción: HealthyBites es una app para llevar un mejor control de tu alimentación \n de forma sana y saludable.\n\n HealthyBites \n Versión: 1.0 \n Fecha: 2024 \n Autores: Manuel Pérez Sánchez y Víctor Oliver Donoso\n "</string>
+    <string name="descripci_n_hola_me_llamo_v_ctor_oliver_soy_estudiante_de_programacion_y_tengo_27_a_os">"\n Descripción: Hola!! Me llamo Víctor Oliver, soy estudiante de programacion y tengo 27 años.\n "</string>
 </resources>

@@ -6,15 +6,15 @@
 
     <string name="fecha_de_nacimiento">生年月日</string>
     <string name="apellidos">姓</string>
-    <string name="nombre">名前</string>
+    <string name="nombre">名</string>
     <string name="atras">戻る</string>
-    <string name="aceptar">承認</string>
-    <string name="iniciar_con_google">Googleでサインイン</string>
-    <string name="registrarse">サインアップ</string>
-    <string name="mantente_saludable_inicia_sesi_n_ahora">健康を保ち、今すぐサインイン</string>
+    <string name="aceptar">同意する</string>
+    <string name="iniciar_con_google">Googleでログイン</string>
+    <string name="registrarse">登録</string>
+    <string name="mantente_saludable_inicia_sesi_n_ahora">健康を維持し、今すぐログイン</string>
     <string name="contrase_a">パスワード</string>
     <string name="correo">メール</string>
-    <string name="email">電子メール</string>
+    <string name="email">メールアドレス</string>
     <string name="logo_de_la_app">アプリのロゴ</string>
     <string name="introduce_el_nombre">名前を入力してください</string>
     <string name="introduce_los_apellidos">姓を入力してください</string>
@@ -25,98 +25,142 @@
     <string name="en_kilogramos">キログラムで</string>
     <string name="vamos">行こう！</string>
 
-    <string name="imagen_fondo_login" translatable="false">ログイン背景画像</string>
-    <string name="CalcularImc">BMIを計算</string>
+    <string name="imagen_fondo_login" translatable="false">ログイン画面の背景画像</string>
+    <string name="CalcularImc">BMIを計算する</string>
     <string name="InfoNutricional">栄養情報</string>
     <string name="UltimasComidas">最近の食事</string>
 
     <string name="recuerda_que_la_felicidad_esta_en_ti_y_que_el_imc_no_te_define_puesto_que_eres_una_persona_maravillosa">
-        幸せはあなたの中にあり、BMIはあなたを定義するものではありません。あなたは素晴らしい人です
+        幸せはあなたの中にあり、BMIはあなたを定義しません。あなたは素晴らしい人です。
     </string>
 
-    <string name="MinusPeso">推奨体重未満。あなたのBMIは：</string>
+    <string name="MinusPeso">推奨体重以下。あなたのBMIは：</string>
     <string name="PesoRecomendado">推奨範囲内の体重。あなたのBMIは：</string>
-    <string name="SobrePeso">推奨体重を超えています。あなたのBMIは：</string>
+    <string name="SobrePeso">推奨体重以上。あなたのBMIは：</string>
 
-    <string name="bgimage" translatable="false">bgImage</string>
+    <string name="bgimage" translatable="false">背景画像</string>
     <string name="el_imc_recomendado_para_una_persona_adulta_con_ejercicio_fisico_ligero_se_encuentra_entre_18_5_y_25">
-        軽度の運動を行う成人に推奨されるBMIは18.5から25の間です
+        軽い運動をする成人の推奨BMIは18.5から25の間です
     </string>
 
     <string name="Español">スペイン語</string>
     <string name="English">英語</string>
     <string name="japones">日本語</string>
 
-    <string name="Claro">ライト</string>
-    <string name="Oscuro">ダーク</string>
+    <string name="Claro">明るい</string>
+    <string name="Oscuro">暗い</string>
 
-    <string name="edad_con_años">%1$d 年</string>
-    <string name="usuario_registrado_exitosamente">ユーザー登録が成功しました</string>
-    <string name="error_desconocido_intenta_nuevamente">不明なエラーが発生しました。再試行してください。</string>
-    <string name="el_correo_ya_est_registrado">このメールは既に登録されています</string>
+    <string name="edad_con_años">%1$d 歳</string>
+    <string name="usuario_registrado_exitosamente">ユーザーが正常に登録されました</string>
+    <string name="error_desconocido_intenta_nuevamente">不明なエラー。再試行してください。</string>
+    <string name="el_correo_ya_est_registrado">そのメールはすでに登録されています</string>
     <string name="la_contrase_a_es_demasiado_d_bil">パスワードが弱すぎます</string>
 
     <string name="error_al_registrar">登録エラー</string>
-    <string name="error_al_autenticar_con_google">Googleでの認証エラー</string>
-    <string name="error_al_iniciar_sesi_n_con_google">Googleでのサインインエラー</string>
-    <string name="usuario_no_encontrado_inicia_sesi_n_nuevamente">ユーザーが見つかりません。再度サインインしてください。</string>
+    <string name="error_al_autenticar_con_google">Google認証エラー</string>
+    <string name="error_al_iniciar_sesi_n_con_google">Googleでのログインエラー</string>
+    <string name="usuario_no_encontrado_inicia_sesi_n_nuevamente">ユーザーが見つかりませんでした。再度ログインしてください。</string>
     <string name="error_al_verificar_usuario">ユーザー確認エラー</string>
 
-    <string name="por_favor_inicia_sesi_n_o_reg_strate">サインインまたはサインアップしてください</string>
-    <string name="cerrar_sesi_n">サインアウト</string>
+    <string name="por_favor_inicia_sesi_n_o_reg_strate">ログインまたは登録してください</string>
+    <string name="cerrar_sesi_n">ログアウト</string>
     <string name="desea_continuar">続行しますか？</string>
-    <string name="se_cerrar_la_sesi_n_con_el_correo">このメールアドレスでサインアウトします：</string>
+    <string name="se_cerrar_la_sesi_n_con_el_correo">次のメールでログアウトします：</string>
     <string name="cancelar">キャンセル</string>
 
-    <string name="a_calcular_el_imc">BMIを計算しましょう！</string>
+    <string name="a_calcular_el_imc">BMIを計算する！</string>
     <string name="cambiar_datosdel_perfil">プロフィール情報を変更</string>
     <string name="edad">年齢</string>
     <string name="usuario">ユーザー</string>
     <string name="boton_de_ajustes">設定ボタン</string>
 
     <string name="borrar">削除</string>
-    <string name="usuario_no_disponible">ユーザーが利用できません</string>
-    <string name="nombre_no_disponible">名前が利用できません</string>
-    <string name="apellidos_no_disponibles">姓が利用できません</string>
-    <string name="fecha_no_disponible">日付が利用できません</string>
+    <string name="usuario_no_disponible">ユーザーは利用できません</string>
+    <string name="nombre_no_disponible">名前は利用できません</string>
+    <string name="apellidos_no_disponibles">姓は利用できません</string>
+    <string name="fecha_no_disponible">日付は利用できません</string>
 
-    <string name="error_campos_vacios">すべてのフィールドを入力してください</string>
+    <string name="error_campos_vacios">すべてのフィールドを記入してください</string>
     <string name="seleccionar_fecha">日付を選択してください</string>
     <string name="el_peso_y_la_altura_deben_ser_mayores_a_cero">体重と身長は0より大きい必要があります。</string>
 
     <string name="error_conversion_fecha">日付変換エラー</string>
     <string name="error_formato_fecha">無効な日付形式</string>
     <string name="error_firebase">Firebaseエラー</string>
-    <string name="error_datos_firebase">Firebaseからデータを取得できませんでした</string>
+    <string name="error_datos_firebase">Firebaseからデータを取得するエラー</string>
 
-    <string name="fecha_seleccionada">選択した日付: %1$s</string>
+    <string name="fecha_seleccionada">選択された日付：%1$s</string>
 
-    <string name="error_usuario">ユーザー情報の取得エラー</string>
-    <string name="error_al_autenticar_con_twitter">Twitterでの認証エラー</string>
+    <string name="error_usuario">ユーザー取得エラー</string>
+    <string name="error_al_autenticar_con_twitter">Twitter認証エラー</string>
 
-    <string name="log_busqueda_firebase">ユーザー: %3$s のために %1$s と %2$s の間のデータを検索中</string>
+    <string name="log_busqueda_firebase">ユーザー：%3$sのデータを%1$sと%2$sの間で検索中</string>
     <string name="opcion_dia">日</string>
     <string name="opcion_semana">週</string>
     <string name="opcion_mes">月</string>
 
-    <string name="calorias_totales">合計カロリー: %1$d kcal</string>
-    <string name="proteinas_totales">合計タンパク質: %.2f g</string>
-    <string name="grasas_totales">合計脂肪: %.2f g</string>
-    <string name="carbohidratos_totales">合計炭水化物: %.2f g</string>
+    <string name="calorias_totales">総カロリー：%1$d kcal</string>
+    <string name="proteinas_totales">総タンパク質：%.2f g</string>
+    <string name="grasas_totales">総脂肪：%.2f g</string>
+    <string name="carbohidratos_totales">総炭水化物：%.2f g</string>
 
-    <string name="calorias_vacias">合計カロリー: 0 kcal</string>
-    <string name="proteinas_vacias">合計タンパク質: 0 g</string>
-    <string name="grasas_vacias">合計脂肪: 0 g</string>
-    <string name="carbohidratos_vacias">合計炭水化物: 0 g</string>
+    <string name="calorias_vacias">総カロリー：0 kcal</string>
+    <string name="proteinas_vacias">総タンパク質：0 g</string>
+    <string name="grasas_vacias">総脂肪：0 g</string>
+    <string name="carbohidratos_vacias">総炭水化物：0 g</string>
 
-    <string name="no_datos">この期間にはデータがありません</string>
+    <string name="no_datos">この期間のデータはありません</string>
     <string name="usuario_sin_nombre">名前のないユーザー</string>
 
     <string name="Implementando">機能開発中</string>
-    <string name="seleccionaste_ingrediente">選択した食材: %1$s</string>
-    <string name="no_has_seleccionado_ning_n_ingrediente">食材が選択されていません。</string>
-    <string name="debes_escribir_un_nombre_para_el_plato">料理名を入力してください。</string>
-    <string name="elementos_eliminados">アイテムが削除されました</string>
-    <string name="error_no_se_pudo_obtener_el_id_del_usuario">エラー: ユーザーIDを取得できませんでした。</string>
-    <string name="error_al_cargar_las_comidas">食事の読み込みエラー: %1$s</string>
+    <string name="seleccionaste_ingrediente">選択したもの：%1$s</string>
+    <string name="no_has_seleccionado_ning_n_ingrediente">どの材料も選択していません。</string>
+    <string name="debes_escribir_un_nombre_para_el_plato">料理の名前を入力してください。</string>
+    <string name="elementos_eliminados">削除された項目</string>
+    <string name="error_no_se_pudo_obtener_el_id_del_usuario">エラー：ユーザーIDを取得できませんでした。</string>
+    <string name="error_al_cargar_las_comidas">食事の読み込みエラー：%1$s</string>
+    <string name="por_favor_ingresa_un_correo_v_lido">有効なメールアドレスを入力してください</string>
+    <string name="por_favor_completa_todos_los_campos">すべてのフィールドを記入してください</string>
+    <string name="bienvenido">ようこそ</string>
+    <string name="foto_subida_exitosamente">写真のアップロードに成功しました</string>
+    <string name="error_al_subir_la_foto">写真のアップロードエラー</string>
+    <string name="url_de_la_imagen_guardada_correctamente">画像のURLが正常に保存されました</string>
+    <string name="error_al_guardar_url">画像のURL保存エラー</string>
+    <string name="sin_nombre">名前なし</string>
+    <string name="error_al_obtener_ingredientes">材料の取得エラー</string>
+    <string name="el_adaptador_no_ha_sido_inicializado_a_n">アダプタが初期化されていません</string>
+    <string name="error_al_guardar">保存エラー：%1$s</string>
+    <string name="ingrediente_guardado_correctamente">材料が正常に保存されました</string>
+    <string name="edad_no_disponible">年齢は利用できません</string>
+    <string name="no_se_encontr_imagen_de_perfil">プロフィール画像が見つかりませんでした</string>
+    <string name="error_al_crear_el_archivo_de_imagen">画像ファイル作成エラー</string>
+    <string name="no_se_pudo_obtener_el_directorio_de_almacenamiento">ディレクトリを取得できませんでした</string>
+    <string name="imagen_subida_exitosamente">画像のアップロードに成功しました</string>
+    <string name="error_al_subir_la_imagen">画像のアップロードエラー</string>
+    <string name="permiso_de_c_mara_denegado">カメラの許可が拒否されました</string>
+    <string name="seleccionar_desde_galer_a">ギャラリーから選択</string>
+    <string name="tomar_una_foto">写真を撮る</string>
+    <string name="no_se_tom_ninguna_foto">写真は撮影されませんでした</string>
+    <string name="introduce_valores_num_ricos_v_lidos">有効な数値を入力してください</string>
+
+    <string name="todo">すべて</string>
+    <string name="fecha">日付</string>
+    <string name="volver">戻る</string>
+    <string name="guardar">保存</string>
+    <string name="agregar_ingrediente">食材を追加</string>
+    <string name="nuevascomidas">新しい食事</string>
+    <string name="introduce_el_nombre_de_la_receta">レシピ名を入力してください</string>
+    <string name="a_adir_ingredientes">食材を追加</string>
+    <string name="a_adir_comida">食事を追加</string>
+    <string name="cantidad_gr">量（g）</string>
+
+    <string name="error_no_se_encontraron_ingredientes">材料が見つかりませんでした</string>
+    <string name="por_favor_ingresa_cantidades_v_lidas">有効な数量を入力してください</string>
+    <string name="plato_guardado_correctamente">料理が正常に保存されました</string>
+    <string name="error_al_guardar_el_plato">料理の保存中にエラーが発生しました</string>
+
+    <string name="descripci_n_hola_me_llamo_manuel_p_rez_s_nchez_soy_estudiante_de_programacion_y_tengo_21_a_os">"\n 説明: こんにちは！！私の名前はマヌエル・ペレス・サンチェスです。プログラミングの学生で、21歳です。\n "</string>
+    <string name="descripci_n_healthybites_es_una_app_para_llevar_un_mejor_control_de_tu_alimentaci_n_de_forma_sana_y_saludable_healthybites_versi_n_1_0_fecha_2024_autores_manuel_p_rez_s_nchez_y_v_ctor_oliver_donoso">"\n 説明: HealthyBitesは、健康的で栄養豊富な方法で食事をより良く管理するためのアプリです。\n\n HealthyBites \n バージョン: 1.0 \n 日付: 2024 \n 著者: マヌエル・ペレス・サンチェスとビクトル・オリヴェール・ドノソ\n "</string>
+    <string name="descripci_n_hola_me_llamo_v_ctor_oliver_soy_estudiante_de_programacion_y_tengo_27_a_os">"\n 説明: こんにちは！！私の名前はビクトル・オリヴェールです。プログラミングの学生で、27歳です。\n "</string>
+
 </resources>
