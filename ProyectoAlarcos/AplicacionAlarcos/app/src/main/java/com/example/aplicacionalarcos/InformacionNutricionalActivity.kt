@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import objetos.UserSession
 import java.util.*
 
 class InformacionNutricionalActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
     private lateinit var tvGrasas: TextView
     private lateinit var tvCarbohidratos: TextView
     private lateinit var btnSeleccionarFecha: Button
-    private lateinit var obAtras2: Button  // Asegúrate de que sea lateinit var
+    private lateinit var obAtras2: Button
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         tvGrasas = findViewById(R.id.tvGrasas)
         tvCarbohidratos = findViewById(R.id.tvCarbohidratos)
         btnSeleccionarFecha = findViewById(R.id.btnSeleccionarFecha)
-        obAtras2 = findViewById(R.id.obAtras2)  // Aquí es donde lo inicializas
+        obAtras2 = findViewById(R.id.obAtras2)
 
         btnSeleccionarFecha.setOnClickListener {
             seleccionarFecha()
@@ -64,6 +65,12 @@ class InformacionNutricionalActivity : AppCompatActivity() {
 
     private fun obtenerDatosPorFecha(fecha: String) {
         try {
+            val userId = UserSession.id
+            if (userId.isNullOrEmpty()) {
+                Toast.makeText(this, "Error: No se pudo obtener el ID del usuario.", Toast.LENGTH_SHORT).show()
+                return
+            }
+
             // Convertir "dd/MM/yyyy" a "yyyy-MM-dd"
             val formatoEntrada = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             val formatoSalida = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -71,7 +78,8 @@ class InformacionNutricionalActivity : AppCompatActivity() {
             val fechaConvertida = formatoSalida.format(formatoEntrada.parse(fecha)!!)
 
             db.collection("platos")
-                .whereEqualTo("fechaRegistro", fechaConvertida) // Buscar por fecha exacta
+                .whereEqualTo("id", userId) // Filtrar por el usuario actual
+                .whereEqualTo("fechaRegistro", fechaConvertida) // Filtrar por la fecha seleccionada
                 .get()
                 .addOnSuccessListener { documents ->
                     if (documents.isEmpty) {

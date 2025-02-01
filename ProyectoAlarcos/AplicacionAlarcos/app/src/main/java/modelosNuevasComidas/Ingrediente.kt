@@ -11,9 +11,8 @@ data class Ingrediente(
     val proteinasPor100g: Double = 0.0,
     val salPor100g: Double = 0.0
 ) : Serializable {
-    // Constructor vacío necesario para deserialización de Firestore
-    constructor() : this("", "", 0.0, 0.0, 0.0, 0.0, 0.0)
 
+    constructor() : this("", "", 0.0, 0.0, 0.0, 0.0, 0.0)
 
     override fun toString(): String {
         return """
@@ -26,4 +25,3 @@ data class Ingrediente(
         """.trimIndent()
     }
 }
-

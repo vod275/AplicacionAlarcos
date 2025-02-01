@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionalarcos.databinding.ActivityIngredientesBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import objetos.UserSession
 
 class ActivityIngredientes : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class ActivityIngredientes : AppCompatActivity() {
 
         // Configuración del botón Guardar
         binding.btnGuardar.setOnClickListener {
+            val userId = UserSession.id // ID del usuario actual
             val nombreIngrediente = binding.tvNombreAjustes.editText?.text.toString()
             val valorEnergetico = binding.etValorEnergetico.text.toString()
             val grasas = binding.etGrasas.text.toString()
@@ -34,28 +36,24 @@ class ActivityIngredientes : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Crear datos para Firestore
+            // Crear datos para Firestore (ahora incluyendo el userId)
             val ingredienteData = mapOf(
+                "userId" to userId, // Guardamos el ID del usuario en Firestore
                 "nombre" to nombreIngrediente,
-                "valorEnergetico" to valorEnergetico,
-                "grasas" to grasas,
-                "carbohidratos" to carbohidratos,
-                "proteinas" to proteinas,
-                "sal" to sal
+                "valorEnergetico" to valorEnergetico.toDouble(),
+                "grasas" to grasas.toDouble(),
+                "carbohidratos" to carbohidratos.toDouble(),
+                "proteinas" to proteinas.toDouble(),
+                "sal" to sal.toDouble()
             )
 
             // Guardar en Firestore con un ID automático
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection("ingredientes")
                 .add(ingredienteData)
-                .addOnSuccessListener { documentReference ->
-                    binding.etSal.text?.clear()
-                    binding.etGrasas.text?.clear()
-                    binding.etCarbohidratos.text?.clear()
-                    binding.etProteinas.text?.clear()
-                    binding.etValorEnergetico.text?.clear()
-                    binding.etNombre.text?.clear()
-
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Ingrediente guardado correctamente", Toast.LENGTH_SHORT).show()
+                    limpiarCampos() // Limpia los campos después de guardar
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -69,5 +67,15 @@ class ActivityIngredientes : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             finish()
         }
+    }
+
+    // Función para limpiar los campos después de guardar
+    private fun limpiarCampos() {
+        binding.etSal.text?.clear()
+        binding.etGrasas.text?.clear()
+        binding.etCarbohidratos.text?.clear()
+        binding.etProteinas.text?.clear()
+        binding.etValorEnergetico.text?.clear()
+        binding.tvNombreAjustes.editText?.text?.clear()
     }
 }

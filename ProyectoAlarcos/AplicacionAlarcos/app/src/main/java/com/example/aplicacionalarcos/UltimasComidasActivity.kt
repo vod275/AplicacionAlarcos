@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aplicacionalarcos.databinding.ActivityUltimasComidasBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import modelosNuevasComidas.Plato
+import objetos.UserSession
 
 class UltimasComidasActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUltimasComidasBinding
@@ -37,7 +38,7 @@ class UltimasComidasActivity : AppCompatActivity() {
         binding.RVComidas.adapter = comidaAdapter
         binding.RVComidas.layoutManager = LinearLayoutManager(this)
 
-        // Cargar datos de Firebase
+        // Cargar datos de Firebase filtrando por UserSession.id
         cargarComidasDesdeFirebase()
 
         // Botón eliminar
@@ -64,7 +65,14 @@ class UltimasComidasActivity : AppCompatActivity() {
     }
 
     private fun cargarComidasDesdeFirebase() {
+        val userId = UserSession.id
+        if (userId.isNullOrEmpty()) {
+            Toast.makeText(this, "Error: No se pudo obtener el ID del usuario.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         db.collection("platos")
+            .whereEqualTo("id", userId) // Filtrar solo platos con el mismo ID del usuario
             .get()
             .addOnSuccessListener { documents ->
                 listaComidas.clear()

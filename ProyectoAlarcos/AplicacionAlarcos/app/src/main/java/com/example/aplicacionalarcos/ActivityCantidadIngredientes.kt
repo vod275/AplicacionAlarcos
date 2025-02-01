@@ -13,6 +13,7 @@ import com.example.aplicacionalarcos.databinding.ActivityCantidadIngredientesBin
 import com.google.firebase.firestore.FirebaseFirestore
 import modelosNuevasComidas.Ingrediente
 import modelosNuevasComidas.Plato
+import objetos.UserSession
 
 class ActivityCantidadIngredientes : AppCompatActivity() {
     private lateinit var binding: ActivityCantidadIngredientesBinding
@@ -90,8 +91,16 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             valorEnergeticoTotal += (cantidadIngresada * ingredientes[i].valorEnergeticoPor100g) / 100
         }
 
+        // Obtener el ID de usuario de la sesión
+        val userId = UserSession.id
+        if (userId.isNullOrEmpty()) {
+            Toast.makeText(this, "Error: No se pudo obtener el ID del usuario.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         // Crear el objeto Plato con todos los valores calculados
         val plato = Plato(
+            id = userId,  // Asignar el ID del usuario al plato
             nombre = nombrePlato,
             ingredientes = ingredientes,
             cantidad = cantidadesEnOrden,
@@ -122,6 +131,7 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
 
         // Convertir el objeto Plato a un mapa para Firestore
         val platoMap = hashMapOf(
+            "id" to plato.id,  // Usamos el ID del usuario como ID del plato
             "nombre" to plato.nombre,
             "fechaRegistro" to fechaActual,  // Agregar la fecha
             "ingredientes" to plato.ingredientes.map { ingrediente ->
@@ -142,11 +152,11 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
             "salTotal" to salTotal
         )
 
-        // Guardar en Firestore
-        db.collection("platos")
-            .add(platoMap)
-            .addOnSuccessListener { documentReference ->
-                Log.d("Firestore", "Plato guardado con ID: ${documentReference.id}")
+        // Guardar el documento en Firestore usando el ID de usuario como clave
+        db.collection("platos").document(plato.id)
+            .set(platoMap)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Plato guardado con ID: ${plato.id}")
                 Toast.makeText(this, "Plato guardado correctamente.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->

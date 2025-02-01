@@ -8,17 +8,14 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionalarcos.R
-import com.example.aplicacionalarcos.databinding.ActivityNuevasComidasBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import modelosNuevasComidas.Ingrediente
 
 class NuevaComidaAdapter(
-    private val binding: ActivityNuevasComidasBinding,
-    private val ingredientes: MutableList<Ingrediente>, // Cambiado a MutableList para eliminar dinámicamente
+    private val ingredientes: MutableList<Ingrediente>,
     private val onItemClick: (Ingrediente) -> Unit
 ) : RecyclerView.Adapter<NuevaComidaAdapter.IngredienteViewHolder>() {
 
-    // Lista para rastrear los elementos seleccionados
     private val selectedItems = mutableSetOf<Int>()
 
     inner class IngredienteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +36,6 @@ class NuevaComidaAdapter(
     override fun onBindViewHolder(holder: IngredienteViewHolder, position: Int) {
         val ingrediente = ingredientes[position]
 
-        // Configurar los datos
         holder.tvNombre.text = ingrediente.nombre
         holder.tvValorEnergetico.text = "Valor energético: ${ingrediente.valorEnergeticoPor100g}"
         holder.tvGrasas.text = "Grasas: ${ingrediente.grasasPor100g}"
@@ -47,46 +43,41 @@ class NuevaComidaAdapter(
         holder.tvProteinas.text = "Proteínas: ${ingrediente.proteinasPor100g}"
         holder.tvSal.text = "Sal: ${ingrediente.salPor100g}"
 
-        // Cambiar el fondo del LinearLayout según el estado de selección
         holder.linearLayout.setBackgroundColor(
             if (selectedItems.contains(position))
-                ContextCompat.getColor(holder.itemView.context, R.color.swicth) // Color seleccionado
+                ContextCompat.getColor(holder.itemView.context, R.color.swicth)
             else
-                ContextCompat.getColor(holder.itemView.context, R.color.VerdeFont) // Color no seleccionado
+                ContextCompat.getColor(holder.itemView.context, R.color.VerdeFont)
         )
 
-        // Evento de clic corto para seleccionar/desmarcar
         holder.itemView.setOnClickListener {
             if (selectedItems.contains(position)) {
                 selectedItems.remove(position)
             } else {
                 selectedItems.add(position)
             }
-            notifyItemChanged(position) // Actualizar visualmente el ítem
+            notifyItemChanged(position)
         }
 
-        // Evento adicional: Pasar el ingrediente al callback
         holder.itemView.setOnLongClickListener {
             onItemClick(ingrediente)
             true
         }
     }
 
-    override fun getItemCount() = ingredientes.size
+    override fun getItemCount(): Int = ingredientes.size
 
-    // Método para obtener los ingredientes seleccionados
     fun getSeleccionados(): List<Ingrediente> {
-        return selectedItems.map { ingredientes[it] }
+        return selectedItems.mapNotNull { index -> ingredientes.getOrNull(index) }
     }
 
-    // Eliminar ingredientes seleccionados de Firestore
     fun eliminarIngredientesSeleccionados() {
         val db = FirebaseFirestore.getInstance()
         val ingredientesAEliminar = getSeleccionados()
 
-        for (ingrediente in ingredientesAEliminar) {
+        ingredientesAEliminar.forEach { ingrediente ->
             db.collection("ingredientes")
-                .document(ingrediente.id) // Usamos el ID único del documento
+                .document(ingrediente.id)
                 .delete()
                 .addOnSuccessListener {
                     println("Ingrediente ${ingrediente.nombre} eliminado correctamente")
@@ -96,16 +87,8 @@ class NuevaComidaAdapter(
                 }
         }
 
-        // Eliminar de la lista seleccionada y actualizar la vista
-        ingredientes.removeAll(ingredientesAEliminar) // Eliminar los elementos de la lista
-        selectedItems.clear() // Limpiar la selección
-        notifyDataSetChanged() // Refrescar la interfaz
-    }
-
-    // Configurar la acción del botón eliminar
-    fun setupDeleteButton() {
-        binding.obBorrar.setOnClickListener {
-            eliminarIngredientesSeleccionados()
-        }
+        ingredientes.removeAll(ingredientesAEliminar)
+        selectedItems.clear()
+        notifyDataSetChanged()
     }
 }
