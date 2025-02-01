@@ -159,12 +159,14 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         var totalProteinas = 0.0
         var totalGrasas = 0.0
         var totalCarbohidratos = 0.0
+        var totalSal = 0.0
 
         for (document in documents) {
             totalCalorias += document.getDouble("valorEnergeticoTotal") ?: 0.0
             totalProteinas += document.getDouble("proteinasTotales") ?: 0.0
             totalGrasas += document.getDouble("grasasTotales") ?: 0.0
             totalCarbohidratos += document.getDouble("carbohidratosTotales") ?: 0.0
+            totalSal += document.getDouble("salTotal") ?: 0.0
         }
 
         tvCalorias.text = getString(R.string.calorias_totales, totalCalorias.toInt())
