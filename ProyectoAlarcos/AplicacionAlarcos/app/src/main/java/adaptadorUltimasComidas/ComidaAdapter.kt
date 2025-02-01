@@ -84,7 +84,9 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
             append(", ${comida.valorEnergeticoTotal} Kcal, ")
             append("${comida.proteinasTotales} gr proteína, ")
             append("${comida.carbohidratosTotales} gr carbohidratos, ")
+            append("${comida.salTotal} gr sal")
             append("${comida.grasasTotales} gr grasas\n\n")
+
             append("Ingredientes:\n")
             append(comida.ingredientes.joinToString("\n") { it.toString() })
         }

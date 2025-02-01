@@ -82,8 +82,8 @@
     <Button
         android:id="@+id/obAnadirIngredientes"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="173dp"
-        android:layout_height="55dp"
+        android:layout_width="142dp"
+        android:layout_height="56dp"
         android:text="@string/a_adir_ingredientes"
         android:textColor="@color/VerdeFont"
         app:layout_constraintBottom_toBottomOf="parent"

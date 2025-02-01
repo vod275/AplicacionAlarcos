@@ -9,6 +9,7 @@ data class Plato(
     var proteinasTotales: Double = 0.0,
     var grasasTotales: Double = 0.0,
     var carbohidratosTotales: Double = 0.0,
+    var salTotal: Double = 0.0,
     var fechaRegistro: String = "", // Aquí guardamos la fecha del plato
     val id: String = "" // Aquí guardamos el ID del usuario
 ) {
