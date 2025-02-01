@@ -163,4 +163,13 @@
     <string name="descripci_n_healthybites_es_una_app_para_llevar_un_mejor_control_de_tu_alimentaci_n_de_forma_sana_y_saludable_healthybites_versi_n_1_0_fecha_2024_autores_manuel_p_rez_s_nchez_y_v_ctor_oliver_donoso">"\n 説明: HealthyBitesは、健康的で栄養豊富な方法で食事をより良く管理するためのアプリです。\n\n HealthyBites \n バージョン: 1.0 \n 日付: 2024 \n 著者: マヌエル・ペレス・サンチェスとビクトル・オリヴェール・ドノソ\n "</string>
     <string name="descripci_n_hola_me_llamo_v_ctor_oliver_soy_estudiante_de_programacion_y_tengo_27_a_os">"\n 説明: こんにちは！！私の名前はビクトル・オリヴェールです。プログラミングの学生で、27歳です。\n "</string>
 
+    <string name="opciones_para">%1$sのオプション</string>
+    <string name="qu_acci_n_quieres_realizar_con_este_elemento">このアイテムで実行したいアクションは何ですか？</string>
+    <string name="ver_detalles">詳細を見る</string>
+    <string name="eliminar_elemento">アイテムを削除</string>
+    <string name="detalles_de">%1$sの詳細</string>
+    <string name="cerrar">閉じる</string>
+    <string name="plato_eliminado_correctamente">料理が正常に削除されました</string>
+    <string name="error_al_eliminar">削除エラー: %1$s</string>
+
 </resources>

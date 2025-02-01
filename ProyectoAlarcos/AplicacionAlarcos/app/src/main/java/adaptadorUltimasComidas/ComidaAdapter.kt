@@ -61,15 +61,15 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
             val context = holder.itemView.context
 
             val dialog = AlertDialog.Builder(context)
-                .setTitle("Opciones para ${comida.nombre}")
-                .setMessage("¿Qué acción quieres realizar con este elemento?")
-                .setPositiveButton("Ver detalles") { _, _ ->
+                .setTitle(context.getString(R.string.opciones_para, comida.nombre))
+                .setMessage(context.getString(R.string.qu_acci_n_quieres_realizar_con_este_elemento))
+                .setPositiveButton(context.getString(R.string.ver_detalles)) { _, _ ->
                     mostrarDetalles(comida, context)
                 }
-                .setNegativeButton("Eliminar elemento") { _, _ ->
+                .setNegativeButton(context.getString(R.string.eliminar_elemento)) { _, _ ->
                     eliminarPlatoPorNombreDocumento(nombreDocumento, position, context)
                 }
-                .setNeutralButton("Cancelar") { dialog, _ -> dialog.dismiss() }
+                .setNeutralButton(R.string.cancelar) { dialog, _ -> dialog.dismiss() }
                 .create()
 
             personalizarDialogo(dialog, context)
@@ -89,9 +89,9 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
         }
 
         val detallesDialog = AlertDialog.Builder(context)
-            .setTitle("Detalles de ${comida.nombre}")
+            .setTitle(context.getString(R.string.detalles_de, comida.nombre))
             .setMessage(detalles)
-            .setPositiveButton("Cerrar") { d, _ -> d.dismiss() }
+            .setPositiveButton(context.getString(R.string.cerrar)) { d, _ -> d.dismiss() }
             .create()
 
         personalizarDialogo(detallesDialog, context)
@@ -127,10 +127,12 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
                     notifyItemRemoved(position)
                     notifyItemRangeChanged(position, comidas.size)
                 }
-                Toast.makeText(context, "Plato eliminado correctamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    context.getString(R.string.plato_eliminado_correctamente), Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(context, "Error al eliminar: ${exception.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    context.getString(R.string.error_al_eliminar, exception.message), Toast.LENGTH_SHORT).show()
             }
     }
 

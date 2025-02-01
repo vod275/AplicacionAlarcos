@@ -44,7 +44,7 @@ class UltimasComidasActivity : AppCompatActivity() {
         // Botón eliminar
         binding.EliminarBt.setOnClickListener {
             comidaAdapter.eliminarSeleccionados()
-            Toast.makeText(this, getString(R.string.elementos_eliminados), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.elementos_eliminados, Toast.LENGTH_SHORT).show()
         }
 
         // Botón atrás
@@ -67,8 +67,7 @@ class UltimasComidasActivity : AppCompatActivity() {
     private fun cargarComidasDesdeFirebase() {
         val userId = UserSession.id
         if (userId.isNullOrEmpty()) {
-            Toast.makeText(this,
-                getString(R.string.error_no_se_pudo_obtener_el_id_del_usuario), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.error_no_se_pudo_obtener_el_id_del_usuario, Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -84,8 +83,7 @@ class UltimasComidasActivity : AppCompatActivity() {
                 comidaAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(this,
-                    getString(R.string.error_al_cargar_las_comidas, exception.message), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_al_cargar_las_comidas, Toast.LENGTH_SHORT).show()
             }
     }
 }

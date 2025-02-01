@@ -163,4 +163,13 @@
     <string name="descripci_n_healthybites_es_una_app_para_llevar_un_mejor_control_de_tu_alimentaci_n_de_forma_sana_y_saludable_healthybites_versi_n_1_0_fecha_2024_autores_manuel_p_rez_s_nchez_y_v_ctor_oliver_donoso">"\n Description: HealthyBites is an app to better control your diet \n in a healthy and nutritious way.\n\n HealthyBites \n Version: 1.0 \n Date: 2024 \n Authors: Manuel Pérez Sánchez and Víctor Oliver Donoso\n "</string>
     <string name="descripci_n_hola_me_llamo_v_ctor_oliver_soy_estudiante_de_programacion_y_tengo_27_a_os">"\n Description: Hi!! My name is Víctor Oliver, I am a programming student and I am 27 years old.\n "</string>
 
+    <string name="opciones_para">Options for %1$s</string>
+    <string name="qu_acci_n_quieres_realizar_con_este_elemento">What action would you like to perform with this item?</string>
+    <string name="ver_detalles">View details</string>
+    <string name="eliminar_elemento">Delete item</string>
+    <string name="detalles_de">Details of %1$s</string>
+    <string name="cerrar">Close</string>
+    <string name="plato_eliminado_correctamente">Dish successfully deleted</string>
+    <string name="error_al_eliminar">Error deleting: %1$s</string>
+
 </resources>
