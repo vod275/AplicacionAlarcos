@@ -156,7 +156,7 @@ class ActivityCantidadIngredientes : AppCompatActivity() {
         )
 
         // Guardar el documento en Firestore usando el ID de usuario como clave
-        db.collection("platos").document(plato.id)
+        db.collection("platos").document()
             .set(platoMap)
             .addOnSuccessListener {
                 Log.d("Firestore", "Plato guardado con ID: ${plato.id}")
