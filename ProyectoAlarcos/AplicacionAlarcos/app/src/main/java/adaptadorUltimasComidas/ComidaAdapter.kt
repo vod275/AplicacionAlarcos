@@ -80,7 +80,8 @@ class ComidaAdapter(private val comidas: MutableList<Pair<String, Plato>>) : Rec
 
     private fun mostrarDetalles(comida: Plato, context: Context) {
         val detalles = buildString {
-            append("${comida.nombre} : ${comida.cantidad} : ${comida.caloriasTotales} Kcal, ")
+            append("${comida.nombre} : ${comida.cantidad}")
+            append(", ${comida.valorEnergeticoTotal} Kcal, ")
             append("${comida.proteinasTotales} gr proteína, ")
             append("${comida.carbohidratosTotales} gr carbohidratos, ")
             append("${comida.grasasTotales} gr grasas\n\n")

@@ -5,6 +5,7 @@ data class Plato(
     var ingredientes: List<Ingrediente> = emptyList(),
     var cantidad: List<Int> = emptyList(),
     var caloriasTotales: Double = 0.0,
+    var valorEnergeticoTotal: Double = 0.0,
     var proteinasTotales: Double = 0.0,
     var grasasTotales: Double = 0.0,
     var carbohidratosTotales: Double = 0.0,
