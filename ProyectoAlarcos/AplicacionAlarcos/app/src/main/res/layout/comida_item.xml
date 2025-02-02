@@ -12,8 +12,8 @@
 
     <ImageButton
         android:id="@+id/appLogo"
-        android:layout_width="103dp"
-        android:layout_height="103dp"
+        android:layout_width="85dp"
+        android:layout_height="93dp"
         android:background="@drawable/logoapp"
         android:contentDescription="@string/logo_de_la_app"
         app:layout_constraintBottom_toBottomOf="parent"

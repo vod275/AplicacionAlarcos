@@ -87,8 +87,8 @@
 
         <TextView
             android:id="@+id/tvApellidosAjustes"
-            android:layout_width="269dp"
-            android:layout_height="20dp"
+            android:layout_width="246dp"
+            android:layout_height="21dp"
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
 
         <TextView
             android:id="@+id/tvNombreAjustes"
-            android:layout_width="269dp"
+            android:layout_width="249dp"
             android:layout_height="25dp"
             android:textColor="@color/VerdeFont"
             app:layout_constraintBottom_toBottomOf="parent"
