@@ -183,6 +183,7 @@ class InformacionNutricionalActivity : AppCompatActivity() {
         tvProteinas.text = getString(R.string.proteinas_vacias)
         tvGrasas.text = getString(R.string.grasas_vacias)
         tvCarbohidratos.text = getString(R.string.carbohidratos_vacias)
+        tvSal.text = getString(R.string.sal_vacia)
         Toast.makeText(this, getString(R.string.no_datos), Toast.LENGTH_SHORT).show()
     }
 }

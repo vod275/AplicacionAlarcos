@@ -114,6 +114,7 @@
     <string name="proteinas_vacias">Proteínas totales: 0 g</string>
     <string name="grasas_vacias">Grasas totales: 0 g</string>
     <string name="carbohidratos_vacias">Carbohidratos totales: 0 g</string>
+    <string name="sal_vacia" >Sales totales: 0g</string>
 
     <string name="no_datos">No hay datos para este periodo</string>
     <string name="usuario_sin_nombre">Usuario sin nombre</string>
@@ -175,4 +176,5 @@
     <string name="cerrar">Cerrar</string>
     <string name="plato_eliminado_correctamente">Plato eliminado correctamente</string>
     <string name="error_al_eliminar">Error al eliminar: %1$s</string>
+
 </resources>

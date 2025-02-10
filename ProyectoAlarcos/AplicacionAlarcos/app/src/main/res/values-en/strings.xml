@@ -108,6 +108,8 @@
     <string name="proteinas_vacias">Total Protein: 0 g</string>
     <string name="grasas_vacias">Total Fat: 0 g</string>
     <string name="carbohidratos_vacias">Total Carbs: 0 g</string>
+    <string name="sal_vacia">Total salt: 0g</string>
+
 
     <string name="no_datos">No data for this period</string>
     <string name="usuario_sin_nombre">User without name</string>

@@ -104,10 +104,12 @@
     <string name="grasas_totales">総脂肪：%.2f g</string>
     <string name="carbohidratos_totales">総炭水化物：%.2f g</string>
 
+
     <string name="calorias_vacias">総カロリー：0 kcal</string>
     <string name="proteinas_vacias">総タンパク質：0 g</string>
     <string name="grasas_vacias">総脂肪：0 g</string>
     <string name="carbohidratos_vacias">総炭水化物：0 g</string>
+    <string name="sal_vacia" >総塩分：0g</string>
 
     <string name="no_datos">この期間のデータはありません</string>
     <string name="usuario_sin_nombre">名前のないユーザー</string>
